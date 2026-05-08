@@ -2,32 +2,25 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Activity, AlertTriangle, GraduationCap, ArrowRight, UserCheck, Clock, Send, CheckCircle2 } from 'lucide-react';
+import { Activity, AlertTriangle, ArrowRight, UserCheck, Clock, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import DailyActionPanel from '@/components/DailyActionPanel';
 import LastUpdatedBadge from '@/components/LastUpdatedBadge';
 import VictimSupportCTA from '@/components/VictimSupportCTA';
 import NewsletterSubscription from '@/components/NewsletterSubscription';
 import ExpertConsultationModal from '@/components/ExpertConsultationModal';
-import MobileQuickAccess from '@/components/MobileQuickAccess';
 import TelegramSubscriptionCTA from '@/components/TelegramSubscriptionCTA';
 import TrustedDataSources from '@/components/TrustedDataSources';
 import TrustReassuranceStatement from '@/components/TrustReassuranceStatement';
 import AudienceEntryStrip from '@/components/AudienceEntryStrip';
 import StatsStrip from '@/components/StatsStrip';
+import CareerDiscoveryTeaser from '@/components/CareerDiscoveryTeaser';
+import CareerRoadmap from '@/components/CareerRoadmap';
+import WhoIsThisFor from '@/components/WhoIsThisFor';
+import LearningHub from '@/components/LearningHub';
+import WorkshopCTA from '@/components/WorkshopCTA';
+import SocialProof from '@/components/SocialProof';
 import { currentThreatsData } from '@/data/currentThreatsData';
-
-function SectionHeadline({ children, sub, light = false }) {
-  return (
-    <div className="text-center mb-12">
-      <h2 className={`text-3xl font-bold tracking-tight ${light ? 'text-white' : 'text-brand-dark'}`}>
-        {children}
-      </h2>
-      <div className="w-12 h-0.5 bg-brand-accent mx-auto mt-3 rounded-full" />
-      {sub && <p className={`mt-4 text-base max-w-2xl mx-auto leading-relaxed ${light ? 'text-slate-400' : 'text-slate-500'}`}>{sub}</p>}
-    </div>
-  );
-}
 
 function HomePage() {
   const [consultationOpen, setConsultationOpen] = useState(false);
@@ -45,11 +38,11 @@ function HomePage() {
   return (
     <>
       <Helmet>
-        <title>Cybelator — India's Cybersecurity Awareness & Training Platform</title>
-        <meta name="description" content="Live cyber threat alerts, free victim support, and CortiSec Academy career training. Backed by CortiSec Technologies." />
+        <title>Cybelator — India's Cyber Awareness & Career Discovery Platform</title>
+        <meta name="description" content="Stay safe online, learn cybersecurity for free, and discover your career path. Cybelator is India's trusted cyber awareness platform backed by CortiSec Technologies." />
       </Helmet>
 
-      {/* Urgent Alert Banner */}
+      {/* ── 0. Urgent Alert Banner ── */}
       {criticalCount > 0 && (
         <div className="bg-brand-alert text-white text-sm font-medium py-2.5 px-4 text-center relative z-50">
           <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-2">
@@ -64,13 +57,10 @@ function HomePage() {
         </div>
       )}
 
-      {/* ── HERO ── */}
+      {/* ── 1. HERO ── */}
       <section className="bg-brand-darker text-white pt-12 pb-6 md:pt-20 md:pb-28 relative overflow-hidden">
-        {/* Dot grid overlay */}
         <div className="absolute inset-0 dot-grid pointer-events-none" />
-        {/* Radial glow left */}
         <div className="absolute -left-32 top-1/2 -translate-y-1/2 w-96 h-96 bg-brand-accent/10 rounded-full blur-3xl pointer-events-none" />
-        {/* Radial glow top-right */}
         <div className="absolute top-0 right-0 w-1/2 h-full bg-brand-accent/5 blur-3xl rounded-full -translate-y-1/2 translate-x-1/3 pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -92,11 +82,11 @@ function HomePage() {
                 </h1>
 
                 <p className="text-xl lg:text-2xl text-brand-accent font-bold mb-4">
-                  Live threats. Real scams. Free help. Career paths.
+                  Stay safe. Learn for free. Discover your career.
                 </p>
 
                 <p className="text-base text-slate-400 mb-8 max-w-xl leading-relaxed">
-                  Cybelator is India's trusted cybersecurity awareness and training platform — backed by CortiSec Technologies.
+                  Cybelator is India's cyber awareness and career discovery platform — helping you stay protected today and build a cybersecurity career for tomorrow.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-3">
@@ -183,14 +173,26 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Audience Entry Strip */}
+      {/* ── 2. Audience Entry Cards ── */}
       <AudienceEntryStrip />
 
-      {/* Stats Strip */}
+      {/* ── 3. Stats Strip ── */}
       <StatsStrip />
 
-      {/* Telegram */}
-      <section className="bg-white py-14 md:py-20">
+      {/* ── 4. Career Discovery Teaser ── */}
+      <CareerDiscoveryTeaser />
+
+      {/* ── 5. Career Roadmap ── */}
+      <CareerRoadmap />
+
+      {/* ── 6. Who Is This For? ── */}
+      <WhoIsThisFor />
+
+      {/* ── 7. Free Learning Hub ── */}
+      <LearningHub />
+
+      {/* ── 8. Telegram / Community CTA ── */}
+      <section className="bg-brand-navy py-14 md:py-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
             <TelegramSubscriptionCTA />
@@ -198,15 +200,23 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Trusted Authorities */}
+      {/* ── 9. Trusted Authorities ── */}
       <TrustedDataSources />
 
-      {/* Mobile Quick Access */}
-      <div className="pb-14 md:pb-20 pt-0">
-        <MobileQuickAccess />
-      </div>
+      {/* ── 10. Free Workshop CTA ── */}
+      <WorkshopCTA />
 
-      {/* Newsletter */}
+      {/* ── 11. Victim Support / Cyber Assistance ── */}
+      <section className="bg-white py-14 md:py-20 border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <VictimSupportCTA />
+        </div>
+      </section>
+
+      {/* ── 12. Social Proof ── */}
+      <SocialProof />
+
+      {/* ── 13. Newsletter ── */}
       <section className="bg-slate-50 py-14 md:py-20 border-y border-slate-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
@@ -219,67 +229,7 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Victim Support CTA */}
-      <section className="bg-white py-14 md:py-20 border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <VictimSupportCTA />
-        </div>
-      </section>
-
-      {/* ── ACADEMY TEASER ── */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-brand-darker to-brand-navy py-16 md:py-24 border-l-4 border-brand-accent">
-        <div className="absolute inset-0 dot-grid opacity-50 pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="flex flex-col lg:flex-row gap-12 items-center">
-
-            {/* Left */}
-            <div className="flex-1">
-              <motion.div initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-                <p className="text-xs font-semibold uppercase tracking-widest text-brand-accent/70 mb-4">
-                  CORTISEC ACADEMY · GUWAHATI
-                </p>
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight tracking-tight">
-                  Turn Your Passion for Tech<br className="hidden md:block" /> Into a Cybersecurity Career
-                </h2>
-                <ul className="space-y-3 mb-8">
-                  {[
-                    'Train on real enterprise tools — Check Point, Cato, Netskope & more',
-                    'Hands-on labs. No theory-only classroom training.',
-                    "Job placement support through CortiSec's enterprise network",
-                  ].map((point, i) => (
-                    <li key={i} className="flex items-start gap-3 text-slate-300 text-sm md:text-base">
-                      <CheckCircle2 className="w-5 h-5 text-brand-accent shrink-0 mt-0.5" />
-                      {point}
-                    </li>
-                  ))}
-                </ul>
-                <Button asChild className="bg-white text-brand-dark hover:bg-slate-100 font-bold rounded-full h-12 px-8 text-base shadow-lg">
-                  <Link to="/academy">Apply for Next Batch →</Link>
-                </Button>
-              </motion.div>
-            </div>
-
-            {/* Right — stat boxes */}
-            <div className="w-full lg:w-[360px]">
-              <motion.div initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }} className="grid grid-cols-2 gap-4">
-                {[
-                  { num: '16 Weeks', sub: 'Job-ready program' },
-                  { num: '8 Domains', sub: 'Security skills' },
-                  { num: '100% Hands-On', sub: 'Real lab access' },
-                  { num: 'Guwahati', sub: 'Training Centre' },
-                ].map((box, i) => (
-                  <div key={i} className="bg-white/10 backdrop-blur-sm rounded-2xl p-5 text-center border border-white/20">
-                    <p className="text-white font-bold text-lg leading-snug">{box.num}</p>
-                    <p className="text-white/60 text-xs mt-1">{box.sub}</p>
-                  </div>
-                ))}
-              </motion.div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Trust Reassurance */}
+      {/* ── 14. Privacy Protected ── */}
       <TrustReassuranceStatement />
 
       <ExpertConsultationModal isOpen={consultationOpen} onClose={() => setConsultationOpen(false)} />

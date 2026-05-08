@@ -21,7 +21,7 @@ function Footer() {
 
           <TelegramFooterSection />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-14">
 
             {/* Brand & Mission */}
             <div>
@@ -77,6 +77,25 @@ function Footer() {
                   <button onClick={() => setContactModalOpen(true)} className="text-slate-300 hover:text-brand-accent transition-colors text-left">
                     Contact Us
                   </button>
+                </li>
+              </ul>
+            </div>
+
+            {/* Learn Cybersecurity */}
+            <div>
+              <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-5">Learn Cybersecurity</h3>
+              <ul className="space-y-3 text-sm">
+                <li>
+                  <a href="/#roadmap" onClick={scrollToTop} className="text-slate-300 hover:text-brand-accent transition-colors">Career Roadmap</a>
+                </li>
+                <li>
+                  <Link to="/guides" onClick={scrollToTop} className="text-slate-300 hover:text-brand-accent transition-colors">Beginner Guides</Link>
+                </li>
+                <li>
+                  <a href="/#workshop" className="text-slate-300 hover:text-brand-accent transition-colors">Free Workshop</a>
+                </li>
+                <li>
+                  <Link to="/academy" onClick={scrollToTop} className="text-brand-accent hover:text-brand-accentDark transition-colors font-medium">CortiSec Academy →</Link>
                 </li>
               </ul>
             </div>
