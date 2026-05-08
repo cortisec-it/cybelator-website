@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Activity, AlertTriangle, GraduationCap, ArrowRight, UserCheck, Shield, Clock, Send } from 'lucide-react';
+import { Activity, AlertTriangle, GraduationCap, ArrowRight, UserCheck, Clock, Send, CheckCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import DailyActionPanel from '@/components/DailyActionPanel';
 import LastUpdatedBadge from '@/components/LastUpdatedBadge';
@@ -15,6 +15,7 @@ import TrustedDataSources from '@/components/TrustedDataSources';
 import TrustReassuranceStatement from '@/components/TrustReassuranceStatement';
 import AudienceEntryStrip from '@/components/AudienceEntryStrip';
 import CyberAssistanceSection from '@/components/CyberAssistanceSection';
+import StatsStrip from '@/components/StatsStrip';
 import { currentThreatsData } from '@/data/currentThreatsData';
 
 function HomePage() {
@@ -74,23 +75,16 @@ function HomePage() {
                   <span className="text-xs font-medium text-slate-300">System Online • Monitoring Active • Updated Daily</span>
                 </div>
                 
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight tracking-tight">
-                  Know today's<br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#06B6D4] to-cyan-400">
-                    online dangers and exactly how to stay safe
-                  </span>
+                <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 leading-tight tracking-tight text-white">
+                  Are You Safe Online?
                 </h1>
 
-                <p className="text-lg lg:text-xl text-[#06B6D4] font-semibold mb-3">
-                  Cybelator — The Cyber Warrior for the Digital Age
+                <p className="text-xl lg:text-2xl text-[#06B6D4] font-bold mb-5">
+                  Real threats. Real scams. Real help. Right now.
                 </p>
 
-                <p className="text-sm text-slate-500 mb-4">
-                  Real-time threat intelligence &middot; Free victim support &middot; CortiSec Academy career training
-                </p>
-
-                <p className="text-base lg:text-lg text-slate-400 mb-8 max-w-xl leading-[1.6] md:leading-relaxed font-medium md:font-normal">
-                  Don't just read about threats—act on them. Get daily updates on scams, vulnerabilities, and protection steps tailored for you.
+                <p className="text-base lg:text-lg text-slate-300 mb-8 max-w-xl leading-relaxed">
+                  Cybelator gives you live cyber threat alerts, free expert assistance if you've been scammed, and a clear path to a cybersecurity career — all in one place.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4">
@@ -186,12 +180,15 @@ function HomePage() {
       {/* Audience Entry Strip */}
       <AudienceEntryStrip />
 
-      {/* Telegram Subscription Section (Main - High Priority) */}
+      {/* Stats Strip */}
+      <StatsStrip />
+
+      {/* Telegram Subscription Section */}
       <section className="bg-white py-10 md:py-16">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }} 
-            whileInView={{ opacity: 1, y: 0 }} 
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
           >
@@ -200,13 +197,13 @@ function HomePage() {
         </div>
       </section>
 
+      {/* Trusted Data Sources Section */}
+      <TrustedDataSources />
+
       {/* Mobile Quick Access Grid */}
       <div className="pb-10 md:pb-16 pt-0">
         <MobileQuickAccess />
       </div>
-
-      {/* Trusted Data Sources Section */}
-      <TrustedDataSources />
 
       {/* Subscription Section */}
       <section className="bg-slate-50 py-10 md:py-20">
@@ -238,24 +235,67 @@ function HomePage() {
       {/* Cyber Assistance Section */}
       <CyberAssistanceSection />
 
-      {/* Academy Teaser Banner */}
-      <section className="bg-slate-50 py-10 md:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 bg-white p-8 rounded-2xl border border-[#06B6D4]/20 shadow-sm hover:shadow-md transition-shadow">
-            <div className="flex items-start md:items-center gap-5">
-              <div className="bg-[#06B6D4]/10 p-4 rounded-xl shrink-0">
-                <GraduationCap className="w-10 h-10 text-[#06B6D4]" />
-              </div>
-              <div>
-                <h3 className="text-xl md:text-2xl font-bold text-[#0F172A] mb-2">CortiSec Academy</h3>
-                <p className="text-slate-600 text-sm md:text-base leading-relaxed max-w-xl">
-                  Launch your cybersecurity career at our Guwahati Training Centre. 16-week program on real enterprise platforms. Batch-based enrollment. Limited seats.
+      {/* Academy Teaser — CortiSec Academy */}
+      <section className="relative overflow-hidden bg-gradient-to-r from-[#0F172A] to-[#06B6D4] py-14 md:py-20">
+        <div className="absolute inset-0 bg-[#0F172A]/50 pointer-events-none" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="flex flex-col lg:flex-row gap-12 items-center">
+
+            {/* Left */}
+            <div className="flex-1">
+              <motion.div
+                initial={{ opacity: 0, x: -24 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                <p className="text-xs font-semibold uppercase tracking-widest text-white/60 mb-4">
+                  CORTISEC ACADEMY · GUWAHATI
                 </p>
-              </div>
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 leading-tight">
+                  Turn Your Passion for Tech<br className="hidden md:block" /> Into a Cybersecurity Career
+                </h2>
+                <ul className="space-y-3 mb-8">
+                  {[
+                    'Train on real enterprise tools — Check Point, Cato, Netskope & more',
+                    'Hands-on labs. No theory-only classroom training.',
+                    "Job placement support through CortiSec's enterprise network",
+                  ].map((point, i) => (
+                    <li key={i} className="flex items-start gap-3 text-white/90 text-sm md:text-base">
+                      <CheckCircle2 className="w-5 h-5 text-[#06B6D4] shrink-0 mt-0.5" />
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+                <Button asChild className="bg-white text-[#0F172A] hover:bg-slate-100 font-bold h-12 px-8 rounded-xl text-base shadow-lg">
+                  <Link to="/academy">Apply for Next Batch →</Link>
+                </Button>
+              </motion.div>
             </div>
-            <Button asChild className="bg-[#06B6D4] hover:bg-cyan-600 text-white shrink-0 h-12 md:h-14 px-8 rounded-xl font-bold text-base w-full md:w-auto shadow-lg shadow-cyan-200 py-2 md:py-3">
-              <Link to="/academy">Explore Academy</Link>
-            </Button>
+
+            {/* Right — 2×2 stat grid */}
+            <div className="w-full lg:w-[360px]">
+              <motion.div
+                initial={{ opacity: 0, x: 24 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="grid grid-cols-2 gap-4"
+              >
+                {[
+                  { num: '16 Weeks', sub: 'Job-ready program' },
+                  { num: '8 Domains', sub: 'Security skills' },
+                  { num: '100% Hands-On', sub: 'Real lab access' },
+                  { num: 'Guwahati', sub: 'Training Centre' },
+                ].map((box, i) => (
+                  <div key={i} className="bg-white/10 backdrop-blur-sm rounded-xl p-5 text-center border border-white/20">
+                    <p className="text-white font-bold text-lg leading-snug">{box.num}</p>
+                    <p className="text-white/60 text-xs mt-1">{box.sub}</p>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+
           </div>
         </div>
       </section>

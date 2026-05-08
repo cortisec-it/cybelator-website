@@ -1,58 +1,74 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Shield, HeartHandshake, GraduationCap } from 'lucide-react';
+import { ShieldAlert, HeartHandshake, GraduationCap } from 'lucide-react';
 
 const cards = [
   {
-    icon: Shield,
-    label: 'I want to stay safe online',
-    cta: 'View Today\'s Threats →',
+    icon: ShieldAlert,
+    iconColor: 'text-red-500',
+    borderClass: 'border-l-4 border-red-500',
+    hookColor: 'text-red-500',
+    hook: 'STAY PROTECTED',
+    title: 'I want to stay safe online',
+    body: 'Get live scam alerts, threat warnings, and daily protection tips before you become a target.',
+    cta: "View Today's Threats →",
+    ctaClass: 'bg-red-500 hover:bg-red-600 text-white',
     to: '/current-threats',
-    iconBg: 'bg-[#06B6D4]/10',
-    iconColor: 'text-[#06B6D4]',
   },
   {
     icon: HeartHandshake,
-    label: "I've been a victim of cyber fraud",
+    iconColor: 'text-amber-500',
+    borderClass: 'border-l-4 border-amber-500',
+    hookColor: 'text-amber-500',
+    hook: "WE'RE HERE FOR YOU",
+    title: "I've been scammed or hacked",
+    body: "Don't panic. Get immediate step-by-step help, report the incident, and recover your accounts fast.",
     cta: 'Get Help Now →',
+    ctaClass: 'bg-amber-500 hover:bg-amber-600 text-white',
     to: '/victim-support',
-    iconBg: 'bg-red-50',
-    iconColor: 'text-red-500',
   },
   {
     icon: GraduationCap,
-    label: 'I want a cybersecurity career',
-    cta: 'Explore CortiSec Academy →',
+    iconColor: 'text-[#06B6D4]',
+    borderClass: 'border-l-4 border-[#06B6D4]',
+    hookColor: 'text-[#06B6D4]',
+    hook: 'START YOUR CAREER',
+    title: 'I want a job in cybersecurity',
+    body: 'Train on real enterprise tools at CortiSec Academy, Guwahati. 16 weeks. Job-ready. Real labs.',
+    cta: 'Explore Academy →',
+    ctaClass: 'bg-[#06B6D4] hover:bg-cyan-600 text-white',
     to: '/academy',
-    iconBg: 'bg-purple-50',
-    iconColor: 'text-purple-600',
   },
 ];
 
 function AudienceEntryStrip() {
   return (
-    <section className="bg-white py-8 md:py-12 border-b border-slate-100">
+    <section className="bg-slate-50 py-10 md:py-14">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
           {cards.map((card, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
+              whileHover={{ scale: 1.03 }}
+              className="h-full"
             >
-              <div className="bg-slate-50 border border-slate-200 rounded-xl shadow-sm p-6 flex flex-col items-start gap-4 h-full hover:shadow-md hover:border-slate-300 transition-all duration-200">
-                <div className={`${card.iconBg} p-3 rounded-xl`}>
-                  <card.icon className={`w-6 h-6 ${card.iconColor}`} />
+              <div className={`bg-white rounded-2xl shadow-md p-6 ${card.borderClass} flex flex-col gap-4 h-full`}>
+                <card.icon className={`w-10 h-10 ${card.iconColor}`} />
+                <div className="flex flex-col gap-2 flex-1">
+                  <p className={`text-xs font-semibold uppercase tracking-widest ${card.hookColor}`}>
+                    {card.hook}
+                  </p>
+                  <h3 className="text-lg font-bold text-[#0F172A] leading-snug">{card.title}</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">{card.body}</p>
                 </div>
-                <p className="text-base font-semibold text-[#0F172A] leading-snug flex-1">
-                  {card.label}
-                </p>
                 <Link
                   to={card.to}
-                  className="inline-flex items-center bg-[#06B6D4] hover:bg-cyan-600 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors duration-200"
+                  className={`inline-flex items-center justify-center ${card.ctaClass} text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors duration-200`}
                 >
                   {card.cta}
                 </Link>
