@@ -50,7 +50,7 @@ function SourceAttribution({ source, date, url, type = 'news' }) {
             href={url} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex items-center gap-1 text-[#06B6D4] hover:text-cyan-700 hover:underline transition-colors"
+            className="flex items-center gap-1 text-brand-accent hover:text-cyan-700 hover:underline transition-colors"
           >
             Read Original <ExternalLink className="w-3 h-3" />
           </a>

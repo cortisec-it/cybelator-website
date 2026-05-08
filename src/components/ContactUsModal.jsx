@@ -82,7 +82,7 @@ function ContactUsModal({ isOpen, onClose }) {
           </button>
 
           <div className="p-8">
-            <h2 className="text-2xl font-bold text-[#0F172A] mb-2">Contact Us</h2>
+            <h2 className="text-2xl font-bold text-brand-dark mb-2">Contact Us</h2>
             <p className="text-gray-600 mb-6">Have questions or feedback? We'd love to hear from you.</p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -93,7 +93,7 @@ function ContactUsModal({ isOpen, onClose }) {
                   name="fullName"
                   value={formData.fullName}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#06B6D4] outline-none transition-all"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-accent outline-none transition-all"
                   placeholder="Your Name"
                 />
               </div>
@@ -106,7 +106,7 @@ function ContactUsModal({ isOpen, onClose }) {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#06B6D4] outline-none transition-all"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-accent outline-none transition-all"
                   placeholder="email@example.com"
                 />
               </div>
@@ -119,7 +119,7 @@ function ContactUsModal({ isOpen, onClose }) {
                   required
                   value={formData.contactNumber}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#06B6D4] outline-none transition-all"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-accent outline-none transition-all"
                   placeholder="+91 98765 43210"
                 />
               </div>
@@ -132,7 +132,7 @@ function ContactUsModal({ isOpen, onClose }) {
                   rows="4"
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#06B6D4] outline-none transition-all resize-none"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-accent outline-none transition-all resize-none"
                   placeholder="How can we help?"
                 />
               </div>
@@ -140,7 +140,7 @@ function ContactUsModal({ isOpen, onClose }) {
               <Button 
                 type="submit" 
                 disabled={isSubmitting}
-                className="w-full bg-[#0F172A] hover:bg-slate-800 text-white font-bold h-12 text-base transition-all"
+                className="w-full bg-brand-dark hover:bg-slate-800 text-white font-bold h-12 text-base transition-all"
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
                 {!isSubmitting && <Send className="w-5 h-5 ml-2" />}

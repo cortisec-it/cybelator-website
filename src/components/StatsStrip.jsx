@@ -63,7 +63,7 @@ const stats = [
 
 function StatsStrip() {
   return (
-    <section className="bg-[#0F172A] py-12 md:py-16 border-y border-slate-800">
+    <section className="bg-brand-dark py-12 md:py-16 border-y border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
           {stats.map((stat, i) => (
@@ -75,7 +75,7 @@ function StatsStrip() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="text-center"
             >
-              <div className="text-2xl sm:text-3xl font-bold text-[#06B6D4] mb-2">
+              <div className="text-2xl sm:text-3xl font-bold text-brand-accent mb-2">
                 <CountUp
                   target={stat.target}
                   prefix={stat.prefix}

@@ -9,7 +9,7 @@ function TelegramFooterSection() {
     <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 p-8 shadow-2xl transition-all hover:shadow-blue-900/20 mb-12 group">
       {/* Decorative Background Elements */}
       <div className="absolute top-0 right-0 -mr-16 -mt-16 h-64 w-64 rounded-full bg-white/5 blur-3xl transition-transform group-hover:scale-110" />
-      <div className="absolute bottom-0 left-0 -ml-16 -mb-16 h-48 w-48 rounded-full bg-[#06B6D4]/10 blur-2xl" />
+      <div className="absolute bottom-0 left-0 -ml-16 -mb-16 h-48 w-48 rounded-full bg-brand-accent/10 blur-2xl" />
 
       <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
         <div className="flex-1">

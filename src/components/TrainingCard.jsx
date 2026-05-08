@@ -25,18 +25,18 @@ function TrainingCard({ title, description, level, duration, targetAudience, onC
           </div>
         </div>
         
-        <h3 className="text-xl font-bold text-[#0F172A] mb-2">{title}</h3>
+        <h3 className="text-xl font-bold text-brand-dark mb-2">{title}</h3>
         <p className="text-gray-600 text-sm mb-4">{description}</p>
         
         <div className="mb-6">
           <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Target Audience</p>
-          <p className="text-sm text-[#0F172A] bg-slate-50 p-2 rounded-lg">{targetAudience}</p>
+          <p className="text-sm text-brand-dark bg-slate-50 p-2 rounded-lg">{targetAudience}</p>
         </div>
       </div>
 
       <Button 
         onClick={onCtaClick}
-        className="w-full bg-[#0F172A] hover:bg-slate-800 text-white flex items-center justify-center gap-2 group"
+        className="w-full bg-brand-dark hover:bg-slate-800 text-white flex items-center justify-center gap-2 group"
       >
         {ctaLabel}
         <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

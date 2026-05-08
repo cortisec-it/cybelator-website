@@ -11,7 +11,7 @@ function DailyActionPanel({ actions }) {
 
   return (
     <div className="bg-gradient-to-br from-green-50 to-emerald-50 border border-green-100 rounded-xl p-6">
-      <h3 className="text-xl font-bold text-[#0F172A] mb-4">What You Should Do Today</h3>
+      <h3 className="text-xl font-bold text-brand-dark mb-4">What You Should Do Today</h3>
       <div className="space-y-3">
         {rotatedActions.map((action, idx) => (
           <div key={idx} className="flex items-start gap-3 bg-white p-3 rounded-lg shadow-sm border border-green-100">

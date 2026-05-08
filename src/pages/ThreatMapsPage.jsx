@@ -63,9 +63,9 @@ function ThreatMapsPage() {
       </Helmet>
 
       {/* Hero Section */}
-      <section className="relative h-[300px] md:h-[350px] flex items-center justify-center overflow-hidden bg-[#0F172A]">
+      <section className="relative h-[300px] md:h-[350px] flex items-center justify-center overflow-hidden bg-brand-dark">
         <div className="absolute inset-0 bg-blue-600/10 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0F172A]"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-brand-dark"></div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
@@ -73,9 +73,9 @@ function ThreatMapsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-2 bg-[#06B6D4]/20 backdrop-blur-sm border border-[#06B6D4]/30 px-4 py-2 rounded-full mb-6">
-              <Globe className="w-5 h-5 text-[#06B6D4]" />
-              <span className="text-[#06B6D4] font-medium">Real-time Intelligence</span>
+            <div className="inline-flex items-center gap-2 bg-brand-accent/20 backdrop-blur-sm border border-brand-accent/30 px-4 py-2 rounded-full mb-6">
+              <Globe className="w-5 h-5 text-brand-accent" />
+              <span className="text-brand-accent font-medium">Real-time Intelligence</span>
             </div>
 
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
@@ -97,7 +97,7 @@ function ThreatMapsPage() {
             {/* Threat Maps Grid */}
             <div className="lg:col-span-2">
               <div className="flex justify-between items-center mb-6">
-                <h2 className="text-2xl md:text-3xl font-bold text-[#0F172A]">Live Threat Maps</h2>
+                <h2 className="text-2xl md:text-3xl font-bold text-brand-dark">Live Threat Maps</h2>
               </div>
               
               <div className="grid md:grid-cols-2 gap-6">
@@ -134,7 +134,7 @@ function ThreatMapsPage() {
                          
                          <div className="p-6 flex-1 flex flex-col">
                             <div className="mb-4">
-                               <h3 className="text-xl font-bold text-[#0F172A] group-hover:text-[#06B6D4] transition-colors mb-1">
+                               <h3 className="text-xl font-bold text-brand-dark group-hover:text-brand-accent transition-colors mb-1">
                                  {map.name}
                                </h3>
                                <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">
@@ -148,7 +148,7 @@ function ThreatMapsPage() {
                             
                             <Button 
                               variant="outline" 
-                              className="w-full mt-auto h-11 border-slate-200 hover:border-[#06B6D4] hover:bg-[#06B6D4] hover:text-white transition-all duration-300 group-hover:border-[#06B6D4] text-slate-700"
+                              className="w-full mt-auto h-11 border-slate-200 hover:border-brand-accent hover:bg-brand-accent hover:text-white transition-all duration-300 group-hover:border-brand-accent text-slate-700"
                             >
                                Launch Map <ExternalLink className="w-4 h-4 ml-2" />
                             </Button>
@@ -164,14 +164,14 @@ function ThreatMapsPage() {
             <div className="lg:col-span-1">
               <div className="sticky top-24 space-y-6">
                 {/* Insights */}
-                <div className="bg-[#0F172A] rounded-xl p-6 text-white shadow-lg">
+                <div className="bg-brand-dark rounded-xl p-6 text-white shadow-lg">
                   <h3 className="text-xl font-bold mb-5 flex items-center gap-2">
-                    <AlertCircle className="w-5 h-5 text-[#06B6D4]" />
+                    <AlertCircle className="w-5 h-5 text-brand-accent" />
                     Understanding Data
                   </h3>
                   <div className="space-y-5">
                     {insights.map((insight, index) => (
-                      <div key={index} className="relative pl-4 border-l-2 border-[#06B6D4]">
+                      <div key={index} className="relative pl-4 border-l-2 border-brand-accent">
                         <h4 className="font-semibold text-sm mb-1 text-white">{insight.title}</h4>
                         <p className="text-xs text-slate-400 leading-relaxed">{insight.content}</p>
                       </div>
@@ -181,18 +181,18 @@ function ThreatMapsPage() {
 
                 {/* Stats */}
                 <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-                  <h3 className="text-lg font-bold text-[#0F172A] mb-4 flex items-center gap-2">
-                    <Activity className="w-5 h-5 text-[#06B6D4]" />
+                  <h3 className="text-lg font-bold text-brand-dark mb-4 flex items-center gap-2">
+                    <Activity className="w-5 h-5 text-brand-accent" />
                     Attack Distribution
                   </h3>
                   <div className="space-y-4">
                     {statsData.map((stat, index) => (
                       <div key={index}>
-                        <h4 className="font-semibold text-sm text-[#0F172A] mb-2">{stat.label}</h4>
+                        <h4 className="font-semibold text-sm text-brand-dark mb-2">{stat.label}</h4>
                         <ul className="space-y-2">
                           {stat.items.map((item, i) => (
                             <li key={i} className="text-xs text-slate-600 flex items-center gap-2 bg-slate-50 p-2 rounded-lg">
-                              <div className="w-1.5 h-1.5 bg-[#06B6D4] rounded-full" />
+                              <div className="w-1.5 h-1.5 bg-brand-accent rounded-full" />
                               {item}
                             </li>
                           ))}

@@ -24,11 +24,11 @@ function LegalPoliciesPage() {
 
       <div className="bg-slate-50 min-h-screen">
         {/* Header */}
-        <div className="bg-[#0F172A] text-white py-16">
+        <div className="bg-brand-dark text-white py-16">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div className="inline-flex items-center gap-2 bg-[#06B6D4]/20 p-2 px-4 rounded-full mb-6">
-              <Scale className="w-5 h-5 text-[#06B6D4]" />
-              <span className="text-[#06B6D4] font-medium text-sm">Transparency & Trust</span>
+            <div className="inline-flex items-center gap-2 bg-brand-accent/20 p-2 px-4 rounded-full mb-6">
+              <Scale className="w-5 h-5 text-brand-accent" />
+              <span className="text-brand-accent font-medium text-sm">Transparency & Trust</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">Legal & Editorial Policies</h1>
             <p className="text-slate-400 text-lg max-w-2xl mx-auto">
@@ -41,10 +41,10 @@ function LegalPoliciesPage() {
         <div className="sticky top-16 z-30 bg-white border-b border-gray-200 shadow-sm">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex overflow-x-auto gap-8 py-4 text-sm font-medium whitespace-nowrap scrollbar-hide">
-              <button onClick={() => scrollToSection('privacy')} className="text-gray-600 hover:text-[#06B6D4]">Privacy Policy</button>
-              <button onClick={() => scrollToSection('terms')} className="text-gray-600 hover:text-[#06B6D4]">Terms of Service</button>
-              <button onClick={() => scrollToSection('editorial')} className="text-gray-600 hover:text-[#06B6D4]">Editorial Policy</button>
-              <button onClick={() => scrollToSection('disclaimer')} className="text-gray-600 hover:text-[#06B6D4]">Disclaimer</button>
+              <button onClick={() => scrollToSection('privacy')} className="text-gray-600 hover:text-brand-accent">Privacy Policy</button>
+              <button onClick={() => scrollToSection('terms')} className="text-gray-600 hover:text-brand-accent">Terms of Service</button>
+              <button onClick={() => scrollToSection('editorial')} className="text-gray-600 hover:text-brand-accent">Editorial Policy</button>
+              <button onClick={() => scrollToSection('disclaimer')} className="text-gray-600 hover:text-brand-accent">Disclaimer</button>
             </div>
           </div>
         </div>
@@ -57,17 +57,17 @@ function LegalPoliciesPage() {
             <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-200">
               <div className="flex items-center gap-3 mb-6 pb-4 border-b border-gray-100">
                 <div className="bg-blue-50 p-2 rounded-lg"><Shield className="w-6 h-6 text-blue-600" /></div>
-                <h2 className="text-2xl font-bold text-[#0F172A]">Privacy Policy</h2>
+                <h2 className="text-2xl font-bold text-brand-dark">Privacy Policy</h2>
               </div>
               <div className="prose prose-slate max-w-none text-gray-600 space-y-4">
                 <p>
                   At Cybelator ("we", "our", "us"), we prioritize your privacy. As an educational and awareness platform, our primary goal is to provide information, not to monetize personal data.
                 </p>
-                <h3 className="text-lg font-bold text-[#0F172A] mt-4">Data Collection</h3>
+                <h3 className="text-lg font-bold text-brand-dark mt-4">Data Collection</h3>
                 <p>
                   We collect minimal data necessary to improve your experience, such as quiz progress bookmarks (stored locally on your device via LocalStorage) and optional newsletter subscriptions (email addresses). We do not sell your personal data to third parties.
                 </p>
-                <h3 className="text-lg font-bold text-[#0F172A] mt-4">Cookies & Local Storage</h3>
+                <h3 className="text-lg font-bold text-brand-dark mt-4">Cookies & Local Storage</h3>
                 <p>
                   We use LocalStorage technology to remember your preferences, bookmarked threats, and quiz progress. This data stays on your device and is not transmitted to our servers unless explicitly stated (e.g., incident reporting forms).
                 </p>
@@ -80,17 +80,17 @@ function LegalPoliciesPage() {
             <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-200">
               <div className="flex items-center gap-3 mb-6 pb-4 border-b border-gray-100">
                 <div className="bg-purple-50 p-2 rounded-lg"><FileText className="w-6 h-6 text-purple-600" /></div>
-                <h2 className="text-2xl font-bold text-[#0F172A]">Terms of Service</h2>
+                <h2 className="text-2xl font-bold text-brand-dark">Terms of Service</h2>
               </div>
               <div className="prose prose-slate max-w-none text-gray-600 space-y-4">
                 <p>
                   By accessing Cybelator, you agree to use the platform for educational and informational purposes only.
                 </p>
-                <h3 className="text-lg font-bold text-[#0F172A] mt-4">User Responsibilities</h3>
+                <h3 className="text-lg font-bold text-brand-dark mt-4">User Responsibilities</h3>
                 <p>
                   You agree not to use the information provided on Cybelator for malicious purposes, including but not limited to hacking, phishing simulations without consent, or social engineering. The knowledge provided here is strictly for defense and protection ("Blue Teaming").
                 </p>
-                <h3 className="text-lg font-bold text-[#0F172A] mt-4">Platform Availability</h3>
+                <h3 className="text-lg font-bold text-brand-dark mt-4">Platform Availability</h3>
                 <p>
                   We strive to keep the platform available 24/7 but do not guarantee uninterrupted access. We reserve the right to modify or discontinue content at any time.
                 </p>
@@ -103,7 +103,7 @@ function LegalPoliciesPage() {
             <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-200">
               <div className="flex items-center gap-3 mb-6 pb-4 border-b border-gray-100">
                 <div className="bg-green-50 p-2 rounded-lg"><BookOpen className="w-6 h-6 text-green-600" /></div>
-                <h2 className="text-2xl font-bold text-[#0F172A]">Editorial Policy</h2>
+                <h2 className="text-2xl font-bold text-brand-dark">Editorial Policy</h2>
               </div>
               <div className="prose prose-slate max-w-none text-gray-600 space-y-4">
                 <p>
@@ -123,7 +123,7 @@ function LegalPoliciesPage() {
             <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-200 border-l-4 border-l-orange-500">
               <div className="flex items-center gap-3 mb-6 pb-4 border-b border-gray-100">
                 <div className="bg-orange-50 p-2 rounded-lg"><AlertTriangle className="w-6 h-6 text-orange-600" /></div>
-                <h2 className="text-2xl font-bold text-[#0F172A]">Disclaimer</h2>
+                <h2 className="text-2xl font-bold text-brand-dark">Disclaimer</h2>
               </div>
               <div className="prose prose-slate max-w-none text-gray-600 space-y-4">
                 <p className="font-medium text-slate-800">

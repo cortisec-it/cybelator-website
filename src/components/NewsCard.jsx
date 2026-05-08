@@ -13,8 +13,8 @@ function NewsCard({ news }) {
     <div className="bg-white border border-gray-200 rounded-xl p-5 md:p-6 hover:shadow-2xl transition-all h-full flex flex-col">
       {/* TL;DR Section - Always Visible */}
       {news.tldr && (
-        <div className="bg-slate-50 border-l-4 border-[#06B6D4] p-3 mb-4 rounded-r-lg">
-          <span className="font-bold text-[#0F172A] text-[10px] md:text-xs uppercase tracking-wider block mb-1">TL;DR</span>
+        <div className="bg-slate-50 border-l-4 border-brand-accent p-3 mb-4 rounded-r-lg">
+          <span className="font-bold text-brand-dark text-[10px] md:text-xs uppercase tracking-wider block mb-1">TL;DR</span>
           <p className="text-sm text-gray-700 font-medium leading-relaxed">{news.tldr}</p>
         </div>
       )}
@@ -30,7 +30,7 @@ function NewsCard({ news }) {
               Verified
             </span>
           </div>
-          <h3 className="text-xl md:text-2xl font-bold text-[#0F172A] mb-2 leading-tight">{news.headline}</h3>
+          <h3 className="text-xl md:text-2xl font-bold text-brand-dark mb-2 leading-tight">{news.headline}</h3>
           
           {/* Collapsible on Mobile */}
           <div className={`${isExpanded ? 'block' : 'hidden md:block'} transition-all duration-300`}>
@@ -92,7 +92,7 @@ function NewsCard({ news }) {
           variant="ghost" 
           size="sm" 
           onClick={() => setIsExpanded(!isExpanded)}
-          className="text-[#06B6D4] hover:text-cyan-700 hover:bg-cyan-50 w-full flex items-center justify-center gap-1 font-medium"
+          className="text-brand-accent hover:text-cyan-700 hover:bg-cyan-50 w-full flex items-center justify-center gap-1 font-medium"
         >
           {isExpanded ? (
             <>Show Less <ChevronUp className="w-4 h-4" /></>

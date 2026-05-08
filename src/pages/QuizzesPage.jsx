@@ -73,7 +73,7 @@ function QuizzesPage() {
       </Helmet>
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-purple-900 via-[#0F172A] to-slate-900 text-white py-16">
+      <section className="bg-gradient-to-br from-purple-900 via-brand-dark to-slate-900 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -109,7 +109,7 @@ function QuizzesPage() {
                 transition={{ duration: 0.6 }}
                 className="text-center mb-12"
               >
-                <h2 className="text-3xl font-bold text-[#0F172A] mb-4">Choose Your Quiz</h2>
+                <h2 className="text-3xl font-bold text-brand-dark mb-4">Choose Your Quiz</h2>
                 <p className="text-xl text-gray-600">
                   Select a quiz to test your knowledge and get personalized recommendations
                 </p>
@@ -121,22 +121,22 @@ function QuizzesPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="bg-white border-2 border-gray-200 rounded-xl p-8 hover:shadow-2xl transition-all hover:border-[#06B6D4] cursor-pointer"
+                  className="bg-white border-2 border-gray-200 rounded-xl p-8 hover:shadow-2xl transition-all hover:border-brand-accent cursor-pointer"
                   onClick={() => handleStartQuiz(quiz.id)}
                 >
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <div className="bg-gradient-to-br from-[#06B6D4] to-cyan-600 p-3 rounded-lg">
+                      <div className="bg-gradient-to-br from-brand-accent to-cyan-600 p-3 rounded-lg">
                         <quiz.icon className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <h3 className="text-2xl font-bold text-[#0F172A]">{quiz.title}</h3>
+                        <h3 className="text-2xl font-bold text-brand-dark">{quiz.title}</h3>
                         <p className="text-gray-600">{quiz.questions.length} questions • {quiz.estimatedTime}</p>
                       </div>
                     </div>
                   </div>
                   <p className="text-gray-700 mb-4">{quiz.description}</p>
-                  <Button className="bg-[#06B6D4] hover:bg-cyan-600 text-white">
+                  <Button className="bg-brand-accent hover:bg-cyan-600 text-white">
                     Start Quiz
                   </Button>
                 </motion.div>
@@ -166,11 +166,11 @@ function QuizzesPage() {
               className="bg-white border-2 border-gray-200 rounded-xl p-8"
             >
               <div className="text-center mb-8">
-                <div className="bg-gradient-to-br from-[#06B6D4] to-cyan-600 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="bg-gradient-to-br from-brand-accent to-cyan-600 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Award className="w-10 h-10 text-white" />
                 </div>
-                <h2 className="text-3xl font-bold text-[#0F172A] mb-2">Quiz Complete!</h2>
-                <div className="text-6xl font-bold text-[#06B6D4] my-4">
+                <h2 className="text-3xl font-bold text-brand-dark mb-2">Quiz Complete!</h2>
+                <div className="text-6xl font-bold text-brand-accent my-4">
                   {calculateScore()}/{selectedQuiz.questions.length}
                 </div>
                 <p className="text-xl text-gray-600">
@@ -182,14 +182,14 @@ function QuizzesPage() {
                 const recommendations = getRecommendations(calculateScore(), selectedQuiz.questions.length);
                 return (
                   <div className="bg-gray-50 rounded-lg p-6 mb-6">
-                    <h3 className="text-2xl font-bold text-[#0F172A] mb-3">{recommendations.title}</h3>
+                    <h3 className="text-2xl font-bold text-brand-dark mb-3">{recommendations.title}</h3>
                     <p className="text-gray-700 mb-4">{recommendations.message}</p>
                     <div className="space-y-2">
-                      <p className="font-semibold text-[#0F172A]">Recommended next steps:</p>
+                      <p className="font-semibold text-brand-dark">Recommended next steps:</p>
                       <ul className="space-y-2">
                         {recommendations.suggestions.map((suggestion, index) => (
                           <li key={index} className="flex items-start gap-2 text-gray-700">
-                            <span className="text-[#06B6D4] font-bold">→</span>
+                            <span className="text-brand-accent font-bold">→</span>
                             {suggestion}
                           </li>
                         ))}
@@ -202,7 +202,7 @@ function QuizzesPage() {
               <div className="flex gap-4 justify-center">
                 <Button 
                   onClick={resetQuiz}
-                  className="bg-[#06B6D4] hover:bg-cyan-600 text-white flex items-center gap-2"
+                  className="bg-brand-accent hover:bg-cyan-600 text-white flex items-center gap-2"
                 >
                   <RefreshCw className="w-4 h-4" />
                   Try Another Quiz

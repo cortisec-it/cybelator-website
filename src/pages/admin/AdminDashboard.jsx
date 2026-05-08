@@ -35,7 +35,7 @@ function AdminDashboard() {
   if (loading) {
       return (
         <div className="min-h-screen flex items-center justify-center bg-slate-100">
-            <Loader2 className="w-8 h-8 animate-spin text-[#06B6D4]" />
+            <Loader2 className="w-8 h-8 animate-spin text-brand-accent" />
         </div>
       );
   }
@@ -52,9 +52,9 @@ function AdminDashboard() {
       <div className="min-h-screen bg-slate-100 flex flex-col md:flex-row">
         
         {/* Sidebar */}
-        <div className="w-full md:w-64 bg-[#0F172A] text-white flex flex-col shrink-0">
+        <div className="w-full md:w-64 bg-brand-dark text-white flex flex-col shrink-0">
           <div className="p-6 border-b border-slate-800 flex items-center gap-3">
-            <div className="bg-[#06B6D4] p-2 rounded-lg">
+            <div className="bg-brand-accent p-2 rounded-lg">
               <Shield className="w-5 h-5 text-white" />
             </div>
             <div>
@@ -70,7 +70,7 @@ function AdminDashboard() {
                 to={item.path}
                 className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
                   isActive(item.path)
-                    ? 'bg-[#06B6D4] text-white'
+                    ? 'bg-brand-accent text-white'
                     : 'text-slate-400 hover:bg-slate-800 hover:text-white'
                 }`}
               >
@@ -115,7 +115,7 @@ function AdminDashboard() {
                          </div>
                       </div>
                    </div>
-                   <div className="bg-gradient-to-br from-[#06B6D4] to-blue-600 p-6 rounded-xl text-white shadow-lg">
+                   <div className="bg-gradient-to-br from-brand-accent to-blue-600 p-6 rounded-xl text-white shadow-lg">
                       <h2 className="text-lg font-bold mb-2">Welcome Back</h2>
                       <p className="opacity-90">Use the sidebar to manage content, view user submissions, or update global application settings.</p>
                    </div>

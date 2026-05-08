@@ -77,7 +77,7 @@ function ExpertConsultationModal({ isOpen, onClose }) {
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           className="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl overflow-hidden z-20 flex flex-col max-h-[90vh]"
         >
-          <div className="bg-[#0F172A] p-6 text-white shrink-0">
+          <div className="bg-brand-dark p-6 text-white shrink-0">
              <div className="flex justify-between items-start">
                <div>
                  <h2 className="text-xl font-bold">Talk to a Cyber Safety Expert</h2>
@@ -98,7 +98,7 @@ function ExpertConsultationModal({ isOpen, onClose }) {
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-1.5 flex items-center gap-2">
-                    <User className="w-4 h-4 text-[#06B6D4]" /> Full Name
+                    <User className="w-4 h-4 text-brand-accent" /> Full Name
                   </label>
                   <input
                     type="text"
@@ -106,7 +106,7 @@ function ExpertConsultationModal({ isOpen, onClose }) {
                     required
                     value={formData.fullName}
                     onChange={handleChange}
-                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-[#06B6D4] focus:bg-white outline-none transition-all text-sm"
+                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-accent focus:bg-white outline-none transition-all text-sm"
                     placeholder="Enter your full name"
                   />
                 </div>
@@ -114,7 +114,7 @@ function ExpertConsultationModal({ isOpen, onClose }) {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-1.5 flex items-center gap-2">
-                      <Mail className="w-4 h-4 text-[#06B6D4]" /> Email Address
+                      <Mail className="w-4 h-4 text-brand-accent" /> Email Address
                     </label>
                     <input
                       type="email"
@@ -122,13 +122,13 @@ function ExpertConsultationModal({ isOpen, onClose }) {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-[#06B6D4] focus:bg-white outline-none transition-all text-sm"
+                      className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-accent focus:bg-white outline-none transition-all text-sm"
                       placeholder="name@example.com"
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-1.5 flex items-center gap-2">
-                      <Phone className="w-4 h-4 text-[#06B6D4]" /> Contact Number
+                      <Phone className="w-4 h-4 text-brand-accent" /> Contact Number
                     </label>
                     <input
                       type="tel"
@@ -136,7 +136,7 @@ function ExpertConsultationModal({ isOpen, onClose }) {
                       required
                       value={formData.contactNumber}
                       onChange={handleChange}
-                      className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-[#06B6D4] focus:bg-white outline-none transition-all text-sm"
+                      className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-accent focus:bg-white outline-none transition-all text-sm"
                       placeholder="+91 98765 43210"
                     />
                   </div>
@@ -144,20 +144,20 @@ function ExpertConsultationModal({ isOpen, onClose }) {
 
                 <div>
                    <label className="block text-sm font-semibold text-gray-700 mb-1.5 flex items-center gap-2">
-                      <Calendar className="w-4 h-4 text-[#06B6D4]" /> Preferred Date (Optional)
+                      <Calendar className="w-4 h-4 text-brand-accent" /> Preferred Date (Optional)
                    </label>
                    <input
                       type="datetime-local"
                       name="preferredDate"
                       value={formData.preferredDate}
                       onChange={handleChange}
-                      className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-[#06B6D4] focus:bg-white outline-none transition-all text-sm text-gray-600"
+                      className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-accent focus:bg-white outline-none transition-all text-sm text-gray-600"
                     />
                 </div>
 
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-1.5 flex items-center gap-2">
-                    <MessageSquare className="w-4 h-4 text-[#06B6D4]" /> Brief Query / Message
+                    <MessageSquare className="w-4 h-4 text-brand-accent" /> Brief Query / Message
                   </label>
                   <textarea
                     name="message"
@@ -165,7 +165,7 @@ function ExpertConsultationModal({ isOpen, onClose }) {
                     rows="3"
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-[#06B6D4] focus:bg-white outline-none transition-all text-sm resize-none"
+                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-accent focus:bg-white outline-none transition-all text-sm resize-none"
                     placeholder="Briefly describe what you'd like to discuss..."
                   />
                 </div>
@@ -175,7 +175,7 @@ function ExpertConsultationModal({ isOpen, onClose }) {
                 <Button 
                   type="submit" 
                   disabled={isSubmitting}
-                  className="w-full bg-[#0F172A] hover:bg-slate-800 text-white font-bold h-12 rounded-xl text-base shadow-lg transition-all flex items-center justify-center gap-2"
+                  className="w-full bg-brand-dark hover:bg-slate-800 text-white font-bold h-12 rounded-xl text-base shadow-lg transition-all flex items-center justify-center gap-2"
                 >
                   {isSubmitting ? 'Submitting...' : 'Request a Call Back'}
                   {!isSubmitting && <Send className="w-4 h-4" />}

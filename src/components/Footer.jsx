@@ -16,7 +16,7 @@ function Footer() {
 
   return (
     <>
-      <footer className="bg-[#0F172A] text-slate-300 pt-16 pb-8 border-t border-slate-800">
+      <footer className="bg-brand-dark text-slate-300 pt-16 pb-8 border-t border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* New Prominent Telegram CTA */}
@@ -27,12 +27,12 @@ function Footer() {
             {/* Brand & Mission */}
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <div className="bg-[#06B6D4]/10 p-1.5 rounded-lg">
-                  <CybelatorLogo className="w-6 h-6 text-[#06B6D4]" />
+                <div className="bg-brand-accent/10 p-1.5 rounded-lg">
+                  <CybelatorLogo className="w-6 h-6 text-brand-accent" />
                 </div>
                 <span className="text-xl font-bold text-white">Cybelator</span>
               </div>
-              <p className="text-xs font-semibold text-[#06B6D4] uppercase tracking-wide mb-4">
+              <p className="text-xs font-semibold text-brand-accent uppercase tracking-wide mb-4">
                 The Cyber Warrior for the Digital Age
               </p>
               <p className="text-sm text-slate-400 leading-relaxed mb-6">
@@ -49,10 +49,10 @@ function Footer() {
             <div>
               <h3 className="text-white font-bold mb-4">Platform</h3>
               <ul className="space-y-3 text-sm">
-                <li><Link to="/current-threats" onClick={scrollToTop} className="hover:text-[#06B6D4] transition-colors">Current Scams & Fraud</Link></li>
-                <li><Link to="/news-alerts" onClick={scrollToTop} className="hover:text-[#06B6D4] transition-colors">Today's Cyber Warnings</Link></li>
-                <li><Link to="/threat-maps" onClick={scrollToTop} className="hover:text-[#06B6D4] transition-colors">Global Threat Maps</Link></li>
-                <li><Link to="/victim-support" onClick={scrollToTop} className="hover:text-[#06B6D4] transition-colors font-medium text-orange-400">Victim Support</Link></li>
+                <li><Link to="/current-threats" onClick={scrollToTop} className="hover:text-brand-accent transition-colors">Current Scams & Fraud</Link></li>
+                <li><Link to="/news-alerts" onClick={scrollToTop} className="hover:text-brand-accent transition-colors">Today's Cyber Warnings</Link></li>
+                <li><Link to="/threat-maps" onClick={scrollToTop} className="hover:text-brand-accent transition-colors">Global Threat Maps</Link></li>
+                <li><Link to="/victim-support" onClick={scrollToTop} className="hover:text-brand-accent transition-colors font-medium text-orange-400">Victim Support</Link></li>
               </ul>
             </div>
 
@@ -60,16 +60,16 @@ function Footer() {
             <div>
               <h3 className="text-white font-bold mb-4">Resources</h3>
               <ul className="space-y-3 text-sm">
-                <li><Link to="/guides" onClick={scrollToTop} className="hover:text-[#06B6D4] transition-colors">Security Guides</Link></li>
-                <li><Link to="/quizzes" onClick={scrollToTop} className="hover:text-[#06B6D4] transition-colors">Interactive Quizzes</Link></li>
-                <li><Link to="/academy" onClick={scrollToTop} className="hover:text-[#06B6D4] transition-colors">CortiSec Academy</Link></li>
+                <li><Link to="/guides" onClick={scrollToTop} className="hover:text-brand-accent transition-colors">Security Guides</Link></li>
+                <li><Link to="/quizzes" onClick={scrollToTop} className="hover:text-brand-accent transition-colors">Interactive Quizzes</Link></li>
+                <li><Link to="/academy" onClick={scrollToTop} className="hover:text-brand-accent transition-colors">CortiSec Academy</Link></li>
                 <li>
-                  <button onClick={() => setConsultationOpen(true)} className="hover:text-[#06B6D4] transition-colors text-left font-medium text-[#06B6D4]">
+                  <button onClick={() => setConsultationOpen(true)} className="hover:text-brand-accent transition-colors text-left font-medium text-brand-accent">
                     Expert Consultation
                   </button>
                 </li>
                 <li>
-                  <button onClick={() => setContactModalOpen(true)} className="hover:text-[#06B6D4] transition-colors text-left">
+                  <button onClick={() => setContactModalOpen(true)} className="hover:text-brand-accent transition-colors text-left">
                     Contact Us
                   </button>
                 </li>
@@ -97,7 +97,7 @@ function Footer() {
               <p>© {new Date().getFullYear()} Cybelator Awareness Platform. All rights reserved.</p>
               <p>
                 A{' '}
-                <a href="https://cortisec.com" target="_blank" rel="noopener noreferrer" className="text-[#06B6D4] hover:underline">
+                <a href="https://cortisec.com" target="_blank" rel="noopener noreferrer" className="text-brand-accent hover:underline">
                   CortiSec Technologies
                 </a>{' '}
                 initiative.

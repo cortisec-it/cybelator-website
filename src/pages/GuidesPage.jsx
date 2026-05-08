@@ -35,7 +35,7 @@ function GuidesPage() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1654588830920-92085849e384)' }}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0F172A]/90 to-[#0F172A]/70" />
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 to-brand-dark/70" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -74,7 +74,7 @@ function GuidesPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-[#0F172A] mb-4">Master Cybersecurity Fundamentals</h2>
+            <h2 className="text-3xl font-bold text-brand-dark mb-4">Master Cybersecurity Fundamentals</h2>
             <p className="text-xl text-gray-600">
               Follow these guides to build a strong security foundation
             </p>
@@ -103,7 +103,7 @@ function GuidesPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mt-16 bg-gradient-to-br from-[#06B6D4] to-cyan-600 rounded-2xl p-10 text-white text-center shadow-xl shadow-cyan-900/20"
+            className="mt-16 bg-gradient-to-br from-brand-accent to-cyan-600 rounded-2xl p-10 text-white text-center shadow-xl shadow-cyan-900/20"
           >
             <div className="bg-white/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 backdrop-blur-sm">
               <Download className="w-10 h-10 text-white" />
@@ -114,7 +114,7 @@ function GuidesPage() {
             </p>
             <Button 
               onClick={() => setModalOpen(true)}
-              className="bg-white text-[#06B6D4] hover:bg-cyan-50 text-lg font-bold px-8 py-6 h-auto shadow-lg"
+              className="bg-white text-brand-accent hover:bg-cyan-50 text-lg font-bold px-8 py-6 h-auto shadow-lg"
             >
               Download Handbook
             </Button>

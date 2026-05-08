@@ -65,8 +65,8 @@ function TrainingRequestModal({ isOpen, onClose, courseTitle }) {
           <X className="w-5 h-5" />
         </button>
 
-        <h2 className="text-xl font-bold text-[#0F172A] mb-1">Request Enrollment</h2>
-        <p className="text-sm text-gray-500 mb-6">For: <span className="font-semibold text-[#06B6D4]">{courseTitle}</span></p>
+        <h2 className="text-xl font-bold text-brand-dark mb-1">Request Enrollment</h2>
+        <p className="text-sm text-gray-500 mb-6">For: <span className="font-semibold text-brand-accent">{courseTitle}</span></p>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
@@ -77,7 +77,7 @@ function TrainingRequestModal({ isOpen, onClose, courseTitle }) {
               name="fullName"
               value={formData.fullName}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#06B6D4] outline-none transition-all" 
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-accent outline-none transition-all" 
             />
           </div>
           <div>
@@ -88,7 +88,7 @@ function TrainingRequestModal({ isOpen, onClose, courseTitle }) {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#06B6D4] outline-none transition-all" 
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-accent outline-none transition-all" 
             />
           </div>
           <div>
@@ -99,11 +99,11 @@ function TrainingRequestModal({ isOpen, onClose, courseTitle }) {
               name="contactNumber"
               value={formData.contactNumber}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#06B6D4] outline-none transition-all" 
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-accent outline-none transition-all" 
             />
           </div>
           
-          <Button type="submit" disabled={loading} className="w-full bg-[#0F172A] hover:bg-slate-800 text-white mt-2">
+          <Button type="submit" disabled={loading} className="w-full bg-brand-dark hover:bg-slate-800 text-white mt-2">
             {loading ? 'Sending...' : 'Submit Request'}
             {!loading && <Send className="w-4 h-4 ml-2" />}
           </Button>

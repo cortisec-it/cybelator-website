@@ -47,7 +47,7 @@ function CurrentThreatsPage() {
 
       <div className="bg-slate-50 min-h-screen pb-16">
         {/* Header */}
-        <div className="bg-[#0F172A] text-white py-10 md:py-12">
+        <div className="bg-brand-dark text-white py-10 md:py-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row justify-between items-end gap-6">
               <div>
@@ -71,7 +71,7 @@ function CurrentThreatsPage() {
                     onClick={() => setSelectedRegion(region)}
                     className={`px-4 py-2 rounded-md text-sm font-medium transition-all whitespace-nowrap ${
                       selectedRegion === region
-                        ? 'bg-[#06B6D4] text-white shadow-md'
+                        ? 'bg-brand-accent text-white shadow-md'
                         : 'text-slate-400 hover:text-white'
                     }`}
                   >

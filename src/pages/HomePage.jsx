@@ -56,9 +56,9 @@ function HomePage() {
       )}
 
       {/* Hero / Dashboard */}
-      <section className="bg-[#0F172A] text-white pt-10 pb-4 md:pt-16 md:pb-24 relative overflow-hidden">
+      <section className="bg-brand-dark text-white pt-10 pb-4 md:pt-16 md:pb-24 relative overflow-hidden">
         {/* Abstract Background */}
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-[#06B6D4]/10 blur-3xl rounded-full -translate-y-1/2 translate-x-1/3 pointer-events-none" />
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-brand-accent/10 blur-3xl rounded-full -translate-y-1/2 translate-x-1/3 pointer-events-none" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
@@ -78,7 +78,7 @@ function HomePage() {
                   Are You Safe Online?
                 </h1>
 
-                <p className="text-xl lg:text-2xl text-[#06B6D4] font-bold mb-5">
+                <p className="text-xl lg:text-2xl text-brand-accent font-bold mb-5">
                   Real threats. Real scams. Real help. Right now.
                 </p>
 
@@ -114,18 +114,18 @@ function HomePage() {
                 initial={{ opacity: 0, scale: 0.95 }} 
                 animate={{ opacity: 1, scale: 1 }} 
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="bg-white rounded-2xl p-5 md:p-6 text-[#0F172A] shadow-2xl border border-slate-700/50"
+                className="bg-white rounded-2xl p-5 md:p-6 text-brand-dark shadow-2xl border border-slate-700/50"
               >
                 <div className="mb-5">
                   <div className="flex justify-between items-center mb-1">
                     <h2 className="text-lg md:text-xl font-bold flex items-center gap-2">
-                      <Activity className="w-5 h-5 text-[#06B6D4]" />
+                      <Activity className="w-5 h-5 text-brand-accent" />
                       Today's Risk Snapshot
                     </h2>
                     <LastUpdatedBadge date={new Date().toISOString()} />
                   </div>
                   <p className="text-xs text-slate-500 flex items-center gap-1.5 pl-0.5">
-                    <Clock className="w-3 h-3 text-[#06B6D4]" />
+                    <Clock className="w-3 h-3 text-brand-accent" />
                     Updated daily • Takes less than 1 minute
                   </p>
                 </div>
@@ -158,7 +158,7 @@ function HomePage() {
                     <Link to="/current-threats" className="flex items-start gap-3 hover:bg-slate-50 p-2 -mx-2 rounded-lg transition-colors">
                       <AlertTriangle className="w-5 h-5 text-orange-500 shrink-0 mt-0.5" />
                       <div>
-                        <h4 className="font-bold text-sm text-[#0F172A] line-clamp-1">{trendingThreat.name}</h4>
+                        <h4 className="font-bold text-sm text-brand-dark line-clamp-1">{trendingThreat.name}</h4>
                         <p className="text-xs text-slate-500 line-clamp-1">{trendingThreat.description}</p>
                       </div>
                       <ArrowRight className="w-4 h-4 text-slate-400 ml-auto mt-1" />
@@ -232,8 +232,8 @@ function HomePage() {
       </section>
 
       {/* Academy Teaser — CortiSec Academy */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-[#0F172A] to-[#06B6D4] py-14 md:py-20">
-        <div className="absolute inset-0 bg-[#0F172A]/50 pointer-events-none" />
+      <section className="relative overflow-hidden bg-gradient-to-r from-brand-dark to-brand-accent py-14 md:py-20">
+        <div className="absolute inset-0 bg-brand-dark/50 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col lg:flex-row gap-12 items-center">
 
@@ -258,12 +258,12 @@ function HomePage() {
                     "Job placement support through CortiSec's enterprise network",
                   ].map((point, i) => (
                     <li key={i} className="flex items-start gap-3 text-white/90 text-sm md:text-base">
-                      <CheckCircle2 className="w-5 h-5 text-[#06B6D4] shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-5 h-5 text-brand-accent shrink-0 mt-0.5" />
                       {point}
                     </li>
                   ))}
                 </ul>
-                <Button asChild className="bg-white text-[#0F172A] hover:bg-slate-100 font-bold h-12 px-8 rounded-xl text-base shadow-lg">
+                <Button asChild className="bg-white text-brand-dark hover:bg-slate-100 font-bold h-12 px-8 rounded-xl text-base shadow-lg">
                   <Link to="/academy">Apply for Next Batch →</Link>
                 </Button>
               </motion.div>

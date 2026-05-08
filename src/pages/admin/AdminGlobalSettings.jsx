@@ -91,7 +91,7 @@ function AdminGlobalSettings() {
                 checked={!!setting.value}
                 onCheckedChange={() => handleToggleChange(setting.key, setting.value)}
                 disabled={updating}
-                className="data-[state=checked]:bg-[#06B6D4]"
+                className="data-[state=checked]:bg-brand-accent"
               />
             </div>
           ))

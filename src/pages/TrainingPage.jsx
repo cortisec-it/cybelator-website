@@ -26,7 +26,7 @@ function TrainingPage() {
 
       <div className="bg-slate-50 min-h-screen">
         {/* Header */}
-        <div className="bg-[#0F172A] text-white py-20 text-center relative overflow-hidden">
+        <div className="bg-brand-dark text-white py-20 text-center relative overflow-hidden">
            <div className="absolute inset-0 bg-blue-600/5 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
            <div className="relative z-10 max-w-4xl mx-auto px-4">
              <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 px-4 py-1.5 rounded-full mb-6">
@@ -59,7 +59,7 @@ function TrainingPage() {
                     <div className="inline-flex items-center gap-2 text-green-800 font-bold bg-green-100 px-4 py-1.5 rounded-full text-xs uppercase tracking-wide mb-5">
                        <CheckCircle2 className="w-4 h-4" /> FREE TRACK
                     </div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-[#0F172A] mb-4">Cyber Awareness Training</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold text-brand-dark mb-4">Cyber Awareness Training</h2>
                     <p className="text-lg text-slate-600 mb-8 leading-relaxed">
                        Essential training designed for individuals, employees, and small business owners. Learn to identify threats, protect your personal data, and browse safely without needing any technical expertise.
                     </p>
@@ -170,7 +170,7 @@ function TrainingPage() {
                  
                  <div className="hidden lg:block w-1/3 opacity-90">
                      {/* Decorative code block visual */}
-                     <div className="bg-[#0F172A] rounded-xl p-6 font-mono text-xs md:text-sm text-green-400 border border-slate-700 shadow-2xl relative">
+                     <div className="bg-brand-dark rounded-xl p-6 font-mono text-xs md:text-sm text-green-400 border border-slate-700 shadow-2xl relative">
                         <div className="absolute top-3 right-3 flex gap-1.5">
                            <div className="w-2.5 h-2.5 rounded-full bg-red-500"></div>
                            <div className="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>

@@ -90,7 +90,7 @@ function VictimSupportPage() {
       </Helmet>
 
       {/* Hero Section */}
-      <section className="bg-[#0F172A] text-white py-16 relative overflow-hidden">
+      <section className="bg-brand-dark text-white py-16 relative overflow-hidden">
         {/* Subtle comforting background */}
         <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 to-teal-900/20" />
         
@@ -100,9 +100,9 @@ function VictimSupportPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-2 bg-[#06B6D4]/10 backdrop-blur-sm border border-[#06B6D4]/30 px-4 py-2 rounded-full mb-6">
-              <HeartHandshake className="w-5 h-5 text-[#06B6D4]" />
-              <span className="text-[#06B6D4] font-medium">We are here to help</span>
+            <div className="inline-flex items-center gap-2 bg-brand-accent/10 backdrop-blur-sm border border-brand-accent/30 px-4 py-2 rounded-full mb-6">
+              <HeartHandshake className="w-5 h-5 text-brand-accent" />
+              <span className="text-brand-accent font-medium">We are here to help</span>
             </div>
             
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
@@ -167,21 +167,21 @@ function VictimSupportPage() {
               <div className="bg-indigo-50 w-14 h-14 rounded-full flex items-center justify-center mb-6">
                 <Lock className="w-6 h-6 text-indigo-600" />
               </div>
-              <h3 className="font-bold text-lg text-[#0F172A] mb-3">1. Secure Accounts</h3>
+              <h3 className="font-bold text-lg text-brand-dark mb-3">1. Secure Accounts</h3>
               <p className="text-slate-600 text-sm leading-relaxed">Change passwords immediately. Enable 2FA. If banking is involved, call your bank to freeze cards.</p>
             </div>
             <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
               <div className="bg-blue-50 w-14 h-14 rounded-full flex items-center justify-center mb-6">
                 <Phone className="w-6 h-6 text-blue-600" />
               </div>
-              <h3 className="font-bold text-lg text-[#0F172A] mb-3">2. Contact Authorities</h3>
+              <h3 className="font-bold text-lg text-brand-dark mb-3">2. Contact Authorities</h3>
               <p className="text-slate-600 text-sm leading-relaxed">Dial 1930 (India) for financial fraud. Visit your local police station or cybercrime portal.</p>
             </div>
             <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
               <div className="bg-teal-50 w-14 h-14 rounded-full flex items-center justify-center mb-6">
                 <Globe className="w-6 h-6 text-teal-600" />
               </div>
-              <h3 className="font-bold text-lg text-[#0F172A] mb-3">3. Document Everything</h3>
+              <h3 className="font-bold text-lg text-brand-dark mb-3">3. Document Everything</h3>
               <p className="text-slate-600 text-sm leading-relaxed">Take screenshots, save emails/messages. Do not delete any evidence. Note down timestamps.</p>
             </div>
           </div>
@@ -194,7 +194,7 @@ function VictimSupportPage() {
               animate={{ opacity: 1, height: 'auto' }}
               className="max-w-3xl mx-auto bg-white border border-gray-200 rounded-2xl p-8 md:p-10 shadow-xl"
             >
-              <h3 className="text-2xl font-bold text-[#0F172A] mb-2">Request Assistance</h3>
+              <h3 className="text-2xl font-bold text-brand-dark mb-2">Request Assistance</h3>
               <p className="text-gray-500 mb-8">Our team will guide you on the next steps. Your data is encrypted and secure.</p>
               
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -206,7 +206,7 @@ function VictimSupportPage() {
                       name="fullName"
                       value={formData.fullName}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#06B6D4] outline-none transition-all" 
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-accent outline-none transition-all" 
                       placeholder="Your Name" 
                     />
                   </div>
@@ -218,7 +218,7 @@ function VictimSupportPage() {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#06B6D4] outline-none transition-all" 
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-accent outline-none transition-all" 
                       placeholder="email@example.com" 
                     />
                   </div>
@@ -230,7 +230,7 @@ function VictimSupportPage() {
                       name="contactNumber"
                       value={formData.contactNumber}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#06B6D4] outline-none transition-all" 
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-accent outline-none transition-all" 
                       placeholder="+91 9876543210" 
                     />
                   </div>
@@ -240,7 +240,7 @@ function VictimSupportPage() {
                       name="incidentType"
                       value={formData.incidentType}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#06B6D4] outline-none transition-all bg-white"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-accent outline-none transition-all bg-white"
                     >
                       <option>Financial Fraud / UPI Scam</option>
                       <option>Identity Theft</option>
@@ -257,11 +257,11 @@ function VictimSupportPage() {
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#06B6D4] outline-none transition-all resize-none" 
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-accent outline-none transition-all resize-none" 
                     placeholder="Please describe what happened..." 
                   />
                 </div>
-                <Button type="submit" disabled={isSubmitting} className="w-full bg-[#0F172A] hover:bg-slate-800 text-white font-bold py-4 h-auto text-lg">
+                <Button type="submit" disabled={isSubmitting} className="w-full bg-brand-dark hover:bg-slate-800 text-white font-bold py-4 h-auto text-lg">
                   {isSubmitting ? 'Sending...' : 'Submit Securely'}
                 </Button>
               </form>

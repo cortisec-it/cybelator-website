@@ -30,14 +30,14 @@ const cards = [
   },
   {
     icon: GraduationCap,
-    iconColor: 'text-[#06B6D4]',
-    borderClass: 'border-l-4 border-[#06B6D4]',
-    hookColor: 'text-[#06B6D4]',
+    iconColor: 'text-brand-accent',
+    borderClass: 'border-l-4 border-brand-accent',
+    hookColor: 'text-brand-accent',
     hook: 'START YOUR CAREER',
     title: 'I want a job in cybersecurity',
     body: 'Train on real enterprise tools at CortiSec Academy, Guwahati. 16 weeks. Job-ready. Real labs.',
     cta: 'Explore Academy →',
-    ctaClass: 'bg-[#06B6D4] hover:bg-cyan-600 text-white',
+    ctaClass: 'bg-brand-accent hover:bg-cyan-600 text-white',
     to: '/academy',
   },
 ];
@@ -63,7 +63,7 @@ function AudienceEntryStrip() {
                   <p className={`text-xs font-semibold uppercase tracking-widest ${card.hookColor}`}>
                     {card.hook}
                   </p>
-                  <h3 className="text-lg font-bold text-[#0F172A] leading-snug">{card.title}</h3>
+                  <h3 className="text-lg font-bold text-brand-dark leading-snug">{card.title}</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">{card.body}</p>
                 </div>
                 <Link

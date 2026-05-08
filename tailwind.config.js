@@ -17,6 +17,17 @@ module.exports = {
 		},
 		extend: {
 			colors: {
+				brand: {
+					dark:       '#0A0F1E',
+					darker:     '#050A14',
+					navy:       '#0D1526',
+					accent:     '#00D4FF',
+					accentDark: '#0099BB',
+					alert:      '#FF3B3B',
+					success:    '#00C896',
+					warning:    '#F59E0B',
+					purple:     '#7C3AED',
+				},
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
@@ -50,6 +61,14 @@ module.exports = {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))',
 				},
+			},
+			fontFamily: {
+				sans: ['Inter', 'sans-serif'],
+			},
+			boxShadow: {
+				glow:       '0 0 20px rgba(0, 212, 255, 0.15)',
+				glowStrong: '0 0 40px rgba(0, 212, 255, 0.25)',
+				card:       '0 4px 24px rgba(0,0,0,0.12)',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

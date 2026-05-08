@@ -24,8 +24,8 @@ function ThreatActivitySidebar({ activityLevels, recentIncidents, tips }) {
     <div className="space-y-6">
       {/* Activity Overview */}
       <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-        <h3 className="text-lg font-bold text-[#0F172A] mb-4 flex items-center gap-2">
-          <Activity className="w-5 h-5 text-[#06B6D4]" />
+        <h3 className="text-lg font-bold text-brand-dark mb-4 flex items-center gap-2">
+          <Activity className="w-5 h-5 text-brand-accent" />
           Threat Activity
         </h3>
         <div className="space-y-4">
@@ -55,13 +55,13 @@ function ThreatActivitySidebar({ activityLevels, recentIncidents, tips }) {
 
       {/* Recent Incidents */}
       <div className="bg-slate-50 border border-slate-200 rounded-xl p-6">
-        <h3 className="text-lg font-bold text-[#0F172A] mb-4 flex items-center gap-2">
-          <Shield className="w-5 h-5 text-[#06B6D4]" />
+        <h3 className="text-lg font-bold text-brand-dark mb-4 flex items-center gap-2">
+          <Shield className="w-5 h-5 text-brand-accent" />
           Recent Incidents
         </h3>
         <div className="space-y-4">
           {recentIncidents.map((incident, idx) => (
-            <div key={idx} className="relative pl-4 border-l-2 border-[#06B6D4]">
+            <div key={idx} className="relative pl-4 border-l-2 border-brand-accent">
               <span className="text-xs text-gray-500 block">{incident.date}</span>
               <h4 className="text-sm font-semibold text-slate-800">{incident.title}</h4>
             </div>
@@ -70,7 +70,7 @@ function ThreatActivitySidebar({ activityLevels, recentIncidents, tips }) {
       </div>
 
       {/* Quick Tips */}
-      <div className="bg-gradient-to-br from-[#06B6D4] to-cyan-700 rounded-xl p-6 text-white">
+      <div className="bg-gradient-to-br from-brand-accent to-cyan-700 rounded-xl p-6 text-white">
          <h3 className="text-lg font-bold mb-3 flex items-center gap-2">
           <Info className="w-5 h-5" />
           Quick Tips

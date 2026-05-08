@@ -19,7 +19,7 @@ function VictimSupportCard({ title, description, icon: Icon, actionLabel, onActi
         </div>
         
         <h3 className={`text-2xl font-bold mb-3 ${
-          isUrgent ? 'text-red-900' : 'text-[#0F172A]'
+          isUrgent ? 'text-red-900' : 'text-brand-dark'
         }`}>
           {title}
         </h3>
@@ -35,7 +35,7 @@ function VictimSupportCard({ title, description, icon: Icon, actionLabel, onActi
           variant={isUrgent ? "destructive" : "default"}
           size="lg"
           className={`w-full font-semibold transition-transform active:scale-[0.98] ${
-            !isUrgent ? "bg-[#06B6D4] hover:bg-cyan-700 text-white shadow-md hover:shadow-lg" : "shadow-md hover:shadow-lg"
+            !isUrgent ? "bg-brand-accent hover:bg-cyan-700 text-white shadow-md hover:shadow-lg" : "shadow-md hover:shadow-lg"
           }`}
         >
           {actionLabel} <ArrowRight className="ml-2 w-4 h-4" />

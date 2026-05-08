@@ -49,15 +49,15 @@ function Navigation() {
 
   return (
     <>
-      <nav className="bg-[#0F172A] text-white shadow-lg sticky top-0 z-50">
+      <nav className="bg-brand-dark text-white shadow-lg sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2 group">
-              <div className="bg-[#06B6D4]/10 p-1.5 rounded-lg group-hover:bg-[#06B6D4]/20 transition-colors">
-                <CybelatorLogo className="w-8 h-8 text-[#06B6D4]" />
+              <div className="bg-brand-accent/10 p-1.5 rounded-lg group-hover:bg-brand-accent/20 transition-colors">
+                <CybelatorLogo className="w-8 h-8 text-brand-accent" />
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-white to-[#06B6D4] bg-clip-text text-transparent">
+              <span className="text-xl font-bold bg-gradient-to-r from-white to-brand-accent bg-clip-text text-transparent">
                 Cybelator
               </span>
             </Link>
@@ -70,7 +70,7 @@ function Navigation() {
                   to={item.path}
                   className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${
                     location.pathname === item.path
-                      ? 'bg-[#06B6D4] text-white'
+                      ? 'bg-brand-accent text-white'
                       : 'text-gray-300 hover:bg-slate-800 hover:text-white'
                   }`}
                 >
@@ -84,7 +84,7 @@ function Navigation() {
                  <>
                    <Link to="/admin">
                      <Button size="sm" variant="ghost" className="text-white hover:bg-slate-800 mr-2 gap-2">
-                        <Shield className="w-4 h-4 text-[#06B6D4]" /> Dashboard
+                        <Shield className="w-4 h-4 text-brand-accent" /> Dashboard
                      </Button>
                    </Link>
                    <Button size="sm" variant="ghost" onClick={handleAdminLogout} className="text-red-400 hover:text-red-300 hover:bg-red-900/20">
@@ -105,7 +105,7 @@ function Navigation() {
                   <Link to="/admin/login">
                      <Button 
                         size="sm"
-                        className="bg-[#06B6D4] hover:bg-cyan-600 text-white font-semibold transition-colors shadow-md shadow-cyan-900/20"
+                        className="bg-brand-accent hover:bg-cyan-600 text-white font-semibold transition-colors shadow-md shadow-cyan-900/20"
                      >
                        <LogIn className="w-4 h-4 mr-2" /> Login
                      </Button>
@@ -136,7 +136,7 @@ function Navigation() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden bg-slate-900 overflow-hidden"
+              className="lg:hidden bg-brand-darker overflow-hidden"
             >
               <div className="px-4 py-4 space-y-2">
                 {menuItems.map((item) => (
@@ -146,7 +146,7 @@ function Navigation() {
                     onClick={() => setMobileMenuOpen(false)}
                     className={`block px-4 py-3 rounded-lg transition-all ${
                       location.pathname === item.path
-                        ? 'bg-[#06B6D4] text-white'
+                        ? 'bg-brand-accent text-white'
                         : 'text-gray-300 hover:bg-slate-800 hover:text-white'
                     }`}
                   >

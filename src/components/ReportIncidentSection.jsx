@@ -7,7 +7,7 @@ function ReportIncidentSection({ className = "" }) {
     <div className={`bg-slate-50 border border-slate-200 rounded-xl p-6 ${className}`}>
       <div className="flex items-center gap-2 mb-4">
         <ShieldAlert className="w-6 h-6 text-red-600" />
-        <h3 className="text-lg font-bold text-[#0F172A]">Report an Incident</h3>
+        <h3 className="text-lg font-bold text-brand-dark">Report an Incident</h3>
       </div>
       
       <p className="text-sm text-slate-600 mb-6">

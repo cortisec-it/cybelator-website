@@ -59,7 +59,7 @@ function AdminUserDataManagement() {
               onClick={() => setActiveTab(tab.id)}
               className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                 activeTab === tab.id 
-                  ? 'bg-[#0F172A] text-white' 
+                  ? 'bg-brand-dark text-white' 
                   : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
               }`}
             >
@@ -77,7 +77,7 @@ function AdminUserDataManagement() {
              placeholder="Search records..." 
              value={searchTerm}
              onChange={e => setSearchTerm(e.target.value)}
-             className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#06B6D4] text-slate-900"
+             className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-accent text-slate-900"
            />
         </div>
       </div>
@@ -127,7 +127,7 @@ function AdminUserDataManagement() {
                         variant="ghost"
                         size="sm"
                         onClick={() => toggleReview(item.id, item.status)}
-                        className="text-slate-400 hover:text-[#06B6D4]"
+                        className="text-slate-400 hover:text-brand-accent"
                       >
                          {item.status === 'reviewed' ? <CheckCircle className="w-4 h-4 text-green-500" /> : <Clock className="w-4 h-4" />}
                       </Button>

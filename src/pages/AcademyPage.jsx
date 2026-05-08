@@ -16,8 +16,8 @@ const domains = [
     icon: Shield,
     title: 'Firewall & Network Security',
     body: 'Hands-on configuration and management of next-gen firewalls, security policies, VPN, and threat prevention on Check Point Quantum and other leading platforms.',
-    iconBg: 'bg-[#06B6D4]/10',
-    iconColor: 'text-[#06B6D4]',
+    iconBg: 'bg-brand-accent/10',
+    iconColor: 'text-brand-accent',
   },
   {
     icon: Monitor,
@@ -79,8 +79,8 @@ function AcademyPage() {
       </Helmet>
 
       {/* Hero */}
-      <section className="bg-[#0F172A] text-white py-16 md:py-24 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-[#06B6D4]/10 blur-3xl rounded-full -translate-y-1/2 translate-x-1/3 pointer-events-none" />
+      <section className="bg-brand-dark text-white py-16 md:py-24 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-brand-accent/10 blur-3xl rounded-full -translate-y-1/2 translate-x-1/3 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-600/10 blur-3xl rounded-full pointer-events-none" />
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
@@ -89,14 +89,14 @@ function AcademyPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center gap-2 bg-[#06B6D4]/20 border border-[#06B6D4]/30 px-4 py-1.5 rounded-full mb-6">
-              <Shield className="w-4 h-4 text-[#06B6D4]" />
-              <span className="text-[#06B6D4] text-sm font-semibold">CortiSec Academy</span>
+            <div className="inline-flex items-center gap-2 bg-brand-accent/20 border border-brand-accent/30 px-4 py-1.5 rounded-full mb-6">
+              <Shield className="w-4 h-4 text-brand-accent" />
+              <span className="text-brand-accent text-sm font-semibold">CortiSec Academy</span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight tracking-tight">
               Launch Your{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#06B6D4] to-cyan-400">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-cyan-400">
                 Cybersecurity Career
               </span>
             </h1>
@@ -107,15 +107,15 @@ function AcademyPage() {
 
             <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-slate-400">
               <span className="flex items-center gap-1.5">
-                <MapPin className="w-4 h-4 text-[#06B6D4]" /> Training Centre: Guwahati, Assam
+                <MapPin className="w-4 h-4 text-brand-accent" /> Training Centre: Guwahati, Assam
               </span>
               <span className="text-slate-600">·</span>
               <span className="flex items-center gap-1.5">
-                <Users className="w-4 h-4 text-[#06B6D4]" /> Batch-based enrollment
+                <Users className="w-4 h-4 text-brand-accent" /> Batch-based enrollment
               </span>
               <span className="text-slate-600">·</span>
               <span className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-[#06B6D4]" /> Limited seats per batch
+                <CheckCircle2 className="w-4 h-4 text-brand-accent" /> Limited seats per batch
               </span>
             </div>
           </motion.div>
@@ -132,7 +132,7 @@ function AcademyPage() {
             transition={{ duration: 0.5 }}
             className="text-center mb-10 md:mb-14"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-[#0F172A] mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-brand-dark mb-4">
               8 Core Security Domains
             </h2>
             <p className="text-slate-600 max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
@@ -154,7 +154,7 @@ function AcademyPage() {
                     <domain.icon className={`w-6 h-6 ${domain.iconColor}`} />
                   </div>
                   <div>
-                    <h3 className="text-base font-bold text-[#0F172A] mb-2 leading-snug">
+                    <h3 className="text-base font-bold text-brand-dark mb-2 leading-snug">
                       {domain.title}
                     </h3>
                     <p className="text-sm text-slate-600 leading-relaxed">{domain.body}</p>
@@ -176,7 +176,7 @@ function AcademyPage() {
             transition={{ duration: 0.5 }}
             className="text-center mb-10"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-[#0F172A] mb-3">
+            <h2 className="text-2xl md:text-3xl font-bold text-brand-dark mb-3">
               Your 16-Week Journey
             </h2>
             <p className="text-slate-500 text-base">From zero to job-ready in four structured phases.</p>
@@ -193,15 +193,15 @@ function AcademyPage() {
                 className="flex-1 flex flex-col md:flex-row items-center"
               >
                 <div className="flex flex-col items-center text-center flex-1 px-4 py-6 md:py-0">
-                  <div className="w-12 h-12 rounded-full bg-[#06B6D4] text-white font-bold text-lg flex items-center justify-center mb-3 shadow-md shadow-cyan-200">
+                  <div className="w-12 h-12 rounded-full bg-brand-accent text-white font-bold text-lg flex items-center justify-center mb-3 shadow-md shadow-cyan-200">
                     {s.step}
                   </div>
-                  <p className="font-bold text-[#0F172A] text-base">{s.label}</p>
+                  <p className="font-bold text-brand-dark text-base">{s.label}</p>
                   <p className="text-xs text-slate-400 mt-1">{s.weeks}</p>
                 </div>
                 {i < journeySteps.length - 1 && (
                   <div className="hidden md:flex items-center">
-                    <ArrowRight className="w-5 h-5 text-[#06B6D4]" />
+                    <ArrowRight className="w-5 h-5 text-brand-accent" />
                   </div>
                 )}
               </motion.div>
@@ -211,7 +211,7 @@ function AcademyPage() {
       </section>
 
       {/* CTAs */}
-      <section className="bg-[#0F172A] py-14 md:py-20">
+      <section className="bg-brand-dark py-14 md:py-20">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -229,7 +229,7 @@ function AcademyPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 asChild
-                className="bg-[#06B6D4] hover:bg-cyan-600 text-white font-bold h-12 px-8 rounded-xl text-base shadow-lg shadow-cyan-900/30 transition-all"
+                className="bg-brand-accent hover:bg-cyan-600 text-white font-bold h-12 px-8 rounded-xl text-base shadow-lg shadow-cyan-900/30 transition-all"
               >
                 <a
                   href="mailto:careers@cortisec.com?subject=CortiSec Academy Application"
@@ -242,7 +242,7 @@ function AcademyPage() {
               <Button
                 asChild
                 variant="outline"
-                className="border-[#06B6D4] text-[#06B6D4] hover:bg-[#06B6D4]/10 hover:text-[#06B6D4] font-semibold h-12 px-8 rounded-xl text-base transition-all"
+                className="border-brand-accent text-brand-accent hover:bg-brand-accent/10 hover:text-brand-accent font-semibold h-12 px-8 rounded-xl text-base transition-all"
               >
                 <a
                   href="mailto:careers@cortisec.com?subject=Academy Enquiry"
@@ -260,7 +260,7 @@ function AcademyPage() {
                 href="https://cortisec.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#06B6D4] hover:underline"
+                className="text-brand-accent hover:underline"
               >
                 CortiSec Technologies Private Limited
               </a>

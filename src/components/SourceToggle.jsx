@@ -30,7 +30,7 @@ function SourceToggle({ source, url }) {
         variant="ghost"
         size="sm"
         onClick={() => setShowSource(!showSource)}
-        className="text-slate-500 hover:text-[#06B6D4] h-auto p-0 text-xs font-medium flex items-center gap-1 transition-colors"
+        className="text-slate-500 hover:text-brand-accent h-auto p-0 text-xs font-medium flex items-center gap-1 transition-colors"
       >
         {showSource ? (
           <>
@@ -61,7 +61,7 @@ function SourceToggle({ source, url }) {
                   href={url} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="flex items-center gap-1 text-[#06B6D4] hover:text-cyan-700 font-medium whitespace-nowrap"
+                  className="flex items-center gap-1 text-brand-accent hover:text-cyan-700 font-medium whitespace-nowrap"
                 >
                   Visit Link <ExternalLink className="w-3 h-3" />
                 </a>

@@ -32,13 +32,13 @@ function QuizCard({ quiz, currentQuestion, onAnswer, totalQuestions }) {
           <span className="text-sm font-medium text-gray-600">
             Question {currentQuestion + 1} of {totalQuestions}
           </span>
-          <span className="text-sm font-medium text-[#06B6D4]">
+          <span className="text-sm font-medium text-brand-accent">
             {Math.round(((currentQuestion + 1) / totalQuestions) * 100)}%
           </span>
         </div>
         <div className="w-full bg-gray-200 rounded-full h-2">
           <motion.div 
-            className="bg-[#06B6D4] h-2 rounded-full"
+            className="bg-brand-accent h-2 rounded-full"
             initial={{ width: 0 }}
             animate={{ width: `${((currentQuestion + 1) / totalQuestions) * 100}%` }}
             transition={{ duration: 0.5 }}
@@ -47,7 +47,7 @@ function QuizCard({ quiz, currentQuestion, onAnswer, totalQuestions }) {
       </div>
 
       {/* Question */}
-      <h3 className="text-2xl font-bold text-[#0F172A] mb-6">{question.question}</h3>
+      <h3 className="text-2xl font-bold text-brand-dark mb-6">{question.question}</h3>
 
       {/* Example (if exists) */}
       {question.example && (
@@ -75,13 +75,13 @@ function QuizCard({ quiz, currentQuestion, onAnswer, totalQuestions }) {
                   : showIncorrect
                   ? 'border-red-500 bg-red-50'
                   : isSelected
-                  ? 'border-[#06B6D4] bg-cyan-50'
+                  ? 'border-brand-accent bg-cyan-50'
                   : 'border-gray-200 hover:border-gray-300 bg-white'
               }`}
             >
               <div className="flex items-center justify-between">
                 <span className={`font-medium ${
-                  showCorrect ? 'text-green-900' : showIncorrect ? 'text-red-900' : 'text-[#0F172A]'
+                  showCorrect ? 'text-green-900' : showIncorrect ? 'text-red-900' : 'text-brand-dark'
                 }`}>
                   {option}
                 </span>
@@ -121,7 +121,7 @@ function QuizCard({ quiz, currentQuestion, onAnswer, totalQuestions }) {
       {showFeedback && (
         <Button 
           onClick={handleNext}
-          className="w-full bg-[#06B6D4] hover:bg-cyan-600 text-white"
+          className="w-full bg-brand-accent hover:bg-cyan-600 text-white"
         >
           {currentQuestion < totalQuestions - 1 ? 'Next Question' : 'View Results'}
         </Button>

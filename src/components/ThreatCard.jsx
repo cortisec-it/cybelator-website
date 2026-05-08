@@ -45,7 +45,7 @@ function ThreatCard({ threat }) {
                 Verified
               </span>
             </div>
-            <h3 className="text-xl md:text-2xl font-bold text-[#0F172A] leading-tight group-hover:text-[#06B6D4] transition-colors">
+            <h3 className="text-xl md:text-2xl font-bold text-brand-dark leading-tight group-hover:text-brand-accent transition-colors">
               {threat.name}
             </h3>
           </div>
@@ -53,7 +53,7 @@ function ThreatCard({ threat }) {
             variant="ghost" 
             size="icon" 
             onClick={toggleBookmark}
-            className={isBookmarked ? "text-[#06B6D4]" : "text-gray-400 hover:text-[#06B6D4]"}
+            className={isBookmarked ? "text-brand-accent" : "text-gray-400 hover:text-brand-accent"}
           >
             <Bookmark className={`w-5 h-5 ${isBookmarked ? "fill-current" : ""}`} />
           </Button>
@@ -65,7 +65,7 @@ function ThreatCard({ threat }) {
 
         {/* Protection Steps - Always Visible & Prioritized */}
         <div className="bg-green-50 rounded-lg p-4 border border-green-100 mb-6">
-            <h4 className="font-bold text-[#0F172A] mb-3 flex items-center gap-2 text-sm md:text-base">
+            <h4 className="font-bold text-brand-dark mb-3 flex items-center gap-2 text-sm md:text-base">
               <CheckCircle2 className="w-4 h-4 text-green-600" />
               Protection Steps
             </h4>
@@ -85,7 +85,7 @@ function ThreatCard({ threat }) {
             variant="ghost" 
             size="sm" 
             onClick={() => setIsExpanded(!isExpanded)}
-            className="text-[#06B6D4] hover:text-cyan-700 hover:bg-cyan-50 w-full flex items-center justify-center gap-1 font-medium"
+            className="text-brand-accent hover:text-cyan-700 hover:bg-cyan-50 w-full flex items-center justify-center gap-1 font-medium"
             >
             {isExpanded ? (
                 <>Show Less <ChevronUp className="w-4 h-4" /></>
@@ -101,7 +101,7 @@ function ThreatCard({ threat }) {
             <div className="grid md:grid-cols-2 gap-6 mb-6">
             {/* How it works */}
             <div className="bg-slate-50 rounded-lg p-4 border border-slate-100 md:col-span-2 lg:col-span-1">
-                <h4 className="font-bold text-[#0F172A] mb-3 flex items-center gap-2 text-sm">
+                <h4 className="font-bold text-brand-dark mb-3 flex items-center gap-2 text-sm">
                 <Info className="w-4 h-4 text-blue-500" />
                 How this attack works
                 </h4>

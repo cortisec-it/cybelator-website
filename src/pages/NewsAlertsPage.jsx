@@ -51,10 +51,10 @@ function NewsAlertsPage() {
       </Helmet>
 
       <div className="bg-slate-50 min-h-screen">
-        <div className="bg-[#0F172A] text-white py-10 md:py-12 pb-20 md:pb-24">
+        <div className="bg-brand-dark text-white py-10 md:py-12 pb-20 md:pb-24">
            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
               <div className="flex items-center justify-center gap-4 mb-4">
-                <div className="inline-flex items-center gap-2 bg-[#06B6D4]/20 text-[#06B6D4] px-3 py-1 rounded-full font-semibold text-sm">
+                <div className="inline-flex items-center gap-2 bg-brand-accent/20 text-brand-accent px-3 py-1 rounded-full font-semibold text-sm">
                   <Bell className="w-4 h-4" /> News Desk
                 </div>
                 <div className="inline-flex items-center gap-2 bg-green-500/20 text-green-400 px-3 py-1 rounded-full font-semibold text-sm">
@@ -136,7 +136,7 @@ function NewsAlertsPage() {
                   onClick={() => setSelectedType(filter)}
                   className={`px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-medium transition-all whitespace-nowrap ${
                     selectedType === filter
-                      ? 'bg-[#0F172A] text-white'
+                      ? 'bg-brand-dark text-white'
                       : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                   }`}
                 >

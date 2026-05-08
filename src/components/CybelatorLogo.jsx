@@ -1,6 +1,6 @@
 import React from 'react';
 
-function CybelatorLogo({ className = "w-8 h-8", color = "text-[#06B6D4]" }) {
+function CybelatorLogo({ className = "w-8 h-8", color = "text-brand-accent" }) {
   return (
     <svg 
       viewBox="0 0 32 32" 

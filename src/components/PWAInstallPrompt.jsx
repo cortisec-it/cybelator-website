@@ -49,7 +49,7 @@ function PWAInstallPrompt() {
     <Button 
       size="sm" 
       onClick={handleInstallClick}
-      className="hidden md:flex bg-[#06B6D4] hover:bg-cyan-700 text-white gap-2"
+      className="hidden md:flex bg-brand-accent hover:bg-cyan-700 text-white gap-2"
     >
       <Download className="w-4 h-4" /> Install App
     </Button>

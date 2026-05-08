@@ -69,10 +69,10 @@ function DownloadHandbookModal({ isOpen, onClose }) {
           className="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl overflow-hidden z-10"
         >
           {/* Header */}
-          <div className="bg-[#0F172A] p-6 flex justify-between items-center">
+          <div className="bg-brand-dark p-6 flex justify-between items-center">
             <div className="flex items-center gap-3">
-              <div className="bg-[#06B6D4]/20 p-2 rounded-lg">
-                <FileText className="w-6 h-6 text-[#06B6D4]" />
+              <div className="bg-brand-accent/20 p-2 rounded-lg">
+                <FileText className="w-6 h-6 text-brand-accent" />
               </div>
               <div>
                 <h2 className="text-xl font-bold text-white">Security Handbook</h2>
@@ -101,7 +101,7 @@ function DownloadHandbookModal({ isOpen, onClose }) {
                     name="fullName"
                     value={formData.fullName}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#06B6D4] outline-none text-gray-900"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-accent outline-none text-gray-900"
                     placeholder="John Doe"
                   />
                 </div>
@@ -114,7 +114,7 @@ function DownloadHandbookModal({ isOpen, onClose }) {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#06B6D4] outline-none text-gray-900"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-accent outline-none text-gray-900"
                     placeholder="john@example.com"
                   />
                 </div>
@@ -127,7 +127,7 @@ function DownloadHandbookModal({ isOpen, onClose }) {
                     required
                     value={formData.contact}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#06B6D4] outline-none text-gray-900"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-accent outline-none text-gray-900"
                     placeholder="+91 98765 43210"
                   />
                 </div>
@@ -141,7 +141,7 @@ function DownloadHandbookModal({ isOpen, onClose }) {
                 <Button 
                   type="submit" 
                   disabled={isSubmitting}
-                  className="w-full bg-[#06B6D4] hover:bg-cyan-700 text-white font-bold h-12 text-base shadow-lg hover:shadow-cyan-500/25 transition-all"
+                  className="w-full bg-brand-accent hover:bg-cyan-700 text-white font-bold h-12 text-base shadow-lg hover:shadow-cyan-500/25 transition-all"
                 >
                   {isSubmitting ? 'Processing...' : 'Send Handbook'}
                   {!isSubmitting && <Send className="w-5 h-5 ml-2" />}
@@ -152,7 +152,7 @@ function DownloadHandbookModal({ isOpen, onClose }) {
                 <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
                   <CheckCircle className="w-10 h-10 text-green-600" />
                 </div>
-                <h3 className="text-2xl font-bold text-[#0F172A] mb-2">Request Received!</h3>
+                <h3 className="text-2xl font-bold text-brand-dark mb-2">Request Received!</h3>
                 <p className="text-gray-600 mb-6">
                   Thank you. The handbook will be sent to your email shortly.
                 </p>

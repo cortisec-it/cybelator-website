@@ -54,7 +54,7 @@ function AdminContentManagement() {
                onClick={() => setActiveTab(tab)}
                className={`px-4 py-2 rounded-lg text-sm font-medium capitalize transition-colors ${
                  activeTab === tab 
-                   ? 'bg-[#06B6D4] text-white' 
+                   ? 'bg-brand-accent text-white' 
                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                }`}
              >
@@ -72,7 +72,7 @@ function AdminContentManagement() {
             placeholder="Search items..." 
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#06B6D4]/20 focus:border-[#06B6D4] text-slate-900"
+            className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-accent/20 focus:border-brand-accent text-slate-900"
           />
         </div>
       </div>

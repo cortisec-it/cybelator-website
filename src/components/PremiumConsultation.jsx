@@ -62,7 +62,7 @@ function PremiumConsultation({ className = "" }) {
         <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
           <CheckCircle className="w-8 h-8 text-green-600" />
         </div>
-        <h3 className="text-2xl font-bold text-[#0F172A] mb-2">Request Confirmed</h3>
+        <h3 className="text-2xl font-bold text-brand-dark mb-2">Request Confirmed</h3>
         <p className="text-gray-600 mb-4">
           Thank you for requesting a consultation. Our team will contact you at <strong>{formData.email}</strong> shortly to finalize the schedule and payment.
         </p>
@@ -75,10 +75,10 @@ function PremiumConsultation({ className = "" }) {
 
   return (
     <div className={`bg-white border border-gray-200 rounded-xl overflow-hidden shadow-lg ${className}`}>
-      <div className="bg-[#0F172A] p-6 text-white text-center">
+      <div className="bg-brand-dark p-6 text-white text-center">
         <h3 className="text-2xl font-bold mb-2">Talk to a Cybersecurity Expert</h3>
         <p className="text-slate-300 text-sm">Discuss incidents, risks, or security planning with a professional.</p>
-        <div className="mt-4 inline-block bg-[#06B6D4] px-4 py-1 rounded-full text-sm font-bold shadow-lg">
+        <div className="mt-4 inline-block bg-brand-accent px-4 py-1 rounded-full text-sm font-bold shadow-lg">
           ₹2500 / 1-hour consultation
         </div>
       </div>
@@ -96,7 +96,7 @@ function PremiumConsultation({ className = "" }) {
                 required
                 value={formData.fullName}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#06B6D4] outline-none text-sm"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-accent outline-none text-sm"
               />
             </div>
             <div>
@@ -109,7 +109,7 @@ function PremiumConsultation({ className = "" }) {
                 required
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#06B6D4] outline-none text-sm"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-accent outline-none text-sm"
               />
             </div>
           </div>
@@ -125,7 +125,7 @@ function PremiumConsultation({ className = "" }) {
                 required
                 value={formData.contactNumber}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#06B6D4] outline-none text-sm"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-accent outline-none text-sm"
               />
             </div>
             <div>
@@ -137,7 +137,7 @@ function PremiumConsultation({ className = "" }) {
                 name="preferredDate"
                 value={formData.preferredDate}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#06B6D4] outline-none text-sm text-gray-600"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-accent outline-none text-sm text-gray-600"
               />
             </div>
           </div>
@@ -153,7 +153,7 @@ function PremiumConsultation({ className = "" }) {
               value={formData.topic}
               onChange={handleChange}
               placeholder="e.g. Incident Response, Security Audit, General Advice..."
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#06B6D4] outline-none text-sm resize-none"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-accent outline-none text-sm resize-none"
             />
           </div>
 
@@ -161,7 +161,7 @@ function PremiumConsultation({ className = "" }) {
             <Button 
               type="submit" 
               disabled={loading}
-              className="w-full bg-[#0F172A] hover:bg-slate-800 text-white font-bold h-11"
+              className="w-full bg-brand-dark hover:bg-slate-800 text-white font-bold h-11"
             >
               {loading ? 'Processing...' : 'Request Consultation'}
             </Button>

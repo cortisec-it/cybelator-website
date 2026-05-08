@@ -38,11 +38,11 @@ function AdminLoginPage() {
       <Helmet>
         <title>Admin Login - Cybelator</title>
       </Helmet>
-      <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4">
+      <div className="min-h-screen bg-brand-darker flex items-center justify-center p-4">
         <div className="bg-white rounded-2xl shadow-xl w-full max-w-md overflow-hidden animate-in fade-in zoom-in duration-300">
-          <div className="bg-[#0F172A] p-8 text-center border-b border-slate-800">
-            <div className="mx-auto w-16 h-16 bg-[#06B6D4]/10 rounded-full flex items-center justify-center mb-4">
-              <Shield className="w-8 h-8 text-[#06B6D4]" />
+          <div className="bg-brand-dark p-8 text-center border-b border-slate-800">
+            <div className="mx-auto w-16 h-16 bg-brand-accent/10 rounded-full flex items-center justify-center mb-4">
+              <Shield className="w-8 h-8 text-brand-accent" />
             </div>
             <h1 className="text-2xl font-bold text-white">Admin Access</h1>
             <p className="text-slate-400 text-sm mt-2">Authorized personnel only</p>
@@ -65,7 +65,7 @@ function AdminLoginPage() {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full pl-4 pr-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#06B6D4] focus:border-transparent outline-none transition-all text-slate-900 placeholder:text-slate-400"
+                    className="w-full pl-4 pr-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-accent focus:border-transparent outline-none transition-all text-slate-900 placeholder:text-slate-400"
                     placeholder="admin@cybelator.com"
                   />
                 </div>
@@ -79,7 +79,7 @@ function AdminLoginPage() {
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full pl-4 pr-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#06B6D4] focus:border-transparent outline-none transition-all text-slate-900 placeholder:text-slate-400"
+                    className="w-full pl-4 pr-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-accent focus:border-transparent outline-none transition-all text-slate-900 placeholder:text-slate-400"
                     placeholder="••••••••"
                   />
                   <Lock className="absolute right-3 top-3.5 w-5 h-5 text-slate-400" />
@@ -89,7 +89,7 @@ function AdminLoginPage() {
               <Button 
                 type="submit" 
                 disabled={localLoading}
-                className="w-full bg-[#0F172A] hover:bg-slate-800 text-white h-12 font-bold rounded-lg transition-all"
+                className="w-full bg-brand-dark hover:bg-slate-800 text-white h-12 font-bold rounded-lg transition-all"
               >
                 {localLoading ? (
                   <>

@@ -73,16 +73,16 @@ function ThreatMapModal({ isOpen, onClose, initialIndex = 0, maps = [] }) {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.95 }}
           transition={{ type: "spring", duration: 0.5, bounce: 0.1 }}
-          className={`relative bg-[#0F172A] shadow-2xl flex flex-col transition-all duration-300 ${
+          className={`relative bg-brand-dark shadow-2xl flex flex-col transition-all duration-300 ${
             isFullscreen ? 'w-full h-full rounded-none' : 'w-full max-w-[95vw] h-[90vh] rounded-2xl border border-slate-700'
           }`}
         >
           {/* Header Bar */}
-          <div className="flex items-center justify-between p-4 bg-slate-900/90 backdrop-blur border-b border-slate-800 shrink-0 z-10">
+          <div className="flex items-center justify-between p-4 bg-brand-darker/90 backdrop-blur border-b border-slate-800 shrink-0 z-10">
              <div className="flex items-center gap-3">
                 <div className="hidden sm:block">
                   <h2 className="text-lg font-bold text-white">{currentMap.name}</h2>
-                  <p className="text-xs text-[#06B6D4]">{currentMap.provider}</p>
+                  <p className="text-xs text-brand-accent">{currentMap.provider}</p>
                 </div>
                 <div className="sm:hidden">
                    <h2 className="text-sm font-bold text-white line-clamp-1">{currentMap.name}</h2>
