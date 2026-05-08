@@ -16,7 +16,6 @@ const menuItems = [
   { path: '/current-threats', label: 'Current Scams & Fraud' },
   { path: '/guides', label: 'Protection Guides' },
   { path: '/academy', label: 'CortiSec Academy' },
-  { path: '/#cyber-assistance', label: 'Cyber Assistance' },
   { path: '/victim-support', label: 'Victim Support' },
 ];
 

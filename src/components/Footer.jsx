@@ -52,7 +52,6 @@ function Footer() {
                 <li><Link to="/current-threats" onClick={scrollToTop} className="hover:text-[#06B6D4] transition-colors">Current Scams & Fraud</Link></li>
                 <li><Link to="/news-alerts" onClick={scrollToTop} className="hover:text-[#06B6D4] transition-colors">Today's Cyber Warnings</Link></li>
                 <li><Link to="/threat-maps" onClick={scrollToTop} className="hover:text-[#06B6D4] transition-colors">Global Threat Maps</Link></li>
-                <li><Link to="/#cyber-assistance" className="hover:text-[#06B6D4] transition-colors">Cyber Assistance</Link></li>
                 <li><Link to="/victim-support" onClick={scrollToTop} className="hover:text-[#06B6D4] transition-colors font-medium text-orange-400">Victim Support</Link></li>
               </ul>
             </div>

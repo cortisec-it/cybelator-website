@@ -14,7 +14,6 @@ import TelegramSubscriptionCTA from '@/components/TelegramSubscriptionCTA';
 import TrustedDataSources from '@/components/TrustedDataSources';
 import TrustReassuranceStatement from '@/components/TrustReassuranceStatement';
 import AudienceEntryStrip from '@/components/AudienceEntryStrip';
-import CyberAssistanceSection from '@/components/CyberAssistanceSection';
 import StatsStrip from '@/components/StatsStrip';
 import { currentThreatsData } from '@/data/currentThreatsData';
 
@@ -231,9 +230,6 @@ function HomePage() {
            <VictimSupportCTA />
         </div>
       </section>
-
-      {/* Cyber Assistance Section */}
-      <CyberAssistanceSection />
 
       {/* Academy Teaser — CortiSec Academy */}
       <section className="relative overflow-hidden bg-gradient-to-r from-[#0F172A] to-[#06B6D4] py-14 md:py-20">
