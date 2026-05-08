@@ -1,0 +1,24 @@
+import React from 'react';
+import { Navigate, useLocation } from 'react-router-dom';
+import { useAdminAuth } from '@/contexts/AdminAuthContext';
+
+const ProtectedAdminRoute = ({ children }) => {
+  const { isAdmin, loading } = useAdminAuth();
+  const location = useLocation();
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-slate-50">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#06B6D4]"></div>
+      </div>
+    );
+  }
+
+  if (!isAdmin) {
+    return <Navigate to="/admin/login" state={{ from: location }} replace />;
+  }
+
+  return children;
+};
+
+export default ProtectedAdminRoute;
