@@ -51,8 +51,10 @@ function NewsAlertsPage() {
       </Helmet>
 
       <div className="bg-slate-50 min-h-screen">
-        <div className="bg-brand-dark text-white py-10 md:py-12 pb-20 md:pb-24">
-           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="bg-brand-darker text-white py-10 md:py-12 pb-20 md:pb-24 relative overflow-hidden">
+          <div className="absolute inset-0 dot-grid pointer-events-none" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-brand-accent/10 blur-3xl rounded-full pointer-events-none" />
+           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
               <div className="flex items-center justify-center gap-4 mb-4">
                 <div className="inline-flex items-center gap-2 bg-brand-accent/20 text-brand-accent px-3 py-1 rounded-full font-semibold text-sm">
                   <Bell className="w-4 h-4" /> News Desk

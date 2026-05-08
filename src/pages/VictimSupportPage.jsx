@@ -90,9 +90,9 @@ function VictimSupportPage() {
       </Helmet>
 
       {/* Hero Section */}
-      <section className="bg-brand-dark text-white py-16 relative overflow-hidden">
-        {/* Subtle comforting background */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 to-teal-900/20" />
+      <section className="bg-brand-darker text-white py-16 relative overflow-hidden">
+        <div className="absolute inset-0 dot-grid pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-amber-900/10 to-orange-900/10" />
         
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div

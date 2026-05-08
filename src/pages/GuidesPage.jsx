@@ -30,31 +30,27 @@ function GuidesPage() {
       </Helmet>
 
       {/* Hero Section */}
-      <section className="relative h-[400px] flex items-center justify-center overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1654588830920-92085849e384)' }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 to-brand-dark/70" />
-        </div>
+      <section className="bg-brand-darker text-white py-14 md:py-20 relative overflow-hidden">
+        <div className="absolute inset-0 dot-grid pointer-events-none" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-green-500/10 blur-3xl rounded-full pointer-events-none" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center gap-2 bg-green-500/20 backdrop-blur-sm border border-green-500/30 px-4 py-2 rounded-full mb-6">
-              <BookOpen className="w-5 h-5 text-green-400" />
-              <span className="text-green-400 font-medium">Expert guidance</span>
+            <div className="inline-flex items-center gap-2 bg-green-500/20 border border-green-500/30 px-4 py-1.5 rounded-full mb-6">
+              <BookOpen className="w-4 h-4 text-green-400" />
+              <span className="text-green-400 text-xs font-semibold tracking-wide uppercase">Expert Guidance</span>
             </div>
 
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-5 tracking-tight">
               Essential Protection Guides
             </h1>
 
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Comprehensive step-by-step guides to improve your cybersecurity hygiene and protect your digital life
+            <p className="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
+              Comprehensive step-by-step guides to improve your cybersecurity hygiene and protect your digital life.
             </p>
           </motion.div>
         </div>

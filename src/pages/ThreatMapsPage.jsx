@@ -63,9 +63,10 @@ function ThreatMapsPage() {
       </Helmet>
 
       {/* Hero Section */}
-      <section className="relative h-[300px] md:h-[350px] flex items-center justify-center overflow-hidden bg-brand-dark">
-        <div className="absolute inset-0 bg-blue-600/10 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-brand-dark"></div>
+      <section className="relative h-[300px] md:h-[350px] flex items-center justify-center overflow-hidden bg-brand-darker">
+        <div className="absolute inset-0 dot-grid pointer-events-none" />
+        <div className="absolute top-0 left-0 w-96 h-96 bg-blue-600/10 blur-3xl rounded-full pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-brand-darker" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
