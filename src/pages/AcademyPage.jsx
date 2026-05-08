@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
-import { Network, Shield, Monitor, Mail, Cloud, Globe, Eye, Key, MapPin, Users, CheckCircle2, ArrowRight } from 'lucide-react';
+import { Network, Shield, Monitor, Mail, Cloud, Globe, Eye, Key, MapPin, Users, CheckCircle2, GraduationCap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const domains = [
@@ -9,56 +9,56 @@ const domains = [
     icon: Network,
     title: 'Networking & Security Fundamentals',
     body: 'TCP/IP, routing, switching, network architecture, firewalling concepts, and security protocols — the foundation every cybersecurity engineer must master.',
-    iconBg: 'bg-blue-50',
+    borderColor: 'border-t-blue-500',
     iconColor: 'text-blue-600',
   },
   {
     icon: Shield,
     title: 'Firewall & Network Security',
     body: 'Hands-on configuration and management of next-gen firewalls, security policies, VPN, and threat prevention on Check Point Quantum and other leading platforms.',
-    iconBg: 'bg-brand-accent/10',
+    borderColor: 'border-t-brand-accent',
     iconColor: 'text-brand-accent',
   },
   {
     icon: Monitor,
     title: 'Endpoint Detection & Response',
     body: 'Real-world EDR training covering threat prevention, anti-ransomware, incident response, and endpoint security management on enterprise EDR platforms.',
-    iconBg: 'bg-green-50',
+    borderColor: 'border-t-green-500',
     iconColor: 'text-green-600',
   },
   {
     icon: Mail,
     title: 'Email & Collaboration Security',
     body: 'Protecting Microsoft 365 and Google Workspace against phishing, BEC, malware, and account takeover using enterprise email security platforms.',
-    iconBg: 'bg-orange-50',
+    borderColor: 'border-t-orange-500',
     iconColor: 'text-orange-500',
   },
   {
     icon: Cloud,
     title: 'Cloud Security',
     body: 'Cloud security across AWS, Azure, and GCP — covering CSPM, workload protection, CASB, DLP, and cloud-native security operations.',
-    iconBg: 'bg-sky-50',
+    borderColor: 'border-t-sky-500',
     iconColor: 'text-sky-600',
   },
   {
     icon: Globe,
     title: 'SASE & Zero Trust',
     body: 'Modern network security including Secure Access Service Edge, Zero Trust Network Access, and SD-WAN on Cato Networks and leading platforms.',
-    iconBg: 'bg-indigo-50',
+    borderColor: 'border-t-indigo-500',
     iconColor: 'text-indigo-600',
   },
   {
     icon: Eye,
     title: 'SOC, SIEM & Threat Exposure',
     body: 'Security Operations Centre workflows, log analysis, threat detection, SIEM operations, SOAR automation, and External Risk Management for analyst roles.',
-    iconBg: 'bg-red-50',
+    borderColor: 'border-t-red-500',
     iconColor: 'text-red-500',
   },
   {
     icon: Key,
     title: 'Identity, Access & Observability',
     body: 'Identity and Access Management, Privileged Access Management, Single Sign-On, MFA, and infrastructure observability for enterprise environments.',
-    iconBg: 'bg-purple-50',
+    borderColor: 'border-t-purple-500',
     iconColor: 'text-purple-600',
   },
 ];
@@ -79,7 +79,8 @@ function AcademyPage() {
       </Helmet>
 
       {/* Hero */}
-      <section className="bg-brand-dark text-white py-16 md:py-24 relative overflow-hidden">
+      <section className="bg-brand-darker text-white py-16 md:py-24 relative overflow-hidden">
+        <div className="absolute inset-0 dot-grid pointer-events-none" />
         <div className="absolute top-0 right-0 w-1/2 h-full bg-brand-accent/10 blur-3xl rounded-full -translate-y-1/2 translate-x-1/3 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-600/10 blur-3xl rounded-full pointer-events-none" />
 
@@ -89,23 +90,22 @@ function AcademyPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center gap-2 bg-brand-accent/20 border border-brand-accent/30 px-4 py-1.5 rounded-full mb-6">
-              <Shield className="w-4 h-4 text-brand-accent" />
-              <span className="text-brand-accent text-sm font-semibold">CortiSec Academy</span>
+            <div className="inline-flex items-center gap-2 bg-brand-accent/10 border border-brand-accent/30 px-4 py-1.5 rounded-full mb-6">
+              <GraduationCap className="w-4 h-4 text-brand-accent" />
+              <span className="text-brand-accent text-xs font-semibold tracking-wide">CortiSec Academy · Guwahati</span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight tracking-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-tight tracking-tight">
               Launch Your{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-cyan-400">
-                Cybersecurity Career
-              </span>
+              <span className="text-brand-accent">Career</span>{' '}
+              in Cybersecurity
             </h1>
 
-            <p className="text-lg md:text-xl text-slate-300 mb-6 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-3xl mx-auto leading-relaxed">
               CortiSec Academy trains freshers at our Guwahati Training Centre on real enterprise cybersecurity platforms — the same tools deployed for enterprise clients. Build real skills. Get certified. Get hired.
             </p>
 
-            <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-slate-400">
+            <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-slate-400 mb-10">
               <span className="flex items-center gap-1.5">
                 <MapPin className="w-4 h-4 text-brand-accent" /> Training Centre: Guwahati, Assam
               </span>
@@ -118,24 +118,32 @@ function AcademyPage() {
                 <CheckCircle2 className="w-4 h-4 text-brand-accent" /> Limited seats per batch
               </span>
             </div>
+
+            <Button
+              asChild
+              className="bg-brand-accent text-brand-dark font-bold rounded-full h-12 px-8 text-base hover:shadow-glow transition-all duration-200"
+            >
+              <a href="mailto:careers@cortisec.com?subject=CortiSec Academy Application" target="_blank" rel="noopener noreferrer">
+                Apply for Next Batch →
+              </a>
+            </Button>
           </motion.div>
         </div>
       </section>
 
       {/* Domain Cards */}
-      <section className="bg-slate-50 py-14 md:py-20">
+      <section className="bg-slate-50 py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-10 md:mb-14"
+            className="text-center mb-12 md:mb-16"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-brand-dark mb-4">
-              8 Core Security Domains
-            </h2>
-            <p className="text-slate-600 max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
+            <h2 className="text-3xl font-bold text-brand-dark mb-3">8 Core Security Domains</h2>
+            <div className="w-12 h-0.5 bg-brand-accent mx-auto mt-3 rounded-full mb-4" />
+            <p className="text-slate-500 max-w-2xl mx-auto text-base leading-relaxed">
               Every module is taught on enterprise platforms used by real security teams — not simulators or theory alone.
             </p>
           </motion.div>
@@ -148,16 +156,16 @@ function AcademyPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.07 }}
+                whileHover={{ scale: 1.02 }}
+                className="h-full"
               >
-                <div className="bg-white border border-slate-200 rounded-xl shadow-sm p-6 flex flex-col gap-4 h-full hover:shadow-md hover:border-slate-300 transition-all duration-200">
-                  <div className={`${domain.iconBg} p-3 rounded-xl w-fit`}>
-                    <domain.icon className={`w-6 h-6 ${domain.iconColor}`} />
-                  </div>
+                <div className={`bg-white border-t-4 ${domain.borderColor} rounded-2xl shadow-card p-6 flex flex-col gap-4 h-full hover:shadow-lg transition-all duration-200`}>
+                  <domain.icon className={`w-8 h-8 ${domain.iconColor}`} />
                   <div>
                     <h3 className="text-base font-bold text-brand-dark mb-2 leading-snug">
                       {domain.title}
                     </h3>
-                    <p className="text-sm text-slate-600 leading-relaxed">{domain.body}</p>
+                    <p className="text-sm text-slate-500 leading-relaxed">{domain.body}</p>
                   </div>
                 </div>
               </motion.div>
@@ -167,51 +175,47 @@ function AcademyPage() {
       </section>
 
       {/* Program Journey */}
-      <section className="bg-white py-12 md:py-16 border-y border-slate-100">
+      <section className="bg-brand-darker py-16 md:py-24">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-10"
+            className="text-center mb-12"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-brand-dark mb-3">
-              Your 16-Week Journey
-            </h2>
-            <p className="text-slate-500 text-base">From zero to job-ready in four structured phases.</p>
+            <h2 className="text-3xl font-bold text-white mb-3">Your 16-Week Journey</h2>
+            <div className="w-12 h-0.5 bg-brand-accent mx-auto mt-3 rounded-full mb-4" />
+            <p className="text-slate-400 text-base">From zero to job-ready in four structured phases.</p>
           </motion.div>
 
-          <div className="flex flex-col md:flex-row items-stretch gap-0">
+          <div className="flex flex-col md:flex-row items-center gap-0">
             {journeySteps.map((s, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="flex-1 flex flex-col md:flex-row items-center"
-              >
-                <div className="flex flex-col items-center text-center flex-1 px-4 py-6 md:py-0">
-                  <div className="w-12 h-12 rounded-full bg-brand-accent text-white font-bold text-lg flex items-center justify-center mb-3 shadow-md shadow-cyan-200">
+              <React.Fragment key={i}>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.1 }}
+                  className="flex flex-col items-center text-center flex-1 px-4 py-6 md:py-0"
+                >
+                  <div className="w-14 h-14 rounded-full bg-brand-accent text-brand-dark font-black text-lg flex items-center justify-center mb-4 shadow-glow">
                     {s.step}
                   </div>
-                  <p className="font-bold text-brand-dark text-base">{s.label}</p>
+                  <p className="font-bold text-white text-base">{s.label}</p>
                   <p className="text-xs text-slate-400 mt-1">{s.weeks}</p>
-                </div>
+                </motion.div>
                 {i < journeySteps.length - 1 && (
-                  <div className="hidden md:flex items-center">
-                    <ArrowRight className="w-5 h-5 text-brand-accent" />
-                  </div>
+                  <div className="hidden md:block flex-shrink-0 w-16 border-t-2 border-dashed border-brand-accent/40" />
                 )}
-              </motion.div>
+              </React.Fragment>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTAs */}
-      <section className="bg-brand-dark py-14 md:py-20">
+      {/* CTA */}
+      <section className="bg-gradient-to-br from-brand-accent to-brand-accentDark py-16 md:py-24">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -219,49 +223,33 @@ function AcademyPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-              Ready to Start?
-            </h2>
-            <p className="text-slate-400 mb-8 text-base leading-relaxed">
+            <h2 className="text-3xl font-bold text-brand-dark mb-4">Ready to Start?</h2>
+            <p className="text-brand-dark/70 mb-10 text-base leading-relaxed">
               Seats are limited per batch. Apply early to secure your spot at the Guwahati Training Centre.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 asChild
-                className="bg-brand-accent hover:bg-cyan-600 text-white font-bold h-12 px-8 rounded-xl text-base shadow-lg shadow-cyan-900/30 transition-all"
+                className="bg-brand-dark text-white font-bold h-12 px-8 rounded-full text-base hover:bg-brand-darker transition-all duration-200 shadow-lg"
               >
-                <a
-                  href="mailto:careers@cortisec.com?subject=CortiSec Academy Application"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href="mailto:careers@cortisec.com?subject=CortiSec Academy Application" target="_blank" rel="noopener noreferrer">
                   Apply for Next Batch
                 </a>
               </Button>
               <Button
                 asChild
-                variant="outline"
-                className="border-brand-accent text-brand-accent hover:bg-brand-accent/10 hover:text-brand-accent font-semibold h-12 px-8 rounded-xl text-base transition-all"
+                className="bg-white text-brand-dark font-semibold h-12 px-8 rounded-full text-base hover:bg-slate-100 transition-all duration-200 shadow-lg"
               >
-                <a
-                  href="mailto:careers@cortisec.com?subject=Academy Enquiry"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href="mailto:careers@cortisec.com?subject=Academy Enquiry" target="_blank" rel="noopener noreferrer">
                   Talk to an Advisor
                 </a>
               </Button>
             </div>
 
-            <p className="mt-8 text-sm text-slate-400">
+            <p className="mt-8 text-sm text-brand-dark/60">
               CortiSec Academy is an initiative of{' '}
-              <a
-                href="https://cortisec.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-brand-accent hover:underline"
-              >
+              <a href="https://cortisec.com" target="_blank" rel="noopener noreferrer" className="text-brand-dark font-semibold hover:underline">
                 CortiSec Technologies Private Limited
               </a>
             </p>
