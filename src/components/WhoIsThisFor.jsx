@@ -6,7 +6,6 @@ import { GraduationCap, Briefcase, RefreshCw, Network, Monitor } from 'lucide-re
 const audiences = [
   {
     icon: GraduationCap,
-    iconColor: 'text-brand-accent',
     title: 'Students',
     body: 'Curious about cybersecurity? Start learning the basics, explore career paths, and discover if this field is right for you.',
     cta: 'Start Learning Free →',
@@ -14,7 +13,6 @@ const audiences = [
   },
   {
     icon: Briefcase,
-    iconColor: 'text-blue-600',
     title: 'Freshers & Job Seekers',
     body: 'Break into cybersecurity with structured training and real enterprise lab experience at CortiSec Academy.',
     cta: 'Explore Academy →',
@@ -22,7 +20,6 @@ const audiences = [
   },
   {
     icon: RefreshCw,
-    iconColor: 'text-purple-600',
     title: 'Career Switchers',
     body: 'Coming from IT, networking, or support? Your existing skills are a head start in cybersecurity.',
     cta: 'See How →',
@@ -30,7 +27,6 @@ const audiences = [
   },
   {
     icon: Network,
-    iconColor: 'text-orange-500',
     title: 'Networking Engineers',
     body: 'Firewall, network security, and SASE skills are in high demand. Transition naturally into security.',
     cta: 'Learn More →',
@@ -38,7 +34,6 @@ const audiences = [
   },
   {
     icon: Monitor,
-    iconColor: 'text-green-600',
     title: 'IT Support Professionals',
     body: 'Your helpdesk experience is valuable. Pivot into SOC analyst and endpoint security roles.',
     cta: 'Explore Path →',
@@ -48,7 +43,7 @@ const audiences = [
 
 function WhoIsThisFor() {
   return (
-    <section id="who-for" className="bg-white py-16 md:py-24">
+    <section id="who-for" className="bg-white py-20 md:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <motion.div
@@ -58,14 +53,14 @@ function WhoIsThisFor() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl font-bold text-brand-dark">Who Is Cybelator For?</h2>
-          <div className="w-12 h-0.5 bg-brand-accent mx-auto mt-3 rounded-full mb-4" />
-          <p className="text-slate-500 text-base max-w-xl mx-auto leading-relaxed">
+          <h2 className="text-3xl md:text-4xl font-bold text-brand-dark">Who Is Cybelator For?</h2>
+          <div className="w-16 h-1 bg-brand-accent mx-auto mt-3 rounded-full mb-6" />
+          <p className="text-base text-slate-500 max-w-2xl mx-auto text-center leading-relaxed">
             Whether you want to stay safe online or build a career — you belong here.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {audiences.map((card, i) => (
             <motion.div
               key={i}
@@ -76,11 +71,15 @@ function WhoIsThisFor() {
               whileHover={{ scale: 1.02 }}
               className="h-full"
             >
-              <div className="bg-white border-t-4 border-t-brand-accent rounded-2xl shadow-sm hover:shadow-card p-6 flex flex-col gap-4 h-full border border-slate-100 transition-all duration-200">
-                <card.icon className={`w-8 h-8 ${card.iconColor}`} />
-                <div className="flex flex-col gap-2 flex-1">
-                  <h3 className="text-base font-bold text-brand-dark">{card.title}</h3>
-                  <p className="text-sm text-slate-500 leading-relaxed">{card.body}</p>
+              <div className="bg-white border-t-4 border-t-brand-accent rounded-2xl shadow-sm hover:shadow-card p-8 flex flex-col justify-between min-h-[260px] border border-slate-100 transition-all duration-200 gap-4">
+                <div className="flex flex-col gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-brand-accent/10 flex items-center justify-center">
+                    <card.icon className="w-6 h-6 text-brand-accent" />
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <h3 className="text-xl font-bold text-brand-dark">{card.title}</h3>
+                    <p className="text-sm text-slate-500 leading-relaxed">{card.body}</p>
+                  </div>
                 </div>
                 <Link
                   to={card.to}

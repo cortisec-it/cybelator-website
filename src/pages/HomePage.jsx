@@ -192,7 +192,7 @@ function HomePage() {
       <LearningHub />
 
       {/* ── 8. Telegram / Community CTA ── */}
-      <section className="bg-brand-navy py-14 md:py-20">
+      <section className="bg-brand-navy py-20 md:py-28">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
             <TelegramSubscriptionCTA />
@@ -207,7 +207,7 @@ function HomePage() {
       <WorkshopCTA />
 
       {/* ── 11. Victim Support / Cyber Assistance ── */}
-      <section className="bg-white py-14 md:py-20 border-b border-slate-100">
+      <section className="bg-white py-20 md:py-28 border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <VictimSupportCTA />
         </div>
@@ -217,7 +217,7 @@ function HomePage() {
       <SocialProof />
 
       {/* ── 13. Newsletter ── */}
-      <section className="bg-slate-50 py-14 md:py-20 border-y border-slate-100">
+      <section className="bg-slate-50 py-20 md:py-28 border-y border-slate-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
             <NewsletterSubscription className="shadow-card mx-auto" />

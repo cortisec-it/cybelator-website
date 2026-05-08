@@ -16,7 +16,7 @@ const topics = [
 
 function LearningHub() {
   return (
-    <section id="learning-hub" className="bg-slate-50 py-16 md:py-24">
+    <section id="learning-hub" className="bg-slate-50 py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <motion.div
@@ -26,14 +26,14 @@ function LearningHub() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl font-bold text-brand-dark">Free Cybersecurity Learning Hub</h2>
-          <div className="w-12 h-0.5 bg-brand-accent mx-auto mt-3 rounded-full mb-4" />
-          <p className="text-slate-500 text-base max-w-xl mx-auto leading-relaxed">
+          <h2 className="text-3xl md:text-4xl font-bold text-brand-dark">Free Cybersecurity Learning Hub</h2>
+          <div className="w-16 h-1 bg-brand-accent mx-auto mt-3 rounded-full mb-6" />
+          <p className="text-base text-slate-500 max-w-2xl mx-auto text-center leading-relaxed">
             Beginner-friendly guides written for everyone — no technical background needed.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {topics.map((topic, i) => (
             <motion.div
               key={i}
@@ -44,13 +44,13 @@ function LearningHub() {
             >
               <Link
                 to="/guides"
-                className="group block bg-slate-50 hover:bg-white hover:shadow-card rounded-xl p-5 border border-slate-100 hover:border-slate-200 transition-all duration-200 h-full"
+                className="group block bg-white rounded-2xl p-8 shadow-sm hover:shadow-card min-h-[160px] border border-slate-100 hover:border-slate-200 transition-all duration-200 h-full"
               >
-                <topic.icon className="w-6 h-6 text-brand-accent mb-3" />
-                <h3 className="text-sm font-bold text-brand-dark mb-1 group-hover:text-brand-accent transition-colors">
+                <topic.icon className="w-10 h-10 text-brand-accent mb-4" />
+                <h3 className="text-lg font-bold text-brand-dark mb-1 group-hover:text-brand-accent transition-colors">
                   {topic.title}
                 </h3>
-                <p className="text-xs text-slate-500 leading-relaxed mb-3">{topic.teaser}</p>
+                <p className="text-sm text-slate-500 leading-relaxed mb-3">{topic.teaser}</p>
                 <span className="text-xs font-semibold text-brand-accent">Read Guide →</span>
               </Link>
             </motion.div>

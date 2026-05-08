@@ -1,28 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, LogOut, Shield, LogIn } from 'lucide-react';
+import { Menu, X, LogOut, Shield, LogIn, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CybelatorLogo from '@/components/CybelatorLogo';
 import ContactUsModal from '@/components/ContactUsModal';
 import PWAInstallPrompt from '@/components/PWAInstallPrompt';
 import { useAdminAuth } from '@/contexts/AdminAuthContext';
 
-const menuItems = [
+const primaryItems = [
   { path: '/', label: 'Home' },
-  { path: '/threat-maps', label: 'Live Attacks' },
-  { path: '/news-alerts', label: "Today's Warnings" },
-  { path: '/current-threats', label: 'Scams & Fraud' },
+  { path: '/current-threats', label: 'Threats' },
   { path: '/guides', label: 'Guides' },
+  { path: '/quizzes', label: 'Training' },
+  { path: '/victim-support', label: 'Victim Support' },
 ];
+
+const moreItems = [
+  { path: '/threat-maps', label: 'Live Attack Maps' },
+  { path: '/news-alerts', label: "Today's Warnings" },
+  { path: '/academy', label: 'CortiSec Academy' },
+];
+
+const allMobileItems = [...primaryItems, ...moreItems];
 
 function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [moreOpen, setMoreOpen] = useState(false);
   const [contactModalOpen, setContactModalOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const { isAdmin, logoutAdmin } = useAdminAuth();
+  const moreRef = useRef(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -30,7 +40,15 @@ function Navigation() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  useEffect(() => { setMobileMenuOpen(false); }, [location.pathname]);
+  useEffect(() => { setMobileMenuOpen(false); setMoreOpen(false); }, [location.pathname]);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (moreRef.current && !moreRef.current.contains(e.target)) setMoreOpen(false);
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const handleAdminLogout = async () => {
     await logoutAdmin();
@@ -38,11 +56,12 @@ function Navigation() {
   };
 
   const isActive = (path) => location.pathname === path;
+  const isMoreActive = moreItems.some(item => isActive(item.path));
 
   return (
     <>
       {/* Top bar */}
-      <div className="bg-brand-accent/10 border-b border-brand-accent/20 py-1.5 px-4">
+      <div className="bg-brand-accent/10 border-b border-brand-accent/20 py-1 px-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <span className="text-xs text-brand-accent font-medium flex items-center gap-1.5">
             <span className="relative flex h-1.5 w-1.5">
@@ -71,20 +90,66 @@ function Navigation() {
             </Link>
 
             {/* Desktop center links */}
-            <div className="hidden lg:flex items-center gap-1">
-              {menuItems.map((item) => (
+            <div className="hidden lg:flex items-center gap-0.5">
+              {primaryItems.map((item) => (
                 <Link
                   key={item.path}
                   to={item.path}
                   className={`px-3 py-1.5 text-sm font-medium transition-all rounded-md ${
                     isActive(item.path)
                       ? 'text-brand-accent border-b-2 border-brand-accent pb-0'
-                      : 'text-slate-300 hover:text-white hover:text-brand-accent'
+                      : 'text-slate-300 hover:text-brand-accent'
                   }`}
                 >
                   {item.label}
                 </Link>
               ))}
+
+              {/* Contact */}
+              <button
+                onClick={() => setContactModalOpen(true)}
+                className="px-3 py-1.5 text-sm font-medium text-slate-300 hover:text-brand-accent transition-all rounded-md"
+              >
+                Contact
+              </button>
+
+              {/* More dropdown */}
+              <div className="relative" ref={moreRef}>
+                <button
+                  onClick={() => setMoreOpen(!moreOpen)}
+                  className={`flex items-center gap-1 px-3 py-1.5 text-sm font-medium transition-all rounded-md ${
+                    isMoreActive ? 'text-brand-accent' : 'text-slate-300 hover:text-brand-accent'
+                  }`}
+                >
+                  More <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${moreOpen ? 'rotate-180' : ''}`} />
+                </button>
+
+                <AnimatePresence>
+                  {moreOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 6 }}
+                      transition={{ duration: 0.15 }}
+                      className="absolute top-full left-0 mt-2 w-48 bg-brand-dark border border-slate-700 rounded-xl shadow-card overflow-hidden z-50"
+                    >
+                      {moreItems.map((item) => (
+                        <Link
+                          key={item.path}
+                          to={item.path}
+                          className={`block px-4 py-2.5 text-sm transition-colors ${
+                            isActive(item.path)
+                              ? 'text-brand-accent bg-brand-accent/10'
+                              : 'text-slate-300 hover:text-brand-accent hover:bg-slate-800'
+                          }`}
+                        >
+                          {item.label}
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </div>
 
             {/* Desktop right actions */}
@@ -104,7 +169,7 @@ function Navigation() {
                 <>
                   <Link to="/victim-support">
                     <button className="border border-brand-accent text-brand-accent rounded-full px-4 py-1.5 text-sm font-medium hover:bg-brand-accent hover:text-brand-dark transition-all duration-200">
-                      Cyber Assistance
+                      Get Help
                     </button>
                   </Link>
                   <Link to="/academy">
@@ -144,7 +209,7 @@ function Navigation() {
               className="lg:hidden bg-brand-darker overflow-hidden"
             >
               <div className="px-4 py-3 space-y-1">
-                {menuItems.map((item) => (
+                {allMobileItems.map((item) => (
                   <Link
                     key={item.path}
                     to={item.path}
@@ -174,10 +239,10 @@ function Navigation() {
 
                 <div className="pt-3 pb-2 space-y-2">
                   <Link to="/victim-support" className="block w-full text-center border border-brand-accent text-brand-accent rounded-xl py-3 text-sm font-semibold hover:bg-brand-accent hover:text-brand-dark transition-all">
-                    Get Cyber Help
+                    Get Help
                   </Link>
                   <Link to="/academy" className="block w-full text-center bg-brand-accent text-brand-dark rounded-xl py-3 text-sm font-bold hover:shadow-glow transition-all">
-                    Join Academy
+                    CortiSec Academy
                   </Link>
                   <button
                     onClick={() => { setMobileMenuOpen(false); setContactModalOpen(true); }}

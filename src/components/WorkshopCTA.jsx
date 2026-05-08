@@ -22,7 +22,7 @@ function WorkshopCTA() {
 
   return (
     <>
-      <section id="workshop" className="bg-brand-darker border-l-4 border-brand-accent py-16 md:py-24 relative overflow-hidden">
+      <section id="workshop" className="bg-brand-darker border-l-4 border-brand-accent py-20 md:py-28 relative overflow-hidden">
         <div className="absolute inset-0 dot-grid pointer-events-none" />
         <div className="absolute top-0 right-0 w-96 h-96 bg-brand-accent/10 blur-3xl rounded-full pointer-events-none" />
 

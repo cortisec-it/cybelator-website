@@ -63,7 +63,7 @@ const stats = [
 
 function StatsStrip() {
   return (
-    <section className="bg-brand-accent py-12 md:py-16">
+    <section className="bg-brand-accent py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-0">
           {stats.map((stat, i) => (
@@ -73,9 +73,9 @@ function StatsStrip() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className={`text-center px-6 py-4 ${i < 3 ? 'border-r border-brand-dark/20' : ''}`}
+              className={`text-center px-6 py-4 ${i < 3 ? 'border-r border-brand-dark/30' : ''}`}
             >
-              <div className="text-3xl sm:text-4xl font-black text-brand-dark mb-2">
+              <div className="text-5xl font-black text-brand-dark mb-2">
                 <CountUp
                   target={stat.target}
                   prefix={stat.prefix}
@@ -83,8 +83,8 @@ function StatsStrip() {
                   decimals={stat.decimals}
                 />
               </div>
-              <p className="text-sm text-brand-dark/80 leading-snug mb-1 font-medium">{stat.label}</p>
-              <p className="text-xs text-brand-dark/50">{stat.source}</p>
+              <p className="text-base text-brand-dark/80 leading-snug mb-1 font-medium">{stat.label}</p>
+              <p className="text-xs text-brand-dark/70">{stat.source}</p>
             </motion.div>
           ))}
         </div>
