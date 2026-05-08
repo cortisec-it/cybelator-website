@@ -52,6 +52,7 @@ function Footer() {
                 <li><Link to="/current-threats" onClick={scrollToTop} className="hover:text-[#06B6D4] transition-colors">Current Scams & Fraud</Link></li>
                 <li><Link to="/news-alerts" onClick={scrollToTop} className="hover:text-[#06B6D4] transition-colors">Today's Cyber Warnings</Link></li>
                 <li><Link to="/threat-maps" onClick={scrollToTop} className="hover:text-[#06B6D4] transition-colors">Global Threat Maps</Link></li>
+                <li><Link to="/#cyber-assistance" className="hover:text-[#06B6D4] transition-colors">Cyber Assistance</Link></li>
                 <li><Link to="/victim-support" onClick={scrollToTop} className="hover:text-[#06B6D4] transition-colors font-medium text-orange-400">Victim Support</Link></li>
               </ul>
             </div>
@@ -62,7 +63,7 @@ function Footer() {
               <ul className="space-y-3 text-sm">
                 <li><Link to="/guides" onClick={scrollToTop} className="hover:text-[#06B6D4] transition-colors">Security Guides</Link></li>
                 <li><Link to="/quizzes" onClick={scrollToTop} className="hover:text-[#06B6D4] transition-colors">Interactive Quizzes</Link></li>
-                <li><Link to="/training" onClick={scrollToTop} className="hover:text-[#06B6D4] transition-colors">Training Programs</Link></li>
+                <li><Link to="/academy" onClick={scrollToTop} className="hover:text-[#06B6D4] transition-colors">CortiSec Academy</Link></li>
                 <li>
                   <button onClick={() => setConsultationOpen(true)} className="hover:text-[#06B6D4] transition-colors text-left font-medium text-[#06B6D4]">
                     Expert Consultation
@@ -93,7 +94,16 @@ function Footer() {
 
           {/* Bottom Bar */}
           <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
-            <p>© {new Date().getFullYear()} Cybelator Awareness Platform. All rights reserved.</p>
+            <div className="flex flex-col items-center md:items-start gap-1">
+              <p>© {new Date().getFullYear()} Cybelator Awareness Platform. All rights reserved.</p>
+              <p>
+                A{' '}
+                <a href="https://cortisec.com" target="_blank" rel="noopener noreferrer" className="text-[#06B6D4] hover:underline">
+                  CortiSec Technologies
+                </a>{' '}
+                initiative.
+              </p>
+            </div>
             <div className="flex gap-6">
                 <Link to="/legal-policies" onClick={scrollToTop} className="hover:text-white">Privacy Policy</Link>
                 <Link to="/legal-policies" onClick={scrollToTop} className="hover:text-white">Terms of Service</Link>

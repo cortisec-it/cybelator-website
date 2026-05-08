@@ -13,6 +13,8 @@ import MobileQuickAccess from '@/components/MobileQuickAccess';
 import TelegramSubscriptionCTA from '@/components/TelegramSubscriptionCTA';
 import TrustedDataSources from '@/components/TrustedDataSources';
 import TrustReassuranceStatement from '@/components/TrustReassuranceStatement';
+import AudienceEntryStrip from '@/components/AudienceEntryStrip';
+import CyberAssistanceSection from '@/components/CyberAssistanceSection';
 import { currentThreatsData } from '@/data/currentThreatsData';
 
 function HomePage() {
@@ -79,10 +81,14 @@ function HomePage() {
                   </span>
                 </h1>
 
-                <p className="text-lg lg:text-xl text-[#06B6D4] font-semibold mb-4">
+                <p className="text-lg lg:text-xl text-[#06B6D4] font-semibold mb-3">
                   Cybelator — The Cyber Warrior for the Digital Age
                 </p>
-                
+
+                <p className="text-sm text-slate-500 mb-4">
+                  Real-time threat intelligence &middot; Free victim support &middot; CortiSec Academy career training
+                </p>
+
                 <p className="text-base lg:text-lg text-slate-400 mb-8 max-w-xl leading-[1.6] md:leading-relaxed font-medium md:font-normal">
                   Don't just read about threats—act on them. Get daily updates on scams, vulnerabilities, and protection steps tailored for you.
                 </p>
@@ -177,6 +183,9 @@ function HomePage() {
         </div>
       </section>
 
+      {/* Audience Entry Strip */}
+      <AudienceEntryStrip />
+
       {/* Telegram Subscription Section (Main - High Priority) */}
       <section className="bg-white py-10 md:py-16">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -226,23 +235,26 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Training Banner */}
+      {/* Cyber Assistance Section */}
+      <CyberAssistanceSection />
+
+      {/* Academy Teaser Banner */}
       <section className="bg-slate-50 py-10 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 bg-white p-8 rounded-2xl border border-[#06B6D4]/20 shadow-sm hover:shadow-md transition-shadow">
             <div className="flex items-start md:items-center gap-5">
-              <div className="bg-purple-100 p-4 rounded-xl shrink-0">
-                <GraduationCap className="w-10 h-10 text-purple-600" />
+              <div className="bg-[#06B6D4]/10 p-4 rounded-xl shrink-0">
+                <GraduationCap className="w-10 h-10 text-[#06B6D4]" />
               </div>
               <div>
-                <h3 className="text-xl md:text-2xl font-bold text-[#0F172A] mb-2">Cybersecurity Training</h3>
+                <h3 className="text-xl md:text-2xl font-bold text-[#0F172A] mb-2">CortiSec Academy</h3>
                 <p className="text-slate-600 text-sm md:text-base leading-relaxed max-w-xl">
-                  Explore our comprehensive training options: free awareness courses for everyone and professional technical tracks for IT experts.
+                  Launch your cybersecurity career at our Guwahati Training Centre. 16-week program on real enterprise platforms. Batch-based enrollment. Limited seats.
                 </p>
               </div>
             </div>
-            <Button asChild className="bg-purple-600 hover:bg-purple-700 text-white shrink-0 h-12 md:h-14 px-8 rounded-xl font-bold text-base w-full md:w-auto shadow-lg shadow-purple-200 py-2 md:py-3">
-              <Link to="/training">Explore Training</Link>
+            <Button asChild className="bg-[#06B6D4] hover:bg-cyan-600 text-white shrink-0 h-12 md:h-14 px-8 rounded-xl font-bold text-base w-full md:w-auto shadow-lg shadow-cyan-200 py-2 md:py-3">
+              <Link to="/academy">Explore Academy</Link>
             </Button>
           </div>
         </div>

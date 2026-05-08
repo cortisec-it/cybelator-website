@@ -21,6 +21,7 @@ const GuidesPage = lazy(() => import('@/pages/GuidesPage'));
 const QuizzesPage = lazy(() => import('@/pages/QuizzesPage'));
 const VictimSupportPage = lazy(() => import('@/pages/VictimSupportPage'));
 const TrainingPage = lazy(() => import('@/pages/TrainingPage'));
+const AcademyPage = lazy(() => import('@/pages/AcademyPage'));
 const LegalPoliciesPage = lazy(() => import('@/pages/LegalPoliciesPage'));
 
 // Loading Fallback Component
@@ -71,6 +72,7 @@ function App() {
                     <Route path="/quizzes" element={<QuizzesPage />} />
                     <Route path="/victim-support" element={<VictimSupportPage />} />
                     <Route path="/training" element={<TrainingPage />} />
+                    <Route path="/academy" element={<AcademyPage />} />
                     <Route path="/legal-policies" element={<LegalPoliciesPage />} />
                     {/* Catch non-admin 404s */}
                     <Route path="*" element={<Navigate to="/" replace />} />
