@@ -14,16 +14,18 @@ const audiences = [
   {
     icon: Briefcase,
     title: 'Freshers & Job Seekers',
-    body: 'Break into cybersecurity with structured training and real enterprise lab experience at CortiSec Academy.',
+    body: 'Break into cybersecurity with structured training and real enterprise lab experience at CortiSec Academy (by CortiSec Technologies).',
     cta: 'Explore Academy →',
-    to: '/academy',
+    to: 'https://cortisec.com/academy',
+    external: true,
   },
   {
     icon: RefreshCw,
     title: 'Career Switchers',
     body: 'Coming from IT, networking, or support? Your existing skills are a head start in cybersecurity.',
     cta: 'See How →',
-    to: '/academy',
+    to: 'https://cortisec.com/academy',
+    external: true,
   },
   {
     icon: Network,
@@ -37,7 +39,8 @@ const audiences = [
     title: 'IT Support Professionals',
     body: 'Your helpdesk experience is valuable. Pivot into SOC analyst and endpoint security roles.',
     cta: 'Explore Path →',
-    to: '/academy',
+    to: 'https://cortisec.com/academy',
+    external: true,
   },
 ];
 
@@ -81,12 +84,23 @@ function WhoIsThisFor() {
                     <p className="text-sm text-slate-500 leading-relaxed">{card.body}</p>
                   </div>
                 </div>
-                <Link
-                  to={card.to}
-                  className="text-brand-accent text-sm font-semibold hover:underline"
-                >
-                  {card.cta}
-                </Link>
+                {card.external ? (
+                  <a
+                    href={card.to}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-brand-accent text-sm font-semibold hover:underline"
+                  >
+                    {card.cta}
+                  </a>
+                ) : (
+                  <Link
+                    to={card.to}
+                    className="text-brand-accent text-sm font-semibold hover:underline"
+                  >
+                    {card.cta}
+                  </Link>
+                )}
               </div>
             </motion.div>
           ))}
@@ -100,9 +114,9 @@ function WhoIsThisFor() {
           transition={{ duration: 0.4, delay: 0.2 }}
           className="text-center mt-10"
         >
-          <Link to="/academy" className="text-brand-accent font-semibold text-sm hover:underline">
-            Want hands-on enterprise training? Explore CortiSec Academy →
-          </Link>
+          <a href="https://cortisec.com/academy" target="_blank" rel="noopener noreferrer" className="text-brand-accent font-semibold text-sm hover:underline">
+            Want hands-on enterprise training? Explore CortiSec Academy (by CortiSec Technologies) →
+          </a>
         </motion.div>
 
       </div>

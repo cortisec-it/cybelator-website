@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
-import { AlertTriangle, Search, CheckCircle2, Clock, RefreshCw, Shield } from 'lucide-react';
+import { AlertTriangle, Search, CheckCircle2, Clock, Shield } from 'lucide-react';
 import ThreatCard from '@/components/ThreatCard';
 import ThreatActivitySidebar from '@/components/ThreatActivitySidebar';
 import ReportIncidentSection from '@/components/ReportIncidentSection';
@@ -14,8 +14,6 @@ const regions = ['Global', 'India', 'United States', 'Europe'];
 function CurrentThreatsPage() {
   const [selectedRegion, setSelectedRegion] = useState('Global');
   const [searchTerm, setSearchTerm] = useState('');
-  const [isRefreshing, setIsRefreshing] = useState(false);
-  const [lastUpdated, setLastUpdated] = useState(new Date());
 
   const filteredThreats = currentThreatsData.filter(threat => {
     const matchesRegion = selectedRegion === 'Global' || threat.affectedRegions.includes(selectedRegion);
@@ -24,25 +22,12 @@ function CurrentThreatsPage() {
     return matchesRegion && matchesSearch;
   });
 
-  // Automatic Content Refresh every 5 minutes (300,000 ms)
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsRefreshing(true);
-      // Simulate data fetch delay
-      setTimeout(() => {
-        setLastUpdated(new Date());
-        setIsRefreshing(false);
-      }, 1000);
-    }, 5 * 60 * 1000); 
-
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <>
       <Helmet>
         <title>Current Scams & Online Fraud - Cybelator</title>
-        <meta name="description" content="Live and ongoing scams affecting individuals and families right now. Detailed analysis of active cyber threats and fraud." />
+        <meta name="description" content="Active scams and online fraud affecting individuals and families — verified and updated daily by Cybelator." />
       </Helmet>
 
       <div className="bg-slate-50 min-h-screen pb-16">
@@ -55,13 +40,13 @@ function CurrentThreatsPage() {
               <div>
                 <div className="inline-flex items-center gap-2 bg-red-500/20 border border-red-500/30 px-3 py-1 rounded-full mb-4">
                    <AlertTriangle className="w-4 h-4 text-red-400" />
-                   <span className="text-xs font-bold text-red-400 uppercase">Live Intelligence • Auto-updates active</span>
+                   <span className="text-xs font-bold text-red-400 uppercase">Verified Daily • India Focus</span>
                 </div>
                 <h1 className="text-2xl md:text-4xl font-bold mb-2">Current Scams & Online Fraud</h1>
-                <p className="text-slate-400 mb-2 max-w-2xl text-base md:text-lg leading-relaxed">Live and ongoing scams affecting individuals and families right now.</p>
+                <p className="text-slate-400 mb-2 max-w-2xl text-base md:text-lg leading-relaxed">Active and ongoing scams affecting individuals and families — verified and updated daily.</p>
                 <div className="flex items-center gap-2 text-sm text-slate-300 mt-3">
-                  {isRefreshing ? <RefreshCw className="w-4 h-4 text-green-400 animate-spin" /> : <CheckCircle2 className="w-4 h-4 text-green-400" />}
-                  <span>Last check: {lastUpdated.toLocaleTimeString()}</span>
+                  <CheckCircle2 className="w-4 h-4 text-green-400" />
+                  <span>Updated daily by the Cybelator team</span>
                 </div>
               </div>
               

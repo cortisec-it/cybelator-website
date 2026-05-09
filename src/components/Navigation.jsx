@@ -17,7 +17,7 @@ const primaryItems = [
 ];
 
 const moreItems = [
-  { path: '/threat-maps', label: 'Live Attack Maps' },
+  { path: '/threat-maps', label: 'Cyber Attack Maps' },
   { path: '/news-alerts', label: "Today's Warnings" },
   { path: '/academy', label: 'CortiSec Academy' },
 ];

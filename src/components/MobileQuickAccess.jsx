@@ -7,7 +7,7 @@ const quickLinks = [
   { icon: Bell, label: "Today's Cyber Warnings", path: '/news-alerts', color: 'text-blue-500', bg: 'bg-blue-50', border: 'border-blue-100' },
   { icon: ShieldCheck, label: 'Protection Guides', path: '/guides', color: 'text-teal-500', bg: 'bg-teal-50', border: 'border-teal-100' },
   /*{ icon: GraduationCap, label: 'Training', path: '/training', color: 'text-purple-500', bg: 'bg-purple-50', border: 'border-purple-100' },*/
-  { icon: Globe, label: 'Live Attacks', path: '/threat-maps', color: 'text-cyan-500', bg: 'bg-cyan-50', border: 'border-cyan-100' },
+  { icon: Globe, label: 'Attack Maps', path: '/threat-maps', color: 'text-cyan-500', bg: 'bg-cyan-50', border: 'border-cyan-100' },
 ];
 
 function MobileQuickAccess() {

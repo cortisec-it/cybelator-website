@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp, Download, CheckCircle, XCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 function GuideCard({ guide, onDownload }) {
@@ -88,8 +89,19 @@ function GuideCard({ guide, onDownload }) {
                 </ul>
               </div>
 
+              {/* Guide CTA box */}
+              {guide.cta && (
+                <div className="bg-brand-darker rounded-xl p-5 text-center">
+                  <p className="font-bold text-white mb-1">{guide.cta.headline}</p>
+                  <p className="text-sm text-slate-400 mb-4">{guide.cta.body}</p>
+                  <Button asChild className="bg-brand-accent text-brand-dark font-semibold rounded-full px-6">
+                    <Link to={guide.cta.buttonLink}>{guide.cta.buttonLabel}</Link>
+                  </Button>
+                </div>
+              )}
+
               {/* Download Button */}
-              <Button 
+              <Button
                 onClick={(e) => {
                   e.stopPropagation();
                   onDownload();

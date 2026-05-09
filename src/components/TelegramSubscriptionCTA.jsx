@@ -34,6 +34,10 @@ function TelegramSubscriptionCTA({ variant = 'default' }) {
               <div className="flex items-center justify-center gap-2 text-xs text-blue-100/80">
                  <CheckCircle2 className="w-3 h-3" /> No signup required
               </div>
+              {/* TODO: update member count when channel grows */}
+              <p className="text-center text-xs text-blue-100/60 mt-1">
+                500+ members already staying safe
+              </p>
             </div>
           </div>
           
@@ -65,16 +69,20 @@ function TelegramSubscriptionCTA({ variant = 'default' }) {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
-             <Button 
+             <Button
                 asChild
                 className="bg-white text-blue-600 hover:bg-blue-50 font-bold h-12 px-8 rounded-xl text-lg shadow-lg hover:shadow-white/20 transition-all w-full sm:w-auto group"
               >
                 <a href={telegramLink} target="_blank" rel="noopener noreferrer">
-                  <Send className="w-5 h-5 mr-2 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" /> 
+                  <Send className="w-5 h-5 mr-2 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
                   Join Telegram Channel
                 </a>
               </Button>
           </div>
+          {/* TODO: update member count below when Telegram channel grows */}
+          <p className="mt-3 text-sm text-blue-100/70 text-center lg:text-left">
+            Join 500+ members already staying safe with daily cyber alerts
+          </p>
           
           <div className="mt-6 flex flex-wrap items-center justify-center lg:justify-start gap-4 text-sm text-blue-100/90 font-medium">
             <span className="flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4 text-green-300" /> No signup required</span>

@@ -11,7 +11,7 @@ const ThreatMapModal = lazy(() => import('@/components/ThreatMapModal'));
 const insights = [
   {
     title: 'What are these maps?',
-    content: 'Live cyber threat maps visualize real-time attacks happening globally. They aggregate data from security sensors, honeypots, and threat intelligence networks worldwide.'
+    content: 'Cyber threat maps visualize attacks happening globally, aggregated from security sensors, honeypots, and threat intelligence networks maintained by leading security vendors worldwide.'
   },
   {
     title: 'How to read threat data',
@@ -58,8 +58,8 @@ function ThreatMapsPage() {
   return (
     <>
       <Helmet>
-        <title>Live Cyber Threat Maps - Cybelator</title>
-        <meta name="description" content="Monitor global cyber threats in real-time with Cybelator's interactive threat maps from leading security providers. Visualize attacks, vulnerabilities, and trends." />
+        <title>Cyber Attack Maps - Cybelator</title>
+        <meta name="description" content="Explore interactive cyber attack maps from leading security providers. Visualize global attacks, vulnerabilities, and threat trends." />
       </Helmet>
 
       {/* Hero Section */}
@@ -76,7 +76,7 @@ function ThreatMapsPage() {
           >
             <div className="inline-flex items-center gap-2 bg-brand-accent/20 backdrop-blur-sm border border-brand-accent/30 px-4 py-2 rounded-full mb-6">
               <Globe className="w-5 h-5 text-brand-accent" />
-              <span className="text-brand-accent font-medium">Real-time Intelligence</span>
+              <span className="text-brand-accent font-medium">Global Threat Intelligence</span>
             </div>
 
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
@@ -84,7 +84,7 @@ function ThreatMapsPage() {
             </h1>
 
             <p className="text-base md:text-lg text-slate-300 max-w-2xl mx-auto px-4">
-              Visualize cyber attacks happening worldwide in real-time. Select a provider below to launch their live interactive map.
+              Visualize cyber attacks happening worldwide. Select a provider below to launch their interactive map.
             </p>
           </motion.div>
         </div>
@@ -98,7 +98,7 @@ function ThreatMapsPage() {
             {/* Threat Maps Grid */}
             <div className="lg:col-span-2">
               <div className="flex justify-between items-center mb-6">
-                <h2 className="text-2xl md:text-3xl font-bold text-brand-dark">Live Threat Maps</h2>
+                <h2 className="text-2xl md:text-3xl font-bold text-brand-dark">Cyber Attack Maps</h2>
               </div>
               
               <div className="grid md:grid-cols-2 gap-6">

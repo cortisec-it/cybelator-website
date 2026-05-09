@@ -128,11 +128,11 @@ function CareerRoadmap() {
           className="text-center mt-10"
         >
           <p className="text-sm text-slate-400 mb-2">
-            Stages 3–5 are covered at CortiSec Academy with hands-on enterprise training.
+            Stages 3–5 are covered at CortiSec Academy (by CortiSec Technologies) with hands-on enterprise training.
           </p>
-          <Link to="/academy" className="text-brand-accent font-semibold text-sm hover:underline">
+          <a href="https://cortisec.com/academy" target="_blank" rel="noopener noreferrer" className="text-brand-accent font-semibold text-sm hover:underline">
             Want hands-on enterprise training? Explore CortiSec Academy →
-          </Link>
+          </a>
         </motion.div>
 
       </div>
