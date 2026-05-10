@@ -1,119 +1,136 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Shield, Menu, X, ExternalLink } from 'lucide-react';
+import { Menu, X, LifeBuoy } from 'lucide-react';
 
-const navLinks = [
-  { label: 'Training', href: '#training' },
-  { label: 'Certifications', href: '#certifications' },
-  { label: 'Awareness', href: '#awareness' },
-  { label: 'Assistance', href: '#assistance' },
-  { label: 'Contact', href: '#contact' },
+const NAV = [
+  { label: 'PROGRAM', href: '#training' },
+  { label: 'PRICING', href: '#pricing' },
+  { label: 'CERTS', href: '#certifications' },
+  { label: 'AWARENESS', href: '#awareness' },
 ];
 
+const scrollTo = (href) => document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+
+const DARK = '#0a0d12';
+const BORDER = '#1c2438';
+
 export default function Navbar() {
+  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    const h = () => setScrolled(window.scrollY > 24);
+    window.addEventListener('scroll', h, { passive: true });
+    return () => window.removeEventListener('scroll', h);
   }, []);
 
-  const handleNav = (href) => {
-    setMobileOpen(false);
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
+  const nav = (href) => { setOpen(false); scrollTo(href); };
 
   return (
-    <>
-      <header
-        className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-        style={{
-          background: scrolled ? 'rgba(11,18,34,0.95)' : 'rgba(11,18,34,0.7)',
-          backdropFilter: 'blur(12px)',
-          borderBottom: scrolled ? '1px solid rgba(255,255,255,0.08)' : '1px solid transparent',
-        }}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          {/* Logo */}
-          <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'rgba(13,148,136,0.2)' }}>
-              <Shield className="w-4 h-4" style={{ color: '#14B8A6' }} />
-            </div>
-            <span className="font-extrabold text-white text-lg tracking-tight">Cybelator</span>
-            <span className="hidden sm:inline text-xs text-slate-400 font-medium border-l border-white/10 pl-2.5 ml-0.5">by CortiSec</span>
+    <header
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      style={{
+        background: scrolled ? 'rgba(10,13,18,0.96)' : DARK,
+        borderBottom: `1px solid ${scrolled ? BORDER : 'transparent'}`,
+        backdropFilter: scrolled ? 'blur(16px)' : 'none',
+      }}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+
+        {/* Logo */}
+        <div className="flex flex-col items-start leading-none gap-0.5">
+          <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <span className="font-display font-bold text-white" style={{ fontSize: '1.25rem', letterSpacing: '0.04em' }}>
+              Cybelator
+            </span>
           </button>
+          <a
+            href="https://cortisec.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-mono text-[10px] transition-colors"
+            style={{ color: '#5a6478', letterSpacing: '0.04em', textDecoration: 'none' }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = '#8a96a8')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = '#5a6478')}
+          >
+            by Cortisec Technologies
+          </a>
+        </div>
 
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <button
-                key={link.href}
-                onClick={() => handleNav(link.href)}
-                className="text-sm font-medium px-3.5 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 transition-all"
-              >
-                {link.label}
-              </button>
-            ))}
-          </nav>
-
-          {/* CTA + mobile toggle */}
-          <div className="flex items-center gap-3">
-            <a
-              href="https://cortisec.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center gap-1.5 text-sm font-semibold px-4 py-2 rounded-xl text-white transition-all hover:opacity-90"
-              style={{ background: '#0D9488' }}
-            >
-              CortiSec.com <ExternalLink className="w-3.5 h-3.5" />
-            </a>
+        {/* Desktop links */}
+        <nav className="hidden md:flex items-center gap-0.5">
+          {NAV.map((n) => (
             <button
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden p-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/5"
+              key={n.href}
+              onClick={() => nav(n.href)}
+              className="font-mono text-[11px] px-3 py-2 rounded-lg transition-colors"
+              style={{ color: '#5a6478', letterSpacing: '0.1em' }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = '#8a96a8')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = '#5a6478')}
             >
-              {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {n.label}
+            </button>
+          ))}
+        </nav>
+
+        {/* Desktop CTAs */}
+        <div className="hidden md:flex items-center gap-2">
+          <button
+            onClick={() => nav('#assistance')}
+            className="flex items-center gap-1.5 font-mono text-[11px] px-3 py-2 rounded-lg border transition-all"
+            style={{ borderColor: 'rgba(248,113,113,0.3)', color: '#f87171', background: 'rgba(220,38,38,0.08)', letterSpacing: '0.08em' }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(220,38,38,0.15)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(220,38,38,0.08)'; }}
+          >
+            <LifeBuoy className="w-3 h-3" /> GET HELP
+          </button>
+          <button
+            onClick={() => nav('#contact')}
+            className="font-mono text-[11px] px-4 py-2 rounded-lg transition-all"
+            style={{ background: '#0D9488', color: '#fff', letterSpacing: '0.08em' }}
+            onMouseEnter={(e) => (e.currentTarget.style.background = '#0F766E')}
+            onMouseLeave={(e) => (e.currentTarget.style.background = '#0D9488')}
+          >
+            APPLY NOW
+          </button>
+        </div>
+
+        {/* Mobile toggle */}
+        <button onClick={() => setOpen(!open)} className="md:hidden p-2 rounded-lg" style={{ color: '#5a6478' }}>
+          {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+        </button>
+      </div>
+
+      {/* Mobile drawer */}
+      {open && (
+        <div className="md:hidden px-4 pt-2 pb-4 flex flex-col gap-1" style={{ background: DARK, borderTop: `1px solid ${BORDER}` }}>
+          {NAV.map((n) => (
+            <button
+              key={n.href}
+              onClick={() => nav(n.href)}
+              className="text-left font-mono text-[11px] py-3 px-3 rounded-lg"
+              style={{ color: '#8a96a8', letterSpacing: '0.12em' }}
+            >
+              {n.label}
+            </button>
+          ))}
+          <div className="flex gap-2 mt-2 pt-2" style={{ borderTop: `1px solid ${BORDER}` }}>
+            <button
+              onClick={() => nav('#assistance')}
+              className="flex-1 flex items-center justify-center gap-1.5 font-mono text-[11px] py-2.5 rounded-lg border"
+              style={{ borderColor: 'rgba(248,113,113,0.3)', color: '#f87171', background: 'rgba(220,38,38,0.08)' }}
+            >
+              <LifeBuoy className="w-3 h-3" /> GET HELP
+            </button>
+            <button
+              onClick={() => nav('#contact')}
+              className="flex-1 font-mono text-[11px] py-2.5 rounded-lg"
+              style={{ background: '#0D9488', color: '#fff' }}
+            >
+              APPLY NOW
             </button>
           </div>
         </div>
-      </header>
-
-      {/* Mobile menu */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2 }}
-            className="fixed top-16 left-0 right-0 z-40 md:hidden"
-            style={{ background: 'rgba(11,18,34,0.98)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}
-          >
-            <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
-              {navLinks.map((link) => (
-                <button
-                  key={link.href}
-                  onClick={() => handleNav(link.href)}
-                  className="text-left text-sm font-medium px-4 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-white/5 transition-all"
-                >
-                  {link.label}
-                </button>
-              ))}
-              <a
-                href="https://cortisec.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-2 flex items-center justify-center gap-1.5 text-sm font-semibold px-4 py-3 rounded-xl text-white"
-                style={{ background: '#0D9488' }}
-              >
-                CortiSec.com <ExternalLink className="w-3.5 h-3.5" />
-              </a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+      )}
+    </header>
   );
 }

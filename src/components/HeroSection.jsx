@@ -1,17 +1,35 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Shield, BookOpen, Heart, ArrowRight, ChevronDown } from 'lucide-react';
+import { Shield, ArrowRight, LifeBuoy, ChevronDown, GraduationCap, BookOpen } from 'lucide-react';
 
-const pillars = [
-  { Icon: BookOpen, color: '#14B8A6', bg: 'rgba(13,148,136,0.12)', label: 'Training Institute', href: '#training' },
-  { Icon: Shield, color: '#818CF8', bg: 'rgba(99,102,241,0.12)', label: 'Cyber Awareness', href: '#awareness' },
-  { Icon: Heart, color: '#F43F5E', bg: 'rgba(244,63,94,0.12)', label: 'Cyber Assistance', href: '#assistance' },
+const scrollTo = (href) => document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+
+const PLATFORM_CARDS = [
+  {
+    icon: GraduationCap,
+    label: 'CORTISEC ACADEMY',
+    title: 'Enterprise Cybersecurity Training',
+    desc: '20-week curriculum · Vendor certs · Real labs · Placement support',
+    href: '#training',
+    accent: '#0D9488',
+  },
+  {
+    icon: BookOpen,
+    label: 'CYBER AWARENESS',
+    title: 'Free Public Safety Guides',
+    desc: 'Phishing · UPI scams · Password safety · Privacy · And more',
+    href: '#awareness',
+    accent: '#6366F1',
+  },
+  {
+    icon: LifeBuoy,
+    label: 'CYBER ASSISTANCE',
+    title: 'Help for Cybercrime Victims',
+    desc: 'Guided action checklist · Report to 1930 · CortiSec expert help',
+    href: '#assistance',
+    accent: '#f87171',
+  },
 ];
-
-const scrollTo = (href) => {
-  const el = document.querySelector(href);
-  if (el) el.scrollIntoView({ behavior: 'smooth' });
-};
 
 export default function HeroSection() {
   return (
@@ -19,106 +37,158 @@ export default function HeroSection() {
       className="relative min-h-screen flex flex-col items-center justify-center pt-16 overflow-hidden text-white"
       style={{
         background: [
-          'radial-gradient(ellipse at 20% 110%, rgba(13,148,136,0.14) 0%, transparent 50%)',
-          'radial-gradient(ellipse at 80% 5%, rgba(99,102,241,0.08) 0%, transparent 45%)',
-          'linear-gradient(180deg, #0B1222 0%, #111D2E 100%)',
+          'radial-gradient(ellipse at 15% 115%, rgba(0,229,255,0.06) 0%, transparent 55%)',
+          'radial-gradient(ellipse at 85% 0%, rgba(99,102,241,0.07) 0%, transparent 50%)',
+          'linear-gradient(180deg, #0a0d12 0%, #0e1520 100%)',
         ].join(', '),
       }}
     >
-      {/* Grid overlay */}
+      {/* Subtle grid */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           backgroundImage: [
-            'linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px)',
-            'linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)',
+            'linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px)',
+            'linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px)',
           ].join(', '),
-          backgroundSize: '64px 64px',
+          backgroundSize: '72px 72px',
         }}
       />
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-        >
-          {/* Badge */}
-          <motion.span
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="inline-flex items-center gap-2 text-xs font-semibold px-4 py-1.5 rounded-full mb-8"
-            style={{ background: 'rgba(13,148,136,0.12)', color: '#14B8A6', border: '1px solid rgba(13,148,136,0.25)' }}
-          >
-            <Shield className="w-3.5 h-3.5" /> CortiSec Technologies · Guwahati & Noida
-          </motion.span>
+        <motion.div initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65 }}>
 
-          <h1
-            className="font-extrabold tracking-tight mb-6 text-white leading-none"
-            style={{ fontSize: 'clamp(40px, 7vw, 76px)', letterSpacing: '-0.03em' }}
+          {/* Micro-bar — full-width announcement strip */}
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="font-mono text-[11px] text-center mb-8 px-4 py-2 -mx-4 sm:rounded-xl"
+            style={{ background: '#0f1a2e', color: '#8a96a8', letterSpacing: '0.04em' }}
           >
-            Learn. Stay Safe.
-            <br />
-            <span style={{ color: '#14B8A6' }}>Get Help.</span>
+            CortiSec Academy is now open &nbsp;·&nbsp; Hands-on training at our Guwahati Training Centre &nbsp;·&nbsp;{' '}
+            Delivered through{' '}
+            <span style={{ color: '#00ffff' }}>Cybelator →</span>
+          </motion.div>
+
+          {/* Headline */}
+          <h1
+            className="font-display font-bold text-white leading-none mb-5"
+            style={{ fontSize: 'clamp(42px, 8vw, 80px)', letterSpacing: '-0.02em' }}
+          >
+            Learn. Stay Safe.<br />
+            <span style={{ color: '#00e5ff' }}>Get Help.</span>
           </h1>
 
-          <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-12 leading-relaxed">
-            Enterprise-grade cybersecurity training, real-time threat awareness, and expert assistance for fraud victims — all in one platform.
+          {/* Sub-headline */}
+          <p className="text-base md:text-lg mb-3 max-w-2xl mx-auto leading-relaxed" style={{ color: '#8a96a8' }}>
+            Northeast India's enterprise cybersecurity platform — professional training,
+            public awareness, and direct assistance for cybercrime victims.
+          </p>
+          <p className="font-mono text-xs mb-10" style={{ color: '#5a6478', letterSpacing: '0.1em' }}>
+            Guwahati &nbsp;·&nbsp; Noida &nbsp;·&nbsp; Online
           </p>
 
-          {/* Three pillar buttons */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto mb-12">
-            {pillars.map((p, i) => (
-              <motion.button
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
-                onClick={() => scrollTo(p.href)}
-                className="flex flex-col items-center gap-3 p-5 rounded-2xl border border-white/[0.08] hover:border-white/20 transition-all duration-200 cursor-pointer group"
-                style={{ background: 'rgba(255,255,255,0.03)' }}
-              >
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center"
-                  style={{ background: p.bg, color: p.color }}
-                >
-                  <p.Icon className="w-6 h-6" />
-                </div>
-                <span className="text-sm font-semibold text-white group-hover:text-slate-200 transition-colors">
-                  {p.label}
-                </span>
-                <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-slate-300 transition-colors" />
-              </motion.button>
-            ))}
+          {/* Primary CTAs */}
+          <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6">
+            <button
+              onClick={() => scrollTo('#training')}
+              className="inline-flex items-center justify-center gap-2 font-display font-bold rounded-xl px-8 py-3.5 text-base text-white transition-all"
+              style={{ background: '#0D9488', fontSize: '1.05rem', letterSpacing: '0.02em' }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = '#0F766E')}
+              onMouseLeave={(e) => (e.currentTarget.style.background = '#0D9488')}
+            >
+              Explore the Program <ArrowRight className="w-5 h-5" />
+            </button>
+            <button
+              onClick={() => scrollTo('#contact')}
+              className="inline-flex items-center justify-center gap-2 rounded-xl px-8 py-3.5 text-base font-semibold transition-all"
+              style={{ border: '1px solid rgba(255,255,255,0.15)', color: '#fff', background: 'rgba(255,255,255,0.04)' }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.08)')}
+              onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.04)')}
+            >
+              Apply for Batch 1
+            </button>
           </div>
 
-          {/* Trust line */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.7 }}
-            className="text-sm text-slate-500"
+          {/* Trust anchor — company attribution */}
+          <p className="font-mono text-[11px] mb-6 mt-1" style={{ color: '#5a6478', letterSpacing: '0.04em' }}>
+            A platform by{' '}
+            <a
+              href="https://cortisec.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors"
+              style={{ color: '#8a96a8', textDecoration: 'none' }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = '#fff')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = '#8a96a8')}
+            >
+              Cortisec Technologies Pvt. Ltd. ↗
+            </a>
+            {' '}· Guwahati Training Centre · Noida Operations
+          </p>
+
+          {/* Help link */}
+          <button
+            onClick={() => scrollTo('#assistance')}
+            className="inline-flex items-center gap-1.5 text-sm font-semibold transition-colors mb-12"
+            style={{ color: '#f87171' }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = '#fca5a5')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = '#f87171')}
           >
-            Trusted by 5,000+ learners · CERT-In affiliated · Northeast India's #1 cyber awareness platform
-          </motion.p>
+            <LifeBuoy className="w-4 h-4" /> Need help with a cybercrime? Free guidance →
+          </button>
+
+          {/* Platform cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4">
+            {PLATFORM_CARDS.map((c, i) => {
+              const Icon = c.icon;
+              return (
+                <motion.button
+                  key={c.label}
+                  onClick={() => scrollTo(c.href)}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45, delay: 0.3 + i * 0.1 }}
+                  className="text-left p-4 rounded-2xl border transition-all group"
+                  style={{ background: 'rgba(255,255,255,0.03)', borderColor: '#1c2438' }}
+                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = c.accent + '60'; e.currentTarget.style.background = 'rgba(255,255,255,0.055)'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#1c2438'; e.currentTarget.style.background = 'rgba(255,255,255,0.03)'; }}
+                >
+                  <div className="flex items-center gap-2 mb-2.5">
+                    <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: c.accent + '18' }}>
+                      <Icon className="w-3.5 h-3.5" style={{ color: c.accent }} />
+                    </div>
+                    <span className="font-mono text-[9px] font-medium tracking-widest" style={{ color: c.accent }}>
+                      {c.label}
+                    </span>
+                  </div>
+                  <p className="text-sm font-semibold text-white mb-1">{c.title}</p>
+                  <p className="text-xs leading-relaxed" style={{ color: '#5a6478' }}>{c.desc}</p>
+                </motion.button>
+              );
+            })}
+          </div>
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Cyan separator line */}
+      <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(0,229,255,0.25), transparent)' }} />
+
+      {/* Scroll hint */}
       <motion.button
-        onClick={() => scrollTo('#training')}
+        onClick={() => scrollTo('#stats')}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-slate-500 hover:text-slate-300 transition-colors"
+        transition={{ delay: 1.4, duration: 0.5 }}
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 transition-colors"
+        style={{ color: '#5a6478' }}
+        onMouseEnter={(e) => (e.currentTarget.style.color = '#8a96a8')}
+        onMouseLeave={(e) => (e.currentTarget.style.color = '#5a6478')}
       >
-        <span className="text-xs font-medium tracking-widest uppercase">Explore</span>
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ repeat: Infinity, duration: 1.8, ease: 'easeInOut' }}
-        >
-          <ChevronDown className="w-5 h-5" />
+        <span className="font-mono text-[9px] tracking-widest">SCROLL</span>
+        <motion.div animate={{ y: [0, 5, 0] }} transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}>
+          <ChevronDown className="w-4 h-4" />
         </motion.div>
       </motion.button>
     </section>

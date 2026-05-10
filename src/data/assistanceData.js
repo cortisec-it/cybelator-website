@@ -27,7 +27,7 @@ export const assistanceFlows = [
       { step: '3', title: 'File at cybercrime.gov.in', detail: 'Choose "Report Cyber Crime → Women/Children Related Crime" or "Other Cyber Crimes" as appropriate.' },
       { step: '4', title: 'Contact Cybelator', detail: 'Reach out to our assistance team for guidance on escalation and evidence packaging.' },
     ],
-    helplines: [{ label: 'Cyber Crime Helpline', value: '1930' }, { label: 'WhatsApp', value: '+91-XXXXXXXXXX' }],
+    helplines: [{ label: 'Cyber Crime Helpline', value: '1930' }, { label: 'WhatsApp', value: '+91 72890 54028' }],
   },
   {
     id: 'identity',

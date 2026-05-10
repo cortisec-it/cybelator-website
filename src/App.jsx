@@ -2,9 +2,10 @@ import React from 'react';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import StatsBar from './components/StatsBar';
-import TrainingSection from './components/TrainingSection';
+import CurriculumSection from './components/CurriculumSection';
 import PricingSection from './components/PricingSection';
-import CertificationsSection from './components/CertificationsSection';
+import RolesGrid from './components/RolesGrid';
+import CertSection from './components/CertSection';
 import AwarenessSection from './components/AwarenessSection';
 import AssistanceSection from './components/AssistanceSection';
 import ContactSection from './components/ContactSection';
@@ -17,9 +18,10 @@ export default function App() {
       <main>
         <HeroSection />
         <StatsBar />
-        <TrainingSection />
+        <CurriculumSection />
         <PricingSection />
-        <CertificationsSection />
+        <RolesGrid />
+        <CertSection />
         <AwarenessSection />
         <AssistanceSection />
         <ContactSection />

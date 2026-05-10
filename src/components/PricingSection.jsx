@@ -1,17 +1,31 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle2, Star, ArrowRight } from 'lucide-react';
-import { pricing, targetRoles } from '../data/modules';
+import { CheckCircle2, Star, ArrowRight, AlertTriangle } from 'lucide-react';
+import { pricing } from '../data/modules';
 
-const scrollToContact = () => {
-  document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
-};
+const scrollToContact = () => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
 
 export default function PricingSection() {
   return (
-    <section className="py-20 md:py-28 bg-slate-50 border-y border-slate-100">
+    <section id="pricing" className="py-20 md:py-28 bg-slate-50 border-y border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Pricing header */}
+
+        {/* Founding batch banner */}
+        <motion.div
+          initial={{ opacity: 0, y: -8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+          className="flex items-center gap-2.5 max-w-2xl mx-auto mb-10 px-4 py-2.5 rounded-xl"
+          style={{ background: '#faeeda', border: '0.5px solid #ef9f27' }}
+        >
+          <Star className="w-4 h-4 shrink-0" style={{ color: '#ba7517' }} />
+          <p className="text-sm" style={{ color: '#633806' }}>
+            <strong>Founding Batch</strong> — First 20 students receive priority mentorship and founding member recognition.
+          </p>
+        </motion.div>
+
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -20,12 +34,12 @@ export default function PricingSection() {
           className="text-center mb-12"
         >
           <span
-            className="inline-flex items-center gap-1.5 text-xs font-semibold px-4 py-1.5 rounded-full mb-4"
-            style={{ background: '#F0FDFA', color: '#0D9488', border: '1px solid #99f6e4' }}
+            className="inline-flex items-center gap-1.5 font-mono text-[10px] px-4 py-1.5 rounded-full mb-4"
+            style={{ background: '#F0FDFA', color: '#0D9488', border: '1px solid #99f6e4', letterSpacing: '0.12em' }}
           >
-            Pricing
+            PRICING
           </span>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mb-4">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-slate-900 tracking-tight mb-4">
             Transparent, EMI-Friendly Fees
           </h2>
           <p className="text-slate-500 text-base max-w-xl mx-auto">
@@ -34,7 +48,7 @@ export default function PricingSection() {
         </motion.div>
 
         {/* Pricing cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
           {pricing.map((plan, i) => (
             <motion.div
               key={plan.id}
@@ -50,17 +64,18 @@ export default function PricingSection() {
             >
               {plan.badge && (
                 <div
-                  className="absolute -top-3.5 left-1/2 -translate-x-1/2 flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold text-white"
-                  style={{ background: '#0D9488' }}
+                  className="absolute -top-3.5 left-1/2 -translate-x-1/2 flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold text-white whitespace-nowrap"
+                  style={{ background: plan.highlight ? '#0D9488' : '#d97706' }}
                 >
                   <Star className="w-3 h-3" /> {plan.badge}
                 </div>
               )}
+
               <div className="mb-6">
                 <h3 className={`text-lg font-bold mb-3 ${plan.highlight ? 'text-white' : 'text-slate-800'}`}>
                   {plan.name}
                 </h3>
-                <div className={`text-4xl font-extrabold mb-1 ${plan.highlight ? 'text-white' : 'text-slate-900'}`}>
+                <div className={`font-display text-4xl font-bold mb-1 ${plan.highlight ? 'text-white' : 'text-slate-900'}`} style={{ letterSpacing: '-0.02em' }}>
                   {plan.price}
                 </div>
                 <div className={`text-sm ${plan.highlight ? 'text-slate-400' : 'text-slate-500'}`}>
@@ -93,30 +108,20 @@ export default function PricingSection() {
           ))}
         </div>
 
-        {/* Target roles */}
+        {/* Mandatory placement disclaimer */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          className="flex items-start gap-2 max-w-2xl mx-auto mb-10 p-4 rounded-xl"
+          style={{ background: 'rgba(251,191,36,0.06)', border: '1px solid rgba(251,191,36,0.2)' }}
         >
-          <h3 className="text-xl font-bold text-slate-800 text-center mb-8">Roles You Can Target After This Program</h3>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {targetRoles.map((role, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: i * 0.06 }}
-                className="bg-white rounded-xl p-4 border border-slate-200 text-center"
-              >
-                <p className="text-sm font-bold text-slate-800 mb-1">{role.title}</p>
-                <p className="text-xs text-slate-400 mb-2 font-medium">{role.level}</p>
-                <p className="text-sm font-bold" style={{ color: '#0D9488' }}>{role.salary}</p>
-              </motion.div>
-            ))}
-          </div>
+          <AlertTriangle className="w-4 h-4 mt-0.5 shrink-0 text-amber-500" />
+          <p className="text-xs text-slate-500 leading-relaxed">
+            <span className="font-semibold text-slate-600">Placement disclaimer: </span>
+            CortiSec does not guarantee placement. Placement support is provided on a best-effort basis.
+            Outcomes depend on individual performance, market conditions, and employer decisions.
+          </p>
         </motion.div>
       </div>
     </section>

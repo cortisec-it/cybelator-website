@@ -10,32 +10,26 @@ const phaseColors = {
   4: '#14B8A6',
 };
 
+const INITIAL_SHOW = 4;
+
 function ModuleCard({ mod, isOpen, onToggle }) {
+  const color = phaseColors[mod.phase];
   return (
     <div
       className="border rounded-2xl overflow-hidden transition-all duration-200"
-      style={{
-        borderColor: isOpen ? phaseColors[mod.phase] + '50' : '#e2e8f0',
-        background: isOpen ? '#fafffe' : '#fff',
-      }}
+      style={{ borderColor: isOpen ? color + '45' : '#e2e8f0', background: isOpen ? '#fafffe' : '#fff' }}
     >
-      <button
-        onClick={onToggle}
-        className="w-full flex items-start gap-4 p-5 text-left"
-      >
+      <button onClick={onToggle} className="w-full flex items-start gap-4 p-5 text-left">
         <div
           className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 mt-0.5 font-mono text-sm font-bold"
-          style={{ background: phaseColors[mod.phase] + '18', color: phaseColors[mod.phase] }}
+          style={{ background: color + '15', color }}
         >
           {String(mod.id).padStart(2, '0')}
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap">
             <span className="text-base font-bold text-slate-800">{mod.title}</span>
-            <span
-              className="text-xs font-semibold px-2 py-0.5 rounded-full"
-              style={{ background: phaseColors[mod.phase] + '15', color: phaseColors[mod.phase] }}
-            >
+            <span className="text-xs font-semibold px-2 py-0.5 rounded-full" style={{ background: color + '12', color }}>
               {mod.weeks}
             </span>
           </div>
@@ -60,7 +54,7 @@ function ModuleCard({ mod, isOpen, onToggle }) {
                 <ul className="space-y-1.5">
                   {mod.topics.map((t, i) => (
                     <li key={i} className="flex items-start gap-2 text-sm text-slate-600">
-                      <CheckCircle2 className="w-4 h-4 mt-0.5 shrink-0" style={{ color: phaseColors[mod.phase] }} />
+                      <CheckCircle2 className="w-4 h-4 mt-0.5 shrink-0" style={{ color }} />
                       {t}
                     </li>
                   ))}
@@ -68,11 +62,11 @@ function ModuleCard({ mod, isOpen, onToggle }) {
               </div>
               <div
                 className="rounded-xl p-4 flex items-start gap-3"
-                style={{ background: phaseColors[mod.phase] + '0D', border: `1px solid ${phaseColors[mod.phase]}25` }}
+                style={{ background: color + '0C', border: `1px solid ${color}22` }}
               >
-                <FlaskConical className="w-4 h-4 mt-0.5 shrink-0" style={{ color: phaseColors[mod.phase] }} />
+                <FlaskConical className="w-4 h-4 mt-0.5 shrink-0" style={{ color }} />
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: phaseColors[mod.phase] }}>Lab Included</p>
+                  <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color }}>Lab Included</p>
                   <p className="text-sm text-slate-600">{mod.lab}</p>
                 </div>
               </div>
@@ -84,9 +78,7 @@ function ModuleCard({ mod, isOpen, onToggle }) {
   );
 }
 
-const INITIAL_SHOW = 4;
-
-export default function TrainingSection() {
+export default function CurriculumSection() {
   const [openId, setOpenId] = useState(null);
   const [activePhase, setActivePhase] = useState(0);
   const [showAll, setShowAll] = useState(false);
@@ -97,6 +89,7 @@ export default function TrainingSection() {
   return (
     <section id="training" className="py-20 md:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -106,12 +99,12 @@ export default function TrainingSection() {
           className="text-center mb-14"
         >
           <span
-            className="inline-flex items-center gap-1.5 text-xs font-semibold px-4 py-1.5 rounded-full mb-4"
-            style={{ background: '#F0FDFA', color: '#0D9488', border: '1px solid #99f6e4' }}
+            className="inline-flex items-center gap-1.5 font-mono text-[10px] px-4 py-1.5 rounded-full mb-4"
+            style={{ background: '#F0FDFA', color: '#0D9488', border: '1px solid #99f6e4', letterSpacing: '0.12em' }}
           >
-            Training Institute
+            TRAINING INSTITUTE
           </span>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mb-4">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-slate-900 tracking-tight mb-4">
             20-Week Enterprise Cybersecurity Program
           </h2>
           <p className="text-slate-500 text-base max-w-xl mx-auto leading-relaxed">
@@ -119,31 +112,8 @@ export default function TrainingSection() {
           </p>
         </motion.div>
 
-        {/* Phase tabs */}
-        <div className="flex flex-wrap gap-2 justify-center mb-10">
-          <button
-            onClick={() => setActivePhase(0)}
-            className="px-4 py-2 rounded-xl text-sm font-semibold transition-all"
-            style={activePhase === 0 ? { background: '#0D9488', color: '#fff' } : { background: '#f1f5f9', color: '#64748b' }}
-          >
-            All Modules
-          </button>
-          {phases.map((ph) => (
-            <button
-              key={ph.id}
-              onClick={() => setActivePhase(ph.id)}
-              className="px-4 py-2 rounded-xl text-sm font-semibold transition-all"
-              style={activePhase === ph.id
-                ? { background: ph.color, color: '#fff' }
-                : { background: '#f1f5f9', color: '#64748b' }}
-            >
-              {ph.label}: {ph.name}
-            </button>
-          ))}
-        </div>
-
         {/* Phase timeline */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           {phases.map((ph, i) => (
             <motion.div
               key={ph.id}
@@ -152,17 +122,42 @@ export default function TrainingSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: i * 0.07 }}
               className="rounded-xl p-4 border"
-              style={{ borderColor: ph.color + '30', background: ph.color + '08' }}
+              style={{ borderColor: ph.color + '28', background: ph.color + '07' }}
             >
               <div className="flex items-center gap-2 mb-1.5">
                 <div className="w-2 h-2 rounded-full" style={{ background: ph.color }} />
-                <span className="text-xs font-bold uppercase tracking-wide" style={{ color: ph.color }}>{ph.label}</span>
+                <span className="font-mono text-[10px] font-bold uppercase tracking-wide" style={{ color: ph.color }}>{ph.label}</span>
               </div>
               <p className="text-sm font-semibold text-slate-800">{ph.name}</p>
               <p className="text-xs text-slate-500 flex items-center gap-1 mt-1">
                 <Clock className="w-3 h-3" /> {ph.weeks}
               </p>
             </motion.div>
+          ))}
+        </div>
+
+        {/* Phase filter tabs */}
+        <div className="flex flex-wrap gap-2 justify-center mb-8">
+          <button
+            onClick={() => { setActivePhase(0); setShowAll(false); setOpenId(null); }}
+            className="px-4 py-2 rounded-xl font-mono text-xs transition-all"
+            style={activePhase === 0
+              ? { background: '#0D9488', color: '#fff' }
+              : { background: '#f1f5f9', color: '#64748b' }}
+          >
+            ALL MODULES
+          </button>
+          {phases.map((ph) => (
+            <button
+              key={ph.id}
+              onClick={() => { setActivePhase(ph.id); setShowAll(false); setOpenId(null); }}
+              className="px-4 py-2 rounded-xl font-mono text-xs transition-all"
+              style={activePhase === ph.id
+                ? { background: ph.color, color: '#fff' }
+                : { background: '#f1f5f9', color: '#64748b' }}
+            >
+              {ph.label.toUpperCase()}: {ph.name.toUpperCase()}
+            </button>
           ))}
         </div>
 
@@ -174,7 +169,7 @@ export default function TrainingSection() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: 0.18 }}
               className="space-y-3"
             >
               {filtered.map((mod) => (
@@ -188,21 +183,16 @@ export default function TrainingSection() {
             </motion.div>
           </AnimatePresence>
 
-          {/* Show all / collapse toggle */}
           {allFiltered.length > INITIAL_SHOW && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-center pt-2"
-            >
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center pt-2">
               <button
                 onClick={() => { setShowAll(!showAll); setOpenId(null); }}
-                className="inline-flex items-center gap-2 text-sm font-semibold px-6 py-3 rounded-xl border transition-all hover:bg-slate-50"
-                style={{ borderColor: '#0D9488', color: '#0D9488' }}
+                className="inline-flex items-center gap-2 font-mono text-xs px-6 py-3 rounded-xl border transition-all hover:bg-slate-50"
+                style={{ borderColor: '#0D9488', color: '#0D9488', letterSpacing: '0.06em' }}
               >
                 {showAll
-                  ? <><ChevronsUp className="w-4 h-4" /> Show fewer modules</>
-                  : <><ChevronsDown className="w-4 h-4" /> Show all {allFiltered.length} modules</>}
+                  ? <><ChevronsUp className="w-4 h-4" /> SHOW FEWER</>
+                  : <><ChevronsDown className="w-4 h-4" /> SHOW ALL {allFiltered.length} MODULES</>}
               </button>
             </motion.div>
           )}

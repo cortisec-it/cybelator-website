@@ -158,8 +158,8 @@ export const modules = [
 export const phases = [
   { id: 1, label: 'Phase 1', name: 'Foundation', weeks: 'Weeks 1–6', color: '#0D9488' },
   { id: 2, label: 'Phase 2', name: 'Core Security', weeks: 'Weeks 7–13', color: '#6366F1' },
-  { id: 3, label: 'Phase 3', name: 'Advanced & Automation', weeks: 'Weeks 14–16', color: '#FF6B35' },
-  { id: 4, label: 'Phase 4', name: 'Capstone & Placement', weeks: 'Weeks 17–20', color: '#14B8A6' },
+  { id: 3, label: 'Phase 3', name: 'Operations', weeks: 'Weeks 14–16', color: '#FF6B35' },
+  { id: 4, label: 'Phase 4', name: 'Readiness', weeks: 'Weeks 17–20', color: '#14B8A6' },
 ];
 
 export const pricing = [
@@ -169,7 +169,7 @@ export const pricing = [
     price: '₹35,000',
     emi: '₹3,000 × 12 months',
     highlight: false,
-    badge: null,
+    badge: 'Founding Batch',
     features: [
       '20-week full curriculum',
       '24/7 lab access',
@@ -221,4 +221,8 @@ export const targetRoles = [
   { title: 'Threat Intelligence Analyst', level: 'Mid', salary: '₹7–14 LPA' },
   { title: 'Incident Response Analyst', level: 'Mid', salary: '₹8–16 LPA' },
   { title: 'Security Automation Engineer', level: 'Senior', salary: '₹12–24 LPA' },
+  { title: 'IAM Support Analyst', level: 'Entry', salary: '₹3.5–5.5 LPA' },
+  { title: 'Security Monitoring Analyst', level: 'Entry', salary: '₹4–6 LPA' },
+  { title: 'NOC / SOC Engineer', level: 'Entry', salary: '₹3–5 LPA' },
+  { title: 'Cybersecurity Support Engineer', level: 'Entry', salary: '₹3.5–5.5 LPA' },
 ];

@@ -1,196 +1,81 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { CreditCard, Users, ShieldAlert, ChevronDown, ChevronUp, Phone, ExternalLink } from 'lucide-react';
-import { assistanceFlows, faqItems } from '../data/assistanceData';
-
-const iconMap = { CreditCard, Users, ShieldAlert };
-
-const flowColors = {
-  financial: '#DC2626',
-  social: '#6366F1',
-  identity: '#D97706',
-};
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Shield, Phone } from 'lucide-react';
+import GuidedFlow from './GuidedFlow';
 
 export default function AssistanceSection() {
-  const [activeFlow, setActiveFlow] = useState('financial');
-  const [openFaq, setOpenFaq] = useState(null);
-
-  const currentFlow = assistanceFlows.find((f) => f.id === activeFlow);
-
   return (
-    <section id="assistance" className="py-20 md:py-28 bg-white">
+    <section id="assistance" className="py-20 md:py-28" style={{ background: '#f8f9fa' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+          className="text-center mb-8"
         >
           <span
-            className="inline-flex items-center gap-1.5 text-xs font-semibold px-4 py-1.5 rounded-full mb-4"
-            style={{ background: '#FEF2F2', color: '#DC2626', border: '1px solid #fca5a5' }}
+            className="inline-flex items-center gap-1.5 font-mono text-[10px] px-4 py-1.5 rounded-full mb-4"
+            style={{ background: '#e6f1fb', color: '#0c447c', border: '1px solid #b5d4f4', letterSpacing: '0.12em' }}
           >
-            Cyber Assistance
+            CYBER ASSISTANCE
           </span>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mb-4">
-            Victim Support & Reporting Guide
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight mb-4" style={{ color: '#1a1a2e' }}>
+            Were You a Cybercrime Victim?
           </h2>
-          <p className="text-slate-500 text-base max-w-xl mx-auto">
-            If you've been targeted by cyber fraud, follow these steps immediately. Time is critical — especially for financial fraud.
+          <p className="text-base max-w-xl mx-auto" style={{ color: '#6b7280' }}>
+            Free step-by-step guidance on what to do right now — which authorities to contact, what evidence to preserve, and how to protect yourself from further damage.
           </p>
         </motion.div>
 
-        {/* Emergency banner */}
+        {/* Mandatory disclaimer — first thing, before any interaction */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="mb-10 rounded-2xl p-5 flex flex-col sm:flex-row items-center gap-4 justify-between"
-          style={{ background: '#0B1222', border: '1px solid rgba(255,255,255,0.08)' }}
+          className="flex items-start gap-3 max-w-2xl mx-auto mb-8 p-4 rounded-xl"
+          style={{ background: '#e6f1fb', border: '0.5px solid #b5d4f4' }}
         >
-          <div className="flex items-center gap-3">
-            <Phone className="w-5 h-5 shrink-0" style={{ color: '#14B8A6' }} />
-            <div>
-              <p className="text-sm font-bold text-white">Financial Fraud? Call Immediately</p>
-              <p className="text-xs text-slate-400">National Cyber Crime Helpline — 24/7</p>
-            </div>
-          </div>
-          <a
-            href="tel:1930"
-            className="flex items-center gap-2 font-black text-white text-2xl tracking-tight hover:opacity-80 transition-opacity"
-            style={{ color: '#14B8A6' }}
-          >
-            1930
-          </a>
+          <Shield className="w-5 h-5 mt-0.5 shrink-0" style={{ color: '#0c447c' }} />
+          <p className="text-sm leading-relaxed" style={{ color: '#0c447c' }}>
+            Cortisec Technologies provides this as a voluntary public service. We are not a law enforcement agency.
+            We do not store your information. This tool gives guidance only — not legal advice.
+          </p>
         </motion.div>
 
-        {/* Flow selector */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
-          {assistanceFlows.map((flow) => {
-            const Icon = iconMap[flow.icon];
-            const isActive = activeFlow === flow.id;
-            return (
-              <button
-                key={flow.id}
-                onClick={() => setActiveFlow(flow.id)}
-                className="flex items-start gap-3 p-5 rounded-2xl border-2 text-left transition-all"
-                style={{
-                  borderColor: isActive ? flow.color : '#e2e8f0',
-                  background: isActive ? flow.bg : '#fff',
-                }}
-              >
-                <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-                  style={{ background: flow.color + '15', color: flow.color }}
-                >
-                  <Icon className="w-5 h-5" />
-                </div>
-                <div>
-                  <p className="text-sm font-bold text-slate-800">{flow.title}</p>
-                  <p className="text-xs text-slate-500 mt-0.5 leading-snug">{flow.desc}</p>
-                </div>
-              </button>
-            );
-          })}
-        </div>
+        {/* 1930 emergency banner */}
+        <motion.a
+          href="tel:1930"
+          initial={{ opacity: 0, scale: 0.98 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="flex items-center justify-center gap-4 max-w-2xl mx-auto mb-10 p-5 rounded-2xl no-underline transition-all"
+          style={{ background: '#e6f1fb', border: '1px solid #b5d4f4' }}
+          onMouseEnter={(e) => (e.currentTarget.style.background = '#d0e8f8')}
+          onMouseLeave={(e) => (e.currentTarget.style.background = '#e6f1fb')}
+        >
+          <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style={{ background: '#0c447c18' }}>
+            <Phone className="w-5 h-5" style={{ color: '#0c447c' }} />
+          </div>
+          <div>
+            <p className="font-display text-4xl font-bold leading-none" style={{ color: '#0c447c' }}>1930</p>
+            <p className="font-mono text-[10px] tracking-widest mt-1" style={{ color: '#3b82f6', letterSpacing: '0.1em' }}>
+              NATIONAL CYBERCRIME HELPLINE · 24×7 · CALL NOW IF MONEY WAS LOST
+            </p>
+          </div>
+        </motion.a>
 
-        {/* Step-by-step guide */}
-        <AnimatePresence mode="wait">
-          {currentFlow && (
-            <motion.div
-              key={activeFlow}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.25 }}
-              className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12"
-            >
-              {currentFlow.steps.map((step, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: -12 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.08, duration: 0.3 }}
-                  className="flex items-start gap-4 p-5 rounded-2xl border border-slate-200 bg-white"
-                >
-                  <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 font-bold text-sm text-white"
-                    style={{ background: flowColors[activeFlow] }}
-                  >
-                    {step.step}
-                  </div>
-                  <div>
-                    <p className="text-sm font-bold text-slate-800 mb-1">{step.title}</p>
-                    <p className="text-xs text-slate-500 leading-relaxed">{step.detail}</p>
-                  </div>
-                </motion.div>
-              ))}
-
-              {/* Helplines */}
-              <div
-                className="md:col-span-2 rounded-2xl p-5 flex flex-wrap gap-4 items-center"
-                style={{ background: flowColors[activeFlow] + '0D', border: `1px solid ${flowColors[activeFlow]}30` }}
-              >
-                <span className="text-sm font-semibold text-slate-700">Quick helplines:</span>
-                {currentFlow.helplines.map((h, i) => (
-                  <span key={i} className="flex items-center gap-2 text-sm font-bold" style={{ color: flowColors[activeFlow] }}>
-                    {h.label}: <span className="font-black">{h.value}</span>
-                  </span>
-                ))}
-                <a
-                  href="https://cybercrime.gov.in"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="ml-auto flex items-center gap-1.5 text-sm font-semibold underline"
-                  style={{ color: flowColors[activeFlow] }}
-                >
-                  File Online <ExternalLink className="w-3.5 h-3.5" />
-                </a>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* FAQ */}
+        {/* Guided flow */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="max-w-3xl mx-auto"
         >
-          <h3 className="text-xl font-bold text-slate-800 mb-6">Frequently Asked Questions</h3>
-          <div className="space-y-3">
-            {faqItems.map((faq, i) => (
-              <div key={i} className="border border-slate-200 rounded-2xl overflow-hidden bg-white">
-                <button
-                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  className="w-full flex items-center justify-between gap-4 p-5 text-left"
-                >
-                  <span className="text-sm font-semibold text-slate-800">{faq.q}</span>
-                  {openFaq === i ? (
-                    <ChevronUp className="w-5 h-5 text-slate-400 shrink-0" />
-                  ) : (
-                    <ChevronDown className="w-5 h-5 text-slate-400 shrink-0" />
-                  )}
-                </button>
-                <AnimatePresence>
-                  {openFaq === i && (
-                    <motion.div
-                      initial={{ height: 0 }}
-                      animate={{ height: 'auto' }}
-                      exit={{ height: 0 }}
-                      transition={{ duration: 0.2 }}
-                      className="overflow-hidden"
-                    >
-                      <p className="px-5 pb-5 text-sm text-slate-500 leading-relaxed">{faq.a}</p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            ))}
-          </div>
+          <GuidedFlow />
         </motion.div>
       </div>
     </section>

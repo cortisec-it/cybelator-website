@@ -1,27 +1,85 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { AlertTriangle, Shield, Brain, ExternalLink } from 'lucide-react';
-import { threats, categories, authorities } from '../data/awarenessData';
+import { AlertTriangle, AlertCircle, Info, ChevronDown, ChevronUp } from 'lucide-react';
+import { awarenessTopics, severityOrder } from '../data/awarenessTopics';
 
-const categoryIcons = {
-  'Scam Alert': AlertTriangle,
-  'Safety Tip': Shield,
-  'Threat Intel': Brain,
+const SEVERITY_META = {
+  Critical: { color: '#DC2626', bg: '#FEF2F2', border: '#fecaca', icon: AlertTriangle, label: 'CRITICAL' },
+  High:     { color: '#D97706', bg: '#FFFBEB', border: '#fde68a', icon: AlertCircle, label: 'HIGH' },
+  Medium:   { color: '#2563EB', bg: '#EFF6FF', border: '#bfdbfe', icon: Info, label: 'MEDIUM' },
 };
 
-const severityStyle = {
-  Critical: { bg: '#FEF2F2', border: '#fca5a5', badge: '#DC2626' },
-  High: { bg: '#FFFBEB', border: '#fcd34d', badge: '#D97706' },
-  Medium: { bg: '#EFF6FF', border: '#93c5fd', badge: '#2563EB' },
-};
+const FILTERS = ['All', 'Critical', 'High', 'Medium'];
 
-export default function AwarenessSection() {
-  const [active, setActive] = useState('All');
-
-  const filtered = active === 'All' ? threats : threats.filter((t) => t.category === active);
+function TopicCard({ topic }) {
+  const [open, setOpen] = useState(false);
+  const meta = SEVERITY_META[topic.severity];
+  const Icon = meta.icon;
 
   return (
-    <section id="awareness" className="py-20 md:py-28 bg-slate-50 border-y border-slate-100">
+    <div
+      className="bg-white rounded-2xl border overflow-hidden transition-all"
+      style={{ borderColor: open ? meta.border : '#e2e8f0' }}
+    >
+      <button onClick={() => setOpen(!open)} className="w-full flex items-start gap-3 p-5 text-left">
+        <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5" style={{ background: meta.bg }}>
+          <Icon className="w-4 h-4" style={{ color: meta.color }} />
+        </div>
+        <div className="flex-1 min-w-0">
+          <div className="mb-0.5">
+            <span className="font-mono text-[9px] font-bold px-2 py-0.5 rounded tracking-widest" style={{ background: meta.bg, color: meta.color }}>
+              {meta.label}
+            </span>
+          </div>
+          <p className="text-sm font-bold text-slate-800">{topic.title}</p>
+          <p className="text-xs text-slate-500 mt-0.5 leading-relaxed">{topic.summary}</p>
+        </div>
+        <div className="shrink-0 text-slate-400 mt-1">
+          {open ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+        </div>
+      </button>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.22 }}
+            className="overflow-hidden"
+          >
+            <div className="px-5 pb-5 space-y-4">
+              <ul className="space-y-2">
+                {topic.body.map((point, i) => (
+                  <li key={i} className="flex items-start gap-2.5 text-sm text-slate-600">
+                    <span className="mt-2 w-1.5 h-1.5 rounded-full shrink-0" style={{ background: meta.color }} />
+                    {point}
+                  </li>
+                ))}
+              </ul>
+              <div className="rounded-xl p-4 flex items-start gap-2.5" style={{ background: meta.bg, border: `1px solid ${meta.border}` }}>
+                <span className="font-mono text-[9px] font-bold px-2 py-1 rounded shrink-0" style={{ background: meta.color, color: '#fff', letterSpacing: '0.06em' }}>
+                  TIP
+                </span>
+                <p className="text-sm text-slate-700 leading-relaxed">{topic.tip}</p>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+export default function AwarenessSection() {
+  const [filter, setFilter] = useState('All');
+
+  const visible = filter === 'All'
+    ? [...awarenessTopics].sort((a, b) => severityOrder.indexOf(a.severity) - severityOrder.indexOf(b.severity))
+    : awarenessTopics.filter((t) => t.severity === filter);
+
+  return (
+    <section id="awareness" className="py-20 md:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -31,126 +89,59 @@ export default function AwarenessSection() {
           className="text-center mb-12"
         >
           <span
-            className="inline-flex items-center gap-1.5 text-xs font-semibold px-4 py-1.5 rounded-full mb-4"
-            style={{ background: '#FEF2F2', color: '#DC2626', border: '1px solid #fca5a5' }}
+            className="inline-flex items-center gap-1.5 font-mono text-[10px] px-4 py-1.5 rounded-full mb-4"
+            style={{ background: '#FEF2F2', color: '#DC2626', border: '1px solid #fecaca', letterSpacing: '0.12em' }}
           >
-            Cyber Awareness
+            CYBER AWARENESS
           </span>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mb-4">
-            Current Threats & Safety Advisories
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-slate-900 tracking-tight mb-4">
+            Free Security Guides for Everyone
           </h2>
           <p className="text-slate-500 text-base max-w-xl mx-auto">
-            Verified alerts from CERT-In, RBI, and MHA. Updated regularly to keep you informed and protected.
+            Plain-language guides on the threats that actually affect people in India. No jargon. No login required.
           </p>
         </motion.div>
 
-        {/* Category tabs */}
         <div className="flex flex-wrap gap-2 justify-center mb-10">
-          {categories.map((cat) => {
-            const Icon = cat !== 'All' ? categoryIcons[cat] : null;
+          {FILTERS.map((f) => {
+            const meta = f === 'All' ? null : SEVERITY_META[f];
+            const active = filter === f;
             return (
               <button
-                key={cat}
-                onClick={() => setActive(cat)}
-                className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold transition-all"
-                style={active === cat
-                  ? { background: '#DC2626', color: '#fff' }
-                  : { background: '#fff', color: '#64748b', border: '1px solid #e2e8f0' }}
+                key={f}
+                onClick={() => setFilter(f)}
+                className="px-4 py-2 rounded-xl font-mono text-xs transition-all"
+                style={active
+                  ? { background: meta ? meta.color : '#0f172a', color: '#fff' }
+                  : { background: '#f1f5f9', color: '#64748b' }}
               >
-                {Icon && <Icon className="w-3.5 h-3.5" />}
-                {cat}
+                {f.toUpperCase()}
               </button>
             );
           })}
         </div>
 
-        {/* Threat cards */}
         <AnimatePresence mode="wait">
           <motion.div
-            key={active}
+            key={filter}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-12"
+            transition={{ duration: 0.18 }}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-4"
           >
-            {filtered.map((threat, i) => {
-              const sv = severityStyle[threat.severity] || severityStyle.Medium;
-              const Icon = categoryIcons[threat.category] || Shield;
-              return (
-                <motion.div
-                  key={threat.id}
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: (i % 3) * 0.07 }}
-                  className="bg-white rounded-2xl overflow-hidden border flex flex-col"
-                  style={{ borderColor: sv.border }}
-                >
-                  {/* Colored top strip */}
-                  <div className="h-1" style={{ background: threat.color }} />
-                  <div className="p-5 flex flex-col gap-3 flex-1">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <span
-                        className="flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-full"
-                        style={{ background: threat.bg, color: threat.color }}
-                      >
-                        <Icon className="w-3 h-3" /> {threat.category}
-                      </span>
-                      <span
-                        className="text-xs font-bold px-2 py-0.5 rounded-full text-white"
-                        style={{ background: sv.badge }}
-                      >
-                        {threat.severity}
-                      </span>
-                    </div>
-                    <h3 className="text-sm font-bold text-slate-800 leading-snug">{threat.title}</h3>
-                    <p className="text-xs text-slate-500 leading-relaxed flex-1">{threat.desc}</p>
-                    <div className="flex items-center justify-between pt-2 border-t border-slate-100">
-                      <span className="text-xs font-mono text-slate-400">{threat.source}</span>
-                      <span className="text-xs text-slate-400">{threat.date}</span>
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
+            {visible.map((topic, i) => (
+              <motion.div
+                key={topic.id}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: i * 0.05 }}
+              >
+                <TopicCard topic={topic} />
+              </motion.div>
+            ))}
           </motion.div>
         </AnimatePresence>
-
-        {/* Authority bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
-          className="rounded-2xl bg-white border border-slate-200 p-6"
-        >
-          <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-4 text-center">
-            Verified Sources & Reporting Authorities
-          </p>
-          <div className="flex flex-wrap gap-3 justify-center">
-            {authorities.map((auth, i) => (
-              <span
-                key={i}
-                className="text-sm font-semibold px-4 py-2 rounded-xl bg-slate-50 text-slate-600 border border-slate-200"
-              >
-                {auth}
-              </span>
-            ))}
-          </div>
-          <div className="mt-5 text-center">
-            <a
-              href="https://cybercrime.gov.in"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold"
-              style={{ color: '#DC2626' }}
-            >
-              Report Cyber Crime at cybercrime.gov.in <ExternalLink className="w-4 h-4" />
-            </a>
-            <span className="mx-3 text-slate-300">·</span>
-            <span className="text-sm font-bold text-slate-700">Call 1930 for financial fraud</span>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
