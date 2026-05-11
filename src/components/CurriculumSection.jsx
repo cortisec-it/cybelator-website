@@ -111,7 +111,7 @@ export default function CurriculumSection() {
             For freshers, B.Tech / MCA / BCA / B.Sc. IT graduates & career switchers — zero cybersecurity experience required.
           </p>
           <p className="text-slate-500 text-base max-w-xl mx-auto leading-relaxed">
-            Industry-led curriculum built by practicing security engineers. Real labs, real tools, real-world scenarios.
+            Industry-led curriculum built by practicing cybersecurity engineers. Real labs, real tools, real-world scenarios.
           </p>
         </motion.div>
 
