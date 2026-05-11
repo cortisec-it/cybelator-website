@@ -167,7 +167,6 @@ export const pricing = [
     id: 'standard',
     name: 'Standard Program',
     price: '₹35,000',
-    emi: '₹3,000 × 12 months',
     highlight: false,
     badge: 'Founding Batch',
     features: [
@@ -183,7 +182,6 @@ export const pricing = [
     id: 'placement',
     name: 'Placement Track',
     price: '₹45,000',
-    emi: '₹4,000 × 12 months',
     highlight: true,
     badge: 'Most Popular',
     features: [
@@ -199,7 +197,6 @@ export const pricing = [
     id: 'short',
     name: 'Short Course',
     price: '₹12,000',
-    emi: '₹4,000 × 3 months',
     highlight: false,
     badge: null,
     features: [

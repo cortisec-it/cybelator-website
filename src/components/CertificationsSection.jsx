@@ -53,7 +53,7 @@ function CertCard({ cert }) {
           <div className="bg-slate-50 rounded-xl p-3">
             <p className="text-xs text-slate-400 font-mono uppercase tracking-wide mb-1">Training fee</p>
             <p className="text-base font-bold text-slate-800">{cert.trainingFee}</p>
-            <p className="text-xs text-slate-400 mt-0.5">{cert.trainingEmi}</p>
+
           </div>
           <div className="bg-slate-50 rounded-xl p-3">
             <p className="text-xs text-slate-400 font-mono uppercase tracking-wide mb-1">Exam fee</p>
@@ -173,7 +173,7 @@ export default function CertificationsSection() {
           className="mt-10 rounded-2xl p-5 bg-amber-50 border border-amber-200"
         >
           <p className="text-sm text-amber-800">
-            <strong>Pricing note:</strong> Training fees are Cortisec's program fees covering instruction, lab environment, and study materials. Exam fees are approximate INR conversions of vendor USD pricing and are paid directly to the exam body at booking. EMI available via Razorpay — no-cost 3-month installments.
+            <strong>Pricing note:</strong> Training fees are Cortisec's program fees covering instruction, lab environment, and study materials. Exam fees are approximate INR conversions of vendor USD pricing and are paid directly to the exam body at booking.
           </p>
         </motion.div>
       </div>

@@ -36,7 +36,7 @@ function CertCard({ cert }) {
           <div className="bg-slate-50 rounded-xl p-3">
             <p className="font-mono text-[9px] text-slate-400 uppercase tracking-wider mb-1">Training</p>
             <p className="text-base font-bold text-slate-800">{cert.trainingFee}</p>
-            <p className="text-[10px] text-slate-400 mt-0.5">{cert.trainingEmi}</p>
+
           </div>
           <div className="bg-slate-50 rounded-xl p-3">
             <p className="font-mono text-[9px] text-slate-400 uppercase tracking-wider mb-1">Exam</p>
@@ -157,7 +157,6 @@ export default function CertSection() {
           <p className="text-sm text-amber-800">
             <strong>Pricing note:</strong> Training fees are CortiSec's program fees covering instruction, lab environment, and study materials.
             Exam fees are approximate INR conversions of vendor USD pricing and are paid directly to the exam body at booking.
-            EMI available via Razorpay — no-cost 3-month installments.
           </p>
         </motion.div>
       </div>

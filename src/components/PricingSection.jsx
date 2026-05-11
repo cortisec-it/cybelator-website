@@ -40,7 +40,7 @@ export default function PricingSection() {
             PRICING
           </span>
           <h2 className="font-display text-3xl md:text-4xl font-bold text-slate-900 tracking-tight mb-4">
-            Transparent, EMI-Friendly Fees
+            Transparent, Affordable Fees
           </h2>
           <p className="text-slate-500 text-base max-w-xl mx-auto">
             No hidden costs. Training, lab access, and study materials are all included. Exam fees paid separately to the vendor.
@@ -77,9 +77,6 @@ export default function PricingSection() {
                 </h3>
                 <div className={`font-display text-4xl font-bold mb-1 ${plan.highlight ? 'text-white' : 'text-slate-900'}`} style={{ letterSpacing: '-0.02em' }}>
                   {plan.price}
-                </div>
-                <div className={`text-sm ${plan.highlight ? 'text-slate-400' : 'text-slate-500'}`}>
-                  or {plan.emi} EMI
                 </div>
               </div>
 
