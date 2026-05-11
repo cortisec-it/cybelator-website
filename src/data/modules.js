@@ -171,7 +171,7 @@ export const pricing = [
     badge: 'Founding Batch',
     features: [
       '20-week full curriculum',
-      '24/7 lab access',
+      '24/7 access to enterprise lab environment',
       'Study materials included',
       'Certification exam prep',
       'Community access',
@@ -186,6 +186,7 @@ export const pricing = [
     badge: 'Most Popular',
     features: [
       'Everything in Standard',
+      'Live enterprise tool exposure',
       'Dedicated placement support',
       'Mock interviews with practitioners',
       '4-week paid internship pathway',
