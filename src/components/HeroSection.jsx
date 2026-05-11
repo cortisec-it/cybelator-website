@@ -66,9 +66,7 @@ export default function HeroSection() {
             className="font-mono text-[11px] text-center mb-8 px-4 py-2 -mx-4 sm:rounded-xl"
             style={{ background: '#0f1a2e', color: '#8a96a8', letterSpacing: '0.04em' }}
           >
-            CortiSec Academy is now open &nbsp;·&nbsp; Hands-on training at our Guwahati Training Centre &nbsp;·&nbsp;{' '}
-            Delivered through{' '}
-            <span style={{ color: '#00ffff' }}>Cybelator →</span>
+            Cybelator Academy is now enrolling &nbsp;·&nbsp; Batch 1 &nbsp;·&nbsp; Guwahati Training Centre &nbsp;·&nbsp; Powered by CortiSec Technologies →
           </motion.div>
 
           {/* Headline */}
@@ -82,8 +80,7 @@ export default function HeroSection() {
 
           {/* Sub-headline */}
           <p className="text-base md:text-lg mb-3 max-w-2xl mx-auto leading-relaxed" style={{ color: '#8a96a8' }}>
-            Northeast India's enterprise cybersecurity platform — professional training,
-            public awareness, and direct assistance for cybercrime victims.
+            Practical cybersecurity training, career development, and public cyber awareness — powered by CortiSec Technologies.
           </p>
           <p className="font-mono text-xs mb-10" style={{ color: '#5a6478', letterSpacing: '0.1em' }}>
             Guwahati &nbsp;·&nbsp; Noida &nbsp;·&nbsp; Online
@@ -98,7 +95,7 @@ export default function HeroSection() {
               onMouseEnter={(e) => (e.currentTarget.style.background = '#0F766E')}
               onMouseLeave={(e) => (e.currentTarget.style.background = '#0D9488')}
             >
-              Explore the Program <ArrowRight className="w-5 h-5" />
+              Explore Cybelator Academy <ArrowRight className="w-5 h-5" />
             </button>
             <button
               onClick={() => scrollTo('#contact')}
