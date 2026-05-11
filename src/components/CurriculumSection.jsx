@@ -102,7 +102,7 @@ export default function CurriculumSection() {
             className="inline-flex items-center gap-1.5 font-mono text-[10px] px-4 py-1.5 rounded-full mb-4"
             style={{ background: '#F0FDFA', color: '#0D9488', border: '1px solid #99f6e4', letterSpacing: '0.12em' }}
           >
-            TRAINING INSTITUTE
+            CYBELATOR ACADEMY
           </span>
           <h2 className="font-display text-3xl md:text-4xl font-bold text-slate-900 tracking-tight mb-4">
             20-Week Job-Ready Cybersecurity & Infrastructure Security Program
