@@ -1,139 +1,115 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Twitter, Linkedin, Github, ExternalLink, AlertTriangle } from 'lucide-react';
-import CybelatorLogo from '@/components/CybelatorLogo';
-import ContactUsModal from '@/components/ContactUsModal';
-import ExpertConsultationModal from '@/components/ExpertConsultationModal';
-import TelegramFooterSection from '@/components/TelegramFooterSection';
+import React from 'react';
+import { Shield } from 'lucide-react';
 
-function Footer() {
-  const [contactModalOpen, setContactModalOpen] = useState(false);
-  const [consultationOpen, setConsultationOpen] = useState(false);
+const DARK = '#0a0d12';
+const BORDER = '#1c2438';
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+const LINKS = [
+  { label: 'Program', href: '#training' },
+  { label: 'Pricing', href: '#pricing' },
+  { label: 'Certifications', href: '#certifications' },
+  { label: 'Awareness', href: '#awareness' },
+  { label: 'Assistance', href: '#assistance' },
+  { label: 'Contact', href: '#contact' },
+];
 
+const PARTNERS = ['Check Point', 'Cisco', 'Fortinet', 'CyberArk', 'SolarWinds'];
+
+const scrollTo = (href) => document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+
+export default function Footer() {
   return (
-    <>
-      <footer className="bg-brand-darker text-slate-300 pt-16 border-t border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer style={{ background: DARK, borderTop: `1px solid ${BORDER}` }}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
-          <TelegramFooterSection />
+        {/* Top row */}
+        <div className="flex flex-col md:flex-row items-start justify-between gap-8 mb-10">
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
-
-            {/* Brand & Mission */}
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="bg-brand-accent/10 p-1.5 rounded-lg">
-                  <CybelatorLogo className="w-6 h-6 text-brand-accent" />
-                </div>
-                <span className="text-lg font-bold text-white">Cybelator</span>
-              </div>
-              <p className="text-xs font-bold text-brand-accent uppercase tracking-widest mb-3">
-                The Cyber Warrior for the Digital Age
-              </p>
-              <p className="text-sm text-slate-400 leading-relaxed mb-6">
-                Democratizing cybersecurity awareness with real-time intelligence, expert guides, and actionable protection steps for everyone.
-              </p>
-              <div className="flex gap-3">
-                <a href="#" className="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400 hover:text-brand-accent hover:bg-slate-700 transition-all">
-                  <Twitter className="w-4 h-4" />
-                </a>
-                <a href="#" className="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400 hover:text-brand-accent hover:bg-slate-700 transition-all">
-                  <Linkedin className="w-4 h-4" />
-                </a>
-                <a href="#" className="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400 hover:text-brand-accent hover:bg-slate-700 transition-all">
-                  <Github className="w-4 h-4" />
-                </a>
-              </div>
-            </div>
-
-            {/* Quick Links */}
-            <div>
-              <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-5">Platform</h3>
-              <ul className="space-y-3 text-sm">
-                <li><Link to="/current-threats" onClick={scrollToTop} className="text-slate-300 hover:text-brand-accent transition-colors">Current Scams & Fraud</Link></li>
-                <li><Link to="/news-alerts" onClick={scrollToTop} className="text-slate-300 hover:text-brand-accent transition-colors">Today's Cyber Warnings</Link></li>
-                <li><Link to="/threat-maps" onClick={scrollToTop} className="text-slate-300 hover:text-brand-accent transition-colors">Global Threat Maps</Link></li>
-                <li><Link to="/victim-support" onClick={scrollToTop} className="text-orange-400 hover:text-orange-300 transition-colors font-medium">Victim Support</Link></li>
-              </ul>
-            </div>
-
-            {/* Resources */}
-            <div>
-              <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-5">Resources</h3>
-              <ul className="space-y-3 text-sm">
-                <li><Link to="/guides" onClick={scrollToTop} className="text-slate-300 hover:text-brand-accent transition-colors">Security Guides</Link></li>
-                <li><Link to="/quizzes" onClick={scrollToTop} className="text-slate-300 hover:text-brand-accent transition-colors">Interactive Quizzes</Link></li>
-                <li><Link to="/academy" onClick={scrollToTop} className="text-slate-300 hover:text-brand-accent transition-colors">CortiSec Academy</Link></li>
-                <li>
-                  <button onClick={() => setConsultationOpen(true)} className="text-brand-accent hover:text-brand-accentDark transition-colors text-left font-medium">
-                    Expert Consultation
-                  </button>
-                </li>
-                <li>
-                  <button onClick={() => setContactModalOpen(true)} className="text-slate-300 hover:text-brand-accent transition-colors text-left">
-                    Contact Us
-                  </button>
-                </li>
-              </ul>
-            </div>
-
-            {/* Trust & Sources */}
-            <div>
-              <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-5">Data Sources</h3>
-              <p className="text-xs text-slate-500 mb-4">
-                Aggregated from trusted global authorities:
-              </p>
-              <ul className="space-y-2 text-xs text-slate-500">
-                <li className="flex items-center gap-2"><ExternalLink className="w-3 h-3 text-brand-accent/50" /> CERT-In (India)</li>
-                <li className="flex items-center gap-2"><ExternalLink className="w-3 h-3 text-brand-accent/50" /> CISA (USA)</li>
-                <li className="flex items-center gap-2"><ExternalLink className="w-3 h-3 text-brand-accent/50" /> NVD (NIST)</li>
-                <li className="flex items-center gap-2"><ExternalLink className="w-3 h-3 text-brand-accent/50" /> RBI Cyber Cell</li>
-              </ul>
-            </div>
+          {/* Brand */}
+          <div className="space-y-2">
+            <p className="font-display font-bold text-white" style={{ fontSize: '1.2rem', letterSpacing: '0.04em' }}>Cybelator</p>
+            <p className="font-mono text-[10px]" style={{ color: '#5a6478', letterSpacing: '0.04em' }}>
+              A platform by{' '}
+              <a
+                href="https://cortisec.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors"
+                style={{ color: '#8a96a8', textDecoration: 'none' }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = '#fff')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = '#8a96a8')}
+              >
+                Cortisec Technologies Pvt. Ltd. ↗
+              </a>
+            </p>
+            <p className="text-xs max-w-xs leading-relaxed" style={{ color: '#5a6478' }}>
+              Northeast India's cybersecurity platform — training, awareness, and victim assistance.
+            </p>
+            <p className="font-mono text-[9px]" style={{ color: '#5a6478', letterSpacing: '0.06em' }}>
+              contact@cybelator.com
+            </p>
           </div>
 
-          <div className="mb-8 bg-slate-800/40 border border-slate-700/50 p-4 rounded-xl text-xs text-slate-500 flex items-start gap-2">
-            <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5 text-slate-600" />
-            <p>Disclaimer: This platform provides educational information and awareness. While we strive for accuracy, cyber threats evolve rapidly. Always consult official financial or legal advisors for specific incidents.</p>
+          {/* Nav links */}
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
+            {LINKS.map((l) => (
+              <button
+                key={l.href}
+                onClick={() => scrollTo(l.href)}
+                className="font-mono text-[10px] transition-colors"
+                style={{ color: '#5a6478', letterSpacing: '0.1em' }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = '#8a96a8')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = '#5a6478')}
+              >
+                {l.label.toUpperCase()}
+              </button>
+            ))}
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="bg-brand-dark border-t border-slate-800 py-6">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-slate-500">
-            <div className="flex flex-col items-center md:items-start gap-1">
-              <p>© {new Date().getFullYear()} Cybelator Awareness Platform. All rights reserved.</p>
-              <p>
-                A{' '}
-                <a href="https://cortisec.com" target="_blank" rel="noopener noreferrer" className="text-brand-accent hover:underline font-medium">
-                  CortiSec Technologies Private Limited
-                </a>{' '}
-                initiative.
-              </p>
-            </div>
-            <div className="flex gap-6">
-              <Link to="/legal-policies" onClick={scrollToTop} className="hover:text-brand-accent transition-colors">Privacy Policy</Link>
-              <Link to="/legal-policies" onClick={scrollToTop} className="hover:text-brand-accent transition-colors">Terms of Service</Link>
-              <Link to="/legal-policies" onClick={scrollToTop} className="hover:text-brand-accent transition-colors">Editorial Policy</Link>
+        {/* Partner vendor row */}
+        <div className="py-6 border-y flex flex-wrap items-center gap-x-8 gap-y-3" style={{ borderColor: BORDER }}>
+          <p className="font-mono text-[9px] tracking-widest shrink-0" style={{ color: '#5a6478' }}>VENDOR PARTNERS</p>
+          {PARTNERS.map((p) => (
+            <span key={p} className="font-mono text-[10px] font-medium" style={{ color: '#8a96a8' }}>{p}</span>
+          ))}
+        </div>
+
+        {/* Bottom — disclaimers */}
+        <div className="pt-8 space-y-3">
+          <p className="text-xs leading-relaxed" style={{ color: '#5a6478' }}>
+            <span className="font-mono font-bold tracking-wider" style={{ color: '#8a96a8' }}>PLACEMENT: </span>
+            CortiSec does not guarantee placement or employment. Placement support is provided on a best-effort basis.
+            Outcomes depend on individual performance, market conditions, and employer decisions.
+            Salary ranges displayed are indicative and sourced from publicly available job market data.
+          </p>
+          <p className="text-xs leading-relaxed" style={{ color: '#5a6478' }}>
+            <span className="font-mono font-bold tracking-wider" style={{ color: '#8a96a8' }}>ASSISTANCE: </span>
+            Cybelator Cyber Assistance is a voluntary public service. Cortisec Technologies Pvt. Ltd. does not
+            store user data submitted through the assistance tool.
+            Cybercrime guidance is informational only and does not constitute legal advice.
+            CortiSec is not a law enforcement agency. For urgent financial cybercrime, call 1930 immediately.
+          </p>
+          <p className="text-xs leading-relaxed" style={{ color: '#5a6478' }}>
+            <span className="font-mono font-bold tracking-wider" style={{ color: '#8a96a8' }}>CERTS: </span>
+            Cisco, Check Point, Fortinet, CyberArk, and SolarWinds are registered trademarks of their respective owners.
+            CortiSec is an independent training provider and is not affiliated with or endorsed by these vendors.
+            Exam fees are indicative INR conversions of vendor USD pricing and may vary at time of booking.
+          </p>
+
+          {/* Bottom bar */}
+          <div className="pt-4" style={{ borderTop: `1px solid ${BORDER}` }}>
+            <p className="font-mono text-[9px] leading-relaxed" style={{ color: '#5a6478' }}>
+              CIN: U70200UP2025PTC230788 &nbsp;·&nbsp; © 2026 Cortisec Technologies Pvt. Ltd. All rights reserved.
+              &nbsp;·&nbsp; Cybelator Cyber Assistance is a voluntary public service. We do not store user data.
+            </p>
+            <div className="flex items-center gap-1.5 mt-2">
+              <Shield className="w-3 h-3" style={{ color: '#5a6478' }} />
+              <p className="font-mono text-[9px]" style={{ color: '#5a6478' }}>Guwahati · Noida · Online</p>
             </div>
           </div>
         </div>
-      </footer>
-
-      <ContactUsModal 
-        isOpen={contactModalOpen} 
-        onClose={() => setContactModalOpen(false)} 
-      />
-      <ExpertConsultationModal 
-        isOpen={consultationOpen} 
-        onClose={() => setConsultationOpen(false)} 
-      />
-    </>
+      </div>
+    </footer>
   );
 }
-
-export default Footer;
