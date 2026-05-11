@@ -27,14 +27,6 @@ module.exports = {
 					success:    '#00C896',
 					warning:    '#F59E0B',
 					purple:     '#7C3AED',
-					teal:       '#0D9488',
-					'teal-light': '#14B8A6',
-					'teal-dark':  '#0F766E',
-					'teal-50':    '#F0FDFA',
-					'teal-100':   '#CCFBF1',
-					indigo:     '#6366F1',
-					'indigo-light': '#818CF8',
-					'indigo-50':  '#EEF2FF',
 				},
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -71,7 +63,7 @@ module.exports = {
 				},
 			},
 			fontFamily: {
-				sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+				sans: ['Inter', 'sans-serif'],
 			},
 			boxShadow: {
 				glow:       '0 0 20px rgba(0, 212, 255, 0.15)',

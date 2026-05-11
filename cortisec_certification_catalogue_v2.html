@@ -1,0 +1,472 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);font-size:15px;color:var(--color-text-primary);line-height:1.6}
+.page-header{padding:1.5rem 0 1.2rem;border-bottom:0.5px solid var(--color-border-tertiary);margin-bottom:1.8rem}
+.page-header .eyebrow{font-size:11px;font-family:var(--font-mono);color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.4rem}
+.page-header h1{font-size:20px;font-weight:500;margin-bottom:0.3rem}
+.page-header p{font-size:13px;color:var(--color-text-secondary)}
+.track-label{font-size:11px;font-family:var(--font-mono);color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.8rem;padding-bottom:0.4rem;border-bottom:0.5px solid var(--color-border-tertiary)}
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px;margin-bottom:1.8rem}
+.cert-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.1rem;display:flex;flex-direction:column;gap:9px}
+.cert-card:hover{border-color:var(--color-border-secondary)}
+.cert-card-top{display:flex;align-items:flex-start;gap:10px}
+.vendor-dot{width:32px;height:32px;border-radius:var(--border-radius-md);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;flex-shrink:0;font-family:var(--font-mono)}
+.dot-cisco{background:#E6F1FB;color:#0C447C}
+.dot-checkpoint{background:#EEEDFE;color:#3C3489}
+.dot-fortinet{background:#FAEEDA;color:#633806}
+.dot-cyberark{background:#FCEBEB;color:#791F1F}
+.dot-solarwinds{background:#E1F5EE;color:#085041}
+.cert-names{flex:1;min-width:0}
+.cert-title{font-size:14px;font-weight:500;color:var(--color-text-primary);line-height:1.35;margin-bottom:2px}
+.cert-subtitle{font-size:11.5px;color:var(--color-text-secondary)}
+.cert-meta{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+.meta-pill{font-size:10.5px;font-family:var(--font-mono);padding:2px 7px;border-radius:4px;white-space:nowrap}
+.pill-exam{background:var(--color-background-secondary);color:var(--color-text-secondary);border:0.5px solid var(--color-border-tertiary)}
+.pill-level{border:0.5px solid var(--color-border-tertiary)}
+.pill-foundation{background:#E1F5EE;color:#085041}
+.pill-associate{background:#E6F1FB;color:#0C447C}
+.pill-professional{background:#EEEDFE;color:#3C3489}
+.pill-expert{background:#FAEEDA;color:#633806}
+.pill-operator{background:#F1EFE8;color:#444441}
+.pill-note{background:var(--color-background-warning);color:var(--color-text-warning)}
+.cert-desc{font-size:12.5px;color:var(--color-text-secondary);line-height:1.6}
+
+.pricing-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.price-box{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:0.6rem 0.8rem}
+.price-box .pb-label{font-size:10px;font-family:var(--font-mono);color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px}
+.price-box .pb-val{font-size:15px;font-weight:500;color:var(--color-text-primary)}
+.price-box .pb-sub{font-size:11px;color:var(--color-text-tertiary);margin-top:1px}
+
+.lab-box{background:var(--color-background-success);border:0.5px solid var(--color-border-success);border-radius:var(--border-radius-md);padding:0.6rem 0.8rem}
+.lab-box .lb-label{font-size:10px;font-family:var(--font-mono);color:var(--color-text-success);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;display:flex;align-items:center;gap:5px}
+.lab-box ul{list-style:none}
+.lab-box ul li{font-size:12px;color:var(--color-text-success);padding:1px 0 1px 0.9rem;position:relative;line-height:1.5}
+.lab-box ul li::before{content:'·';position:absolute;left:0;font-size:14px;line-height:1.3}
+
+.cert-card-footer{display:flex;justify-content:space-between;align-items:center;padding-top:8px;border-top:0.5px solid var(--color-border-tertiary)}
+.footer-vendor{font-size:11px;font-family:var(--font-mono);color:var(--color-text-tertiary)}
+.footer-validity{font-size:11px;color:var(--color-text-tertiary);display:flex;align-items:center;gap:4px}
+
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:1.8rem}
+.stat-box{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:0.8rem 1rem}
+.stat-box .sv{font-size:20px;font-weight:500;line-height:1}
+.stat-box .sl{font-size:11px;color:var(--color-text-tertiary);margin-top:3px;text-transform:uppercase;letter-spacing:0.05em;font-family:var(--font-mono)}
+
+.note-box{background:var(--color-background-warning);border:0.5px solid var(--color-border-warning);border-radius:var(--border-radius-md);padding:0.8rem 1rem;margin-bottom:1.8rem;font-size:13px;color:var(--color-text-warning);display:flex;gap:8px;align-items:flex-start}
+.divider{height:0.5px;background:var(--color-border-tertiary);margin:0.2rem 0 1.8rem}
+</style>
+
+<h2 class="sr-only">Cortisec Technologies certification catalogue with pricing and lab details for all vendor certifications.</h2>
+
+<div class="page-header">
+  <div class="eyebrow">Cortisec Technologies · Guwahati & Noida</div>
+  <h1>Certification catalogue</h1>
+  <p>All prices are inclusive of training, lab access, and study material. Exam fees paid separately at Pearson VUE / PSI. EMI available on all programs.</p>
+</div>
+
+<div class="stat-row">
+  <div class="stat-box"><div class="sv">10</div><div class="sl">Certifications</div></div>
+  <div class="stat-box"><div class="sv">5</div><div class="sl">Vendors</div></div>
+  <div class="stat-box"><div class="sv">24/7</div><div class="sl">Lab access</div></div>
+  <div class="stat-box"><div class="sv">EMI</div><div class="sl">Available</div></div>
+</div>
+
+<div class="track-label">Networking — Cisco</div>
+<div class="cert-grid">
+  <div class="cert-card">
+    <div class="cert-card-top">
+      <div class="vendor-dot dot-cisco">Ci</div>
+      <div class="cert-names">
+        <div class="cert-title">Cisco Certified Network Associate</div>
+        <div class="cert-subtitle">CCNA · Exam 200-301</div>
+      </div>
+    </div>
+    <div class="cert-meta">
+      <span class="meta-pill pill-exam">200-301</span>
+      <span class="meta-pill pill-level pill-associate">Associate</span>
+    </div>
+    <div class="cert-desc">Routing & switching, VLANs, OSPF, access control, VPN, network security fundamentals, and automation basics. The unified CCNA 200-301 covers all technology areas in one exam.</div>
+    <div class="pricing-row">
+      <div class="price-box">
+        <div class="pb-label">Training fee</div>
+        <div class="pb-val">₹18,000</div>
+        <div class="pb-sub">EMI: ₹6,000 × 3 months</div>
+      </div>
+      <div class="price-box">
+        <div class="pb-label">Exam fee (Pearson VUE)</div>
+        <div class="pb-val">~₹27,000</div>
+        <div class="pb-sub">Paid separately to Cisco</div>
+      </div>
+    </div>
+    <div class="lab-box">
+      <div class="lb-label"><i class="ti ti-flask" style="font-size:13px" aria-hidden="true"></i> Lab included</div>
+      <ul>
+        <li>GNS3 & Cisco Packet Tracer environment</li>
+        <li>Router & switch configuration labs (OSPF, EIGRP, STP)</li>
+        <li>VLAN, inter-VLAN routing, DHCP & DNS setup</li>
+        <li>ACL, NAT, and VPN configuration exercises</li>
+        <li>24/7 remote lab access via browser</li>
+      </ul>
+    </div>
+    <div class="cert-card-footer">
+      <span class="footer-vendor">Cisco · Pearson VUE</span>
+      <span class="footer-validity"><i class="ti ti-clock" style="font-size:13px" aria-hidden="true"></i> 3-year validity</span>
+    </div>
+  </div>
+</div>
+
+<div class="track-label">Firewall & security — Check Point core certifications</div>
+<div class="cert-grid">
+  <div class="cert-card">
+    <div class="cert-card-top">
+      <div class="vendor-dot dot-checkpoint">CP</div>
+      <div class="cert-names">
+        <div class="cert-title">Check Point Certified Security Administrator</div>
+        <div class="cert-subtitle">CCSA R82 · Exam 156-215.82</div>
+      </div>
+    </div>
+    <div class="cert-meta">
+      <span class="meta-pill pill-exam">156-215.82</span>
+      <span class="meta-pill pill-level pill-associate">Administrator</span>
+    </div>
+    <div class="cert-desc">Configuring and managing Check Point Security Gateways, SmartConsole policy creation, NAT, VPN, and Software Blades. Entry point to the Check Point certification path. CCSE prerequisite.</div>
+    <div class="pricing-row">
+      <div class="price-box">
+        <div class="pb-label">Training fee</div>
+        <div class="pb-val">₹22,000</div>
+        <div class="pb-sub">EMI: ₹7,500 × 3 months</div>
+      </div>
+      <div class="price-box">
+        <div class="pb-label">Exam fee (Pearson VUE)</div>
+        <div class="pb-val">~₹25,000</div>
+        <div class="pb-sub">Paid separately to Check Point</div>
+      </div>
+    </div>
+    <div class="lab-box">
+      <div class="lb-label"><i class="ti ti-flask" style="font-size:13px" aria-hidden="true"></i> Lab included</div>
+      <ul>
+        <li>Check Point CloudGuard trial tenant (AWS)</li>
+        <li>SmartConsole policy creation from scratch</li>
+        <li>NAT rules, IPS blade, and threat prevention config</li>
+        <li>Site-to-site VPN setup and troubleshooting</li>
+        <li>Log analysis and traffic review exercises</li>
+        <li>24/7 remote lab access via browser</li>
+      </ul>
+    </div>
+    <div class="cert-card-footer">
+      <span class="footer-vendor">Check Point · Pearson VUE</span>
+      <span class="footer-validity"><i class="ti ti-clock" style="font-size:13px" aria-hidden="true"></i> 2-year validity</span>
+    </div>
+  </div>
+
+  <div class="cert-card">
+    <div class="cert-card-top">
+      <div class="vendor-dot dot-checkpoint">CP</div>
+      <div class="cert-names">
+        <div class="cert-title">Check Point Certified Security Expert</div>
+        <div class="cert-subtitle">CCSE R82 · Exam 156-315.82</div>
+      </div>
+    </div>
+    <div class="cert-meta">
+      <span class="meta-pill pill-exam">156-315.82</span>
+      <span class="meta-pill pill-level pill-expert">Expert</span>
+    </div>
+    <div class="cert-desc">Advanced firewall management, clustering, high availability, advanced VPN, database migration, and enterprise upgrade procedures. CCSA R82 is a mandatory prerequisite.</div>
+    <div class="pricing-row">
+      <div class="price-box">
+        <div class="pb-label">Training fee</div>
+        <div class="pb-val">₹28,000</div>
+        <div class="pb-sub">EMI: ₹9,500 × 3 months</div>
+      </div>
+      <div class="price-box">
+        <div class="pb-label">Exam fee (Pearson VUE)</div>
+        <div class="pb-val">~₹25,000</div>
+        <div class="pb-sub">Paid separately to Check Point</div>
+      </div>
+    </div>
+    <div class="lab-box">
+      <div class="lb-label"><i class="ti ti-flask" style="font-size:13px" aria-hidden="true"></i> Lab included</div>
+      <ul>
+        <li>ClusterXL high-availability setup lab</li>
+        <li>Advanced VPN troubleshooting scenarios</li>
+        <li>SmartEvent and log correlation exercises</li>
+        <li>Gateway upgrade and database migration lab</li>
+        <li>Performance tuning and CoreXL configuration</li>
+        <li>24/7 remote lab access via browser</li>
+      </ul>
+    </div>
+    <div class="cert-card-footer">
+      <span class="footer-vendor">Check Point · Pearson VUE</span>
+      <span class="footer-validity"><i class="ti ti-clock" style="font-size:13px" aria-hidden="true"></i> 2-year validity</span>
+    </div>
+  </div>
+</div>
+
+<div class="track-label">Email & collaboration security — Check Point Harmony</div>
+<div class="cert-grid">
+  <div class="cert-card">
+    <div class="cert-card-top">
+      <div class="vendor-dot dot-checkpoint">CP</div>
+      <div class="cert-names">
+        <div class="cert-title">Check Point Harmony Email & Collaboration Specialist</div>
+        <div class="cert-subtitle">Infinity Specialist Accreditation (ISA) · HEC track</div>
+      </div>
+    </div>
+    <div class="cert-meta">
+      <span class="meta-pill pill-exam">ISA — HEC track</span>
+      <span class="meta-pill pill-level pill-professional">Specialist</span>
+    </div>
+    <div class="cert-desc">Deploying and managing Harmony Email & Collaboration — phishing prevention, inline API protection for Microsoft 365 & Google Workspace, DLP policy, quarantine management, and smart banners. Counts toward CCSM path.</div>
+    <div class="pricing-row">
+      <div class="price-box">
+        <div class="pb-label">Training fee</div>
+        <div class="pb-val">₹15,000</div>
+        <div class="pb-sub">EMI: ₹5,000 × 3 months</div>
+      </div>
+      <div class="price-box">
+        <div class="pb-label">Exam fee (Pearson VUE)</div>
+        <div class="pb-val">~₹18,000</div>
+        <div class="pb-sub">Paid separately to Check Point</div>
+      </div>
+    </div>
+    <div class="lab-box">
+      <div class="lb-label"><i class="ti ti-flask" style="font-size:13px" aria-hidden="true"></i> Lab included</div>
+      <ul>
+        <li>HEC tenant setup via Infinity Portal</li>
+        <li>Microsoft 365 API integration and policy config</li>
+        <li>Phishing simulation and quarantine review lab</li>
+        <li>DLP rule creation and outgoing email inspection</li>
+        <li>Email header analysis and threat investigation</li>
+      </ul>
+    </div>
+    <div class="cert-card-footer">
+      <span class="footer-vendor">Check Point · Pearson VUE</span>
+      <span class="footer-validity"><i class="ti ti-clock" style="font-size:13px" aria-hidden="true"></i> 2-year validity</span>
+    </div>
+  </div>
+
+  <div class="cert-card">
+    <div class="cert-card-top">
+      <div class="vendor-dot dot-checkpoint">CP</div>
+      <div class="cert-names">
+        <div class="cert-title">Check Point Infinity External Risk Management</div>
+        <div class="cert-subtitle">Operator Training · formerly Cyberint / Infinity ERM</div>
+      </div>
+    </div>
+    <div class="cert-meta">
+      <span class="meta-pill pill-level pill-operator">Operator</span>
+      <span class="meta-pill pill-note">Product training</span>
+    </div>
+    <div class="cert-desc">Threat intelligence, external attack surface management, deep & dark web monitoring, brand protection, and digital risk using the Infinity ERM platform (formerly Cyberint Argos). Completion certificate issued — not a Pearson VUE proctored exam.</div>
+    <div class="pricing-row">
+      <div class="price-box">
+        <div class="pb-label">Training fee</div>
+        <div class="pb-val">₹12,000</div>
+        <div class="pb-sub">EMI: ₹4,000 × 3 months</div>
+      </div>
+      <div class="price-box">
+        <div class="pb-label">Exam fee</div>
+        <div class="pb-val">Nil</div>
+        <div class="pb-sub">Completion certificate included</div>
+      </div>
+    </div>
+    <div class="lab-box">
+      <div class="lb-label"><i class="ti ti-flask" style="font-size:13px" aria-hidden="true"></i> Lab included</div>
+      <ul>
+        <li>Infinity ERM platform walkthrough & alert review</li>
+        <li>External attack surface discovery exercises</li>
+        <li>Dark web monitoring and threat feed analysis</li>
+        <li>Brand protection and takedown request workflow</li>
+        <li>Threat hunting and intelligence report writing</li>
+      </ul>
+    </div>
+    <div class="cert-card-footer">
+      <span class="footer-vendor">Check Point · Partner portal</span>
+      <span class="footer-validity"><i class="ti ti-clock" style="font-size:13px" aria-hidden="true"></i> Completion certificate</span>
+    </div>
+  </div>
+</div>
+
+<div class="track-label">Firewall & security — Fortinet</div>
+<div class="cert-grid">
+  <div class="cert-card">
+    <div class="cert-card-top">
+      <div class="vendor-dot dot-fortinet">Fo</div>
+      <div class="cert-names">
+        <div class="cert-title">Fortinet Certified Professional — FortiGate</div>
+        <div class="cert-subtitle">FCP FortiGate 7.4 · formerly NSE 4</div>
+      </div>
+    </div>
+    <div class="cert-meta">
+      <span class="meta-pill pill-exam">NSE4_FGT-7.4</span>
+      <span class="meta-pill pill-level pill-professional">Professional</span>
+    </div>
+    <div class="cert-desc">Day-to-day FortiGate configuration, firewall policies, application control, web filtering, IPS, SSL inspection, VPN, and SD-WAN basics. Fortinet rebranded NSE 4 to FCP in 2023 — same exam, updated designation.</div>
+    <div class="pricing-row">
+      <div class="price-box">
+        <div class="pb-label">Training fee</div>
+        <div class="pb-val">₹20,000</div>
+        <div class="pb-sub">EMI: ₹7,000 × 3 months</div>
+      </div>
+      <div class="price-box">
+        <div class="pb-label">Exam fee (Pearson VUE)</div>
+        <div class="pb-val">~₹20,000</div>
+        <div class="pb-sub">Paid separately to Fortinet</div>
+      </div>
+    </div>
+    <div class="lab-box">
+      <div class="lb-label"><i class="ti ti-flask" style="font-size:13px" aria-hidden="true"></i> Lab included</div>
+      <ul>
+        <li>FortiGate VM trial deployment (AWS / local)</li>
+        <li>Firewall policy, NAT, and routing configuration</li>
+        <li>SSL VPN & IPSec site-to-site VPN setup</li>
+        <li>Application control and web filter profile labs</li>
+        <li>IPS signature tuning and log analysis</li>
+        <li>24/7 remote lab access via browser</li>
+      </ul>
+    </div>
+    <div class="cert-card-footer">
+      <span class="footer-vendor">Fortinet · Pearson VUE</span>
+      <span class="footer-validity"><i class="ti ti-clock" style="font-size:13px" aria-hidden="true"></i> 2-year validity</span>
+    </div>
+  </div>
+</div>
+
+<div class="track-label">Identity & access — CyberArk PAM</div>
+<div class="cert-grid">
+  <div class="cert-card">
+    <div class="cert-card-top">
+      <div class="vendor-dot dot-cyberark">CA</div>
+      <div class="cert-names">
+        <div class="cert-title">CyberArk Defender — Privileged Access Manager</div>
+        <div class="cert-subtitle">PAM-DEF · formerly CAU201</div>
+      </div>
+    </div>
+    <div class="cert-meta">
+      <span class="meta-pill pill-exam">PAM-DEF</span>
+      <span class="meta-pill pill-level pill-associate">Defender</span>
+    </div>
+    <div class="cert-desc">Day-to-day operations of CyberArk PAM — Vault administration, PVWA usage, PSM and CPM basics. Entry-level CyberArk certification. Exam administered in-person via Pearson VUE testing centres (as of Nov 2025).</div>
+    <div class="pricing-row">
+      <div class="price-box">
+        <div class="pb-label">Training fee</div>
+        <div class="pb-val">₹20,000</div>
+        <div class="pb-sub">EMI: ₹7,000 × 3 months</div>
+      </div>
+      <div class="price-box">
+        <div class="pb-label">Exam fee (Pearson VUE)</div>
+        <div class="pb-val">~₹17,000</div>
+        <div class="pb-sub">Paid separately to CyberArk</div>
+      </div>
+    </div>
+    <div class="lab-box">
+      <div class="lb-label"><i class="ti ti-flask" style="font-size:13px" aria-hidden="true"></i> Lab included</div>
+      <ul>
+        <li>CyberArk PAS environment (trial / sandbox)</li>
+        <li>Vault onboarding and safe management lab</li>
+        <li>PVWA account checkout and session recording</li>
+        <li>CPM plugin configuration exercises</li>
+        <li>PSM connection component setup and testing</li>
+      </ul>
+    </div>
+    <div class="cert-card-footer">
+      <span class="footer-vendor">CyberArk · Pearson VUE (in-person)</span>
+      <span class="footer-validity"><i class="ti ti-clock" style="font-size:13px" aria-hidden="true"></i> 2-year validity</span>
+    </div>
+  </div>
+
+  <div class="cert-card">
+    <div class="cert-card-top">
+      <div class="vendor-dot dot-cyberark">CA</div>
+      <div class="cert-names">
+        <div class="cert-title">CyberArk Sentry — Privileged Access Manager</div>
+        <div class="cert-subtitle">PAM-SEN · formerly CAU301</div>
+      </div>
+    </div>
+    <div class="cert-meta">
+      <span class="meta-pill pill-exam">PAM-SEN</span>
+      <span class="meta-pill pill-level pill-professional">Sentry</span>
+    </div>
+    <div class="cert-desc">Advanced deployment and configuration of CyberArk PAS — PSM advanced config, CPM platform management, DR planning, and troubleshooting. PAM-DEF is strongly recommended before attempting this level.</div>
+    <div class="pricing-row">
+      <div class="price-box">
+        <div class="pb-label">Training fee</div>
+        <div class="pb-val">₹25,000</div>
+        <div class="pb-sub">EMI: ₹8,500 × 3 months</div>
+      </div>
+      <div class="price-box">
+        <div class="pb-label">Exam fee (Pearson VUE)</div>
+        <div class="pb-val">~₹17,000</div>
+        <div class="pb-sub">Paid separately to CyberArk</div>
+      </div>
+    </div>
+    <div class="lab-box">
+      <div class="lb-label"><i class="ti ti-flask" style="font-size:13px" aria-hidden="true"></i> Lab included</div>
+      <ul>
+        <li>Full PAS distributed architecture deployment lab</li>
+        <li>Advanced PSM configuration and connection components</li>
+        <li>CPM custom plugin creation exercise</li>
+        <li>DR failover and vault replication scenario</li>
+        <li>Troubleshooting broken vault and PSM scenarios</li>
+      </ul>
+    </div>
+    <div class="cert-card-footer">
+      <span class="footer-vendor">CyberArk · Pearson VUE (in-person)</span>
+      <span class="footer-validity"><i class="ti ti-clock" style="font-size:13px" aria-hidden="true"></i> 2-year validity</span>
+    </div>
+  </div>
+</div>
+
+<div class="track-label">Monitoring & observability — SolarWinds</div>
+<div class="cert-grid">
+  <div class="cert-card">
+    <div class="cert-card-top">
+      <div class="vendor-dot dot-solarwinds">SW</div>
+      <div class="cert-names">
+        <div class="cert-title">SolarWinds Certified Professional — NPM track</div>
+        <div class="cert-subtitle">SCP · Observability Self-Hosted</div>
+      </div>
+    </div>
+    <div class="cert-meta">
+      <span class="meta-pill pill-exam">SCP — NPM track</span>
+      <span class="meta-pill pill-level pill-professional">Professional</span>
+    </div>
+    <div class="cert-desc">Deploying and managing SolarWinds network and infrastructure monitoring — NPM, SAM, dashboards, threshold alerting, and the SolarWinds Observability Self-Hosted platform. Administered via PSI Services (remote-proctored).</div>
+    <div class="pricing-row">
+      <div class="price-box">
+        <div class="pb-label">Training fee</div>
+        <div class="pb-val">₹15,000</div>
+        <div class="pb-sub">EMI: ₹5,000 × 3 months</div>
+      </div>
+      <div class="price-box">
+        <div class="pb-label">Exam fee (PSI Services)</div>
+        <div class="pb-val">~₹17,000</div>
+        <div class="pb-sub">Paid separately to SolarWinds</div>
+      </div>
+    </div>
+    <div class="lab-box">
+      <div class="lb-label"><i class="ti ti-flask" style="font-size:13px" aria-hidden="true"></i> Lab included</div>
+      <ul>
+        <li>SolarWinds NPM deployment on Windows Server VM</li>
+        <li>Node discovery, polling, and SNMP configuration</li>
+        <li>Custom dashboard and alert threshold setup</li>
+        <li>Network performance baselining exercises</li>
+        <li>Report generation and NOC view configuration</li>
+        <li>24/7 remote lab access via browser</li>
+      </ul>
+    </div>
+    <div class="cert-card-footer">
+      <span class="footer-vendor">SolarWinds · PSI Services</span>
+      <span class="footer-validity"><i class="ti ti-clock" style="font-size:13px" aria-hidden="true"></i> 3-year validity</span>
+    </div>
+  </div>
+</div>
+
+<div class="note-box">
+  <i class="ti ti-info-circle" style="font-size:16px" aria-hidden="true"></i>
+  <div>
+    <strong style="font-size:13px">Pricing note:</strong>
+    <span style="font-size:12.5px"> Training fees listed are Cortisec's program fees and cover instruction, lab environment, and study materials. Exam fees are approximate INR conversions of vendor USD pricing and are paid directly to the respective exam body at time of booking. Prices subject to change. EMI available via Razorpay — no-cost 3-month installments.</span>
+  </div>
+</div>
