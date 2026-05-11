@@ -9,10 +9,37 @@ const TEAL = '#0D9488';
 
 function EnquiryForm() {
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
   const [form, setForm] = useState({ name: '', phone: '', email: '', city: '', program: '' });
 
   const handleChange = (e) => setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  const handleSubmit = (e) => { e.preventDefault(); setSent(true); };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    setLoading(true);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        const msg = data.errors
+          ? Object.values(data.errors).join(' ')
+          : (data.error || 'Submission failed. Please try again.');
+        setError(msg);
+      } else {
+        setSent(true);
+      }
+    } catch {
+      setError('Network error. Please check your connection and try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   if (sent) {
     return (
@@ -75,9 +102,9 @@ function EnquiryForm() {
         onBlur={(e) => (e.target.style.borderColor = BORDER)}
       >
         <option value="">Interested in... (select program)</option>
-        <option>20-Week Full Program — Standard (₹35,000)</option>
-        <option>20-Week Full Program — Placement Track (₹45,000)</option>
-        <option>6-Week Short Course (₹12,000)</option>
+        <option>Starter Track — 20-Week Full Program (₹35,000)</option>
+        <option>Career Track — 20-Week Full Program with Placement (₹45,000)</option>
+        <option>Explorer Track — 6-Week Short Course (₹12,000)</option>
         <option>Individual Certification — CCNA</option>
         <option>Individual Certification — CCSA R82</option>
         <option>Individual Certification — CCSE R82</option>
@@ -87,14 +114,18 @@ function EnquiryForm() {
         <option>Individual Certification — SCP NPM</option>
         <option>Other / General Enquiry</option>
       </select>
+      {error && (
+        <p className="text-xs text-red-400 text-center">{error}</p>
+      )}
       <button
         type="submit"
+        disabled={loading}
         className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl font-mono text-xs font-bold transition-all"
-        style={{ background: TEAL, color: '#fff', letterSpacing: '0.06em' }}
-        onMouseEnter={(e) => (e.currentTarget.style.background = '#0F766E')}
-        onMouseLeave={(e) => (e.currentTarget.style.background = TEAL)}
+        style={{ background: loading ? '#0F766E' : TEAL, color: '#fff', letterSpacing: '0.06em', opacity: loading ? 0.7 : 1 }}
+        onMouseEnter={(e) => { if (!loading) e.currentTarget.style.background = '#0F766E'; }}
+        onMouseLeave={(e) => { if (!loading) e.currentTarget.style.background = TEAL; }}
       >
-        SEND ENQUIRY <Send className="w-3.5 h-3.5" />
+        {loading ? 'SENDING...' : <> SEND ENQUIRY <Send className="w-3.5 h-3.5" /> </>}
       </button>
     </form>
   );
