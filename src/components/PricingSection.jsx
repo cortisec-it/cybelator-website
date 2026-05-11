@@ -21,7 +21,7 @@ export default function PricingSection() {
         >
           <Star className="w-4 h-4 shrink-0" style={{ color: '#ba7517' }} />
           <p className="text-sm" style={{ color: '#633806' }}>
-            <strong>Founding Batch</strong> — First 20 students receive priority mentorship and founding member recognition.
+            <strong>Founding Batch Open</strong> — 20 seats only. Applications close once batch is full.
           </p>
         </motion.div>
 
