@@ -52,7 +52,7 @@ export default function Navbar() {
             onMouseEnter={(e) => (e.currentTarget.style.color = '#8a96a8')}
             onMouseLeave={(e) => (e.currentTarget.style.color = '#5a6478')}
           >
-            by Cortisec Technologies
+            by CortiSec Technologies
           </a>
         </div>
 
