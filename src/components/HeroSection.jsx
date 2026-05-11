@@ -80,10 +80,10 @@ export default function HeroSection() {
 
           {/* Sub-headline */}
           <p className="text-base md:text-lg mb-3 max-w-2xl mx-auto leading-relaxed" style={{ color: '#8a96a8' }}>
-            Practical cybersecurity training, career development, and public cyber awareness — powered by CortiSec Technologies.
+            Northeast India's only hands-on cybersecurity training program — real enterprise tools, real operational workflows, real careers.
           </p>
           <p className="font-mono text-xs mb-10" style={{ color: '#5a6478', letterSpacing: '0.1em' }}>
-            Guwahati &nbsp;·&nbsp; Noida &nbsp;·&nbsp; Online
+            Guwahati &nbsp;·&nbsp; Online
           </p>
 
           {/* Primary CTAs */}
@@ -120,9 +120,9 @@ export default function HeroSection() {
               onMouseEnter={(e) => (e.currentTarget.style.color = '#fff')}
               onMouseLeave={(e) => (e.currentTarget.style.color = '#8a96a8')}
             >
-              Cortisec Technologies Pvt. Ltd. ↗
+              CortiSec Technologies ↗
             </a>
-            {' '}· Guwahati Training Centre · Noida Operations
+            {' '}· Guwahati Training Centre
           </p>
 
           {/* Help link */}
