@@ -165,7 +165,7 @@ export const phases = [
 export const pricing = [
   {
     id: 'standard',
-    name: 'Standard Program',
+    name: 'Starter Track',
     price: '₹35,000',
     highlight: false,
     badge: 'Founding Batch',
@@ -180,7 +180,7 @@ export const pricing = [
   },
   {
     id: 'placement',
-    name: 'Placement Track',
+    name: 'Career Track',
     price: '₹45,000',
     highlight: true,
     badge: 'Most Popular',
@@ -195,7 +195,7 @@ export const pricing = [
   },
   {
     id: 'short',
-    name: 'Short Course',
+    name: 'Explorer Track',
     price: '₹12,000',
     highlight: false,
     badge: null,
