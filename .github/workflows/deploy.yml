@@ -20,8 +20,9 @@ jobs:
           script: |
             cd ${{ secrets.HOSTINGER_APP_PATH }}
             git pull origin main
-            npm ci --omit=dev
+            npm ci
             npm run build
+            npm prune --omit=dev
             if command -v pm2 &> /dev/null; then
               pm2 restart all
             else
