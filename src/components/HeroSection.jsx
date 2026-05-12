@@ -66,7 +66,7 @@ export default function HeroSection() {
             className="font-mono text-[11px] text-center mb-8 px-4 py-2 -mx-4 sm:rounded-xl"
             style={{ background: '#0f1a2e', color: '#8a96a8', letterSpacing: '0.04em' }}
           >
-            Cybelator Academy is now enrolling &nbsp;·&nbsp; Batch 1 &nbsp;·&nbsp; Guwahati Training Centre &nbsp;·&nbsp; Powered by CortiSec Technologies →
+            Now Enrolling &nbsp;·&nbsp; Batch 1 Starts <span style={{color: '#00e5ff'}}>15 June</span> &nbsp;·&nbsp; Guwahati Training Centre
           </motion.div>
 
           {/* Headline */}
@@ -82,9 +82,9 @@ export default function HeroSection() {
           <p className="text-base md:text-lg mb-3 max-w-2xl mx-auto leading-relaxed" style={{ color: '#8a96a8' }}>
             Northeast India's only hands-on cybersecurity training program — real enterprise tools, real operational workflows, real careers.
           </p>
-          <p className="font-mono text-xs mb-10" style={{ color: '#5a6478', letterSpacing: '0.1em' }}>
+          {/* <p className="font-mono text-xs mb-10" style={{ color: '#5a6478', letterSpacing: '0.1em' }}>
             Guwahati &nbsp;·&nbsp; Online
-          </p>
+          </p> */}
 
           {/* Primary CTAs */}
           <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6">
