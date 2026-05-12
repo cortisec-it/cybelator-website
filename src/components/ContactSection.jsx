@@ -283,7 +283,7 @@ export default function ContactSection() {
         </div>
 
         {/* Company details strip */}
-        <motion.div
+      {/*  <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -301,7 +301,7 @@ export default function ContactSection() {
               <span className="text-xs font-mono" style={{ color: '#8a96a8' }}>{v}</span>
             </div>
           ))}
-        </motion.div>
+        </motion.div> */}
 
       </div>
     </section>
