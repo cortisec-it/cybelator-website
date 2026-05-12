@@ -237,10 +237,28 @@ export default function ContactSection() {
                   <p className="text-xs mt-0.5" style={{ color: '#5a6478' }}>+91 72890 54028 · Speak directly to a CortiSec team member</p>
                 </div>
               </a>
+               
+              {/* Option 3 — Email */}
+              <a
+                href="mailto:contact@cybelator.com"
+                className="w-full flex items-center gap-4 p-5 rounded-xl border text-left transition-all group no-underline"
+                style={{ background: 'rgba(255,255,255,0.03)', borderColor: BORDER }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.borderColor = '#2d3a52'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.03)'; e.currentTarget.style.borderColor = BORDER; }}
+              >
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: 'rgba(99,102,241,0.12)' }}>
+                  <Mail className="w-5 h-5" style={{ color: '#818CF8' }} />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-white">Email us →</p>
+                  <p className="text-xs mt-0.5" style={{ color: '#5a6478' }}>contact@cybelator.com · We respond within 24 hours</p>
+                </div>
+              </a>
+      
             </div>
 
             {/* Contact info strip */}
-            <div className="mt-8 pt-6 space-y-3" style={{ borderTop: `1px solid ${BORDER}` }}>
+            {/* <div className="mt-8 pt-6 space-y-3" style={{ borderTop: `1px solid ${BORDER}` }}>
               <div className="flex items-center gap-2.5">
                 <Mail className="w-3.5 h-3.5 shrink-0" style={{ color: '#5a6478' }} />
                 <span className="text-xs" style={{ color: '#8a96a8' }}>contact@cybelator.com</span>
@@ -260,7 +278,7 @@ export default function ContactSection() {
                   onMouseLeave={(e) => (e.currentTarget.style.color = '#8a96a8')}
                 >cortisec.com ↗</a>
               </div>
-            </div>
+            </div> */}
           </motion.div>
         </div>
 
