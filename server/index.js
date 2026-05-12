@@ -6,7 +6,7 @@ import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
-dotenv.config();
+dotenv.config({ path: join(dirname(fileURLToPath(import.meta.url)), '..', '.env') });
 
 import { runMigrations } from './migrate.js';
 import authRoutes        from './routes/auth.js';
@@ -91,6 +91,16 @@ app.use('/api/victim-support', formLimiter,  victimSupportRoutes);
 app.use('/api/handbook',       formLimiter,  handbookRoutes);
 app.use('/api/settings',       generalLimiter, settingsRoutes);
 app.use('/api/admin',          generalLimiter, adminRoutes);
+
+// ─── Health Check ───────────────────────────────────────────────────────────
+app.get('/api/health', async (req, res) => {
+  try {
+    const [rows] = await (await import('./db.js')).default.query('SELECT 1');
+    res.json({ status: 'ok', db: 'connected', env_db_user: process.env.DB_USER || 'NOT SET' });
+  } catch (err) {
+    res.status(500).json({ status: 'error', db: 'failed', message: err.message, env_db_user: process.env.DB_USER || 'NOT SET' });
+  }
+});
 
 // ─── Static Files ───────────────────────────────────────────────────────────
 const distPath = join(__dirname, '..', 'dist');
