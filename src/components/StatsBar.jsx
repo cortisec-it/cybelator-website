@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 
 const STATS = [
-  { value: 26, suffix: '', label: 'Weeks Program', sub: 'Full curriculum duration' },
+  { value: 20, suffix: '', label: 'Weeks Program', sub: 'Full curriculum duration' },
   { value: 11, suffix: '', label: 'Modules', sub: 'Across 4 phases' },
   { value: 9, suffix: '', label: 'Certifications', sub: 'From top vendors' },
   { value: 8, suffix: '+', label: 'Target Roles', sub: 'Mapped to industry JDs' },

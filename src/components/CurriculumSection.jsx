@@ -105,7 +105,7 @@ export default function CurriculumSection() {
             CYBELATOR ACADEMY
           </span>
           <h2 className="font-display text-3xl md:text-4xl font-bold text-slate-900 tracking-tight mb-4">
-            20-Week Job-Ready Cybersecurity & Infrastructure Security Program
+            20-Week Job-Ready Cybersecurity Program
           </h2>
           <p className="text-sm text-slate-400 text-center mt-2 mb-6">
             For freshers, B.Tech / MCA / BCA / B.Sc. IT graduates & career switchers — zero cybersecurity experience required.
