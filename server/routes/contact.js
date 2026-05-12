@@ -52,4 +52,17 @@ router.post('/', async (req, res) => {
   }
 });
 
+// GET /api/contact — latest 100 enquiries (internal use)
+router.get('/', async (req, res) => {
+  try {
+    const [rows] = await pool.query(
+      'SELECT id, full_name, email, contact_number, city, program, created_at FROM contact_us_submissions ORDER BY created_at DESC LIMIT 100'
+    );
+    res.json(rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
 export default router;

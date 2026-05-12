@@ -8,6 +8,7 @@ import { dirname, join } from 'path';
 
 dotenv.config();
 
+import { runMigrations } from './migrate.js';
 import authRoutes        from './routes/auth.js';
 import contactRoutes     from './routes/contact.js';
 import newsletterRoutes  from './routes/newsletter.js';
@@ -99,6 +100,6 @@ app.get('*', (req, res) => {
   res.sendFile(join(distPath, 'index.html'));
 });
 
-app.listen(PORT, () => {
-  console.log(`Cybelator server running on port ${PORT}`);
-});
+runMigrations()
+  .then(() => app.listen(PORT, () => console.log(`Cybelator server running on port ${PORT}`)))
+  .catch((err) => { console.error('Migration failed:', err); process.exit(1); });
