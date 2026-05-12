@@ -100,6 +100,7 @@ app.get('*', (req, res) => {
   res.sendFile(join(distPath, 'index.html'));
 });
 
-runMigrations()
-  .then(() => app.listen(PORT, () => console.log(`Cybelator server running on port ${PORT}`)))
-  .catch((err) => { console.error('Migration failed:', err); process.exit(1); });
+app.listen(PORT, () => {
+  console.log(`Cybelator server running on port ${PORT}`);
+  runMigrations().catch((err) => console.error('Migration warning:', err));
+});
