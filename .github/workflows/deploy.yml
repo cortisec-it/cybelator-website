@@ -23,8 +23,8 @@ jobs:
             npm ci
             npm run build
             npm prune --omit=dev
+            mkdir -p tmp
+            touch tmp/restart.txt
             if command -v pm2 &> /dev/null; then
-              pm2 restart all
-            else
-              touch tmp/restart.txt
+              pm2 restart all || true
             fi
