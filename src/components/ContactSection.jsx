@@ -11,7 +11,7 @@ function EnquiryForm() {
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [form, setForm] = useState({ name: '', phone: '', email: '', city: '', program: '' });
+  const [form, setForm] = useState({ name: '', phone: '', email: '', city: '', qualification: '', specialisation: '', program: '' });
 
   const handleChange = (e) => setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
@@ -89,6 +89,32 @@ function EnquiryForm() {
       <input
         name="city" value={form.city} onChange={handleChange}
         placeholder="City"
+        className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all"
+        style={{ background: 'rgba(255,255,255,0.04)', border: `1px solid ${BORDER}`, color: '#fff' }}
+        onFocus={(e) => (e.target.style.borderColor = TEAL)}
+        onBlur={(e) => (e.target.style.borderColor = BORDER)}
+      />
+      <select
+        name="qualification" value={form.qualification} onChange={handleChange}
+        required
+        className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all"
+        style={{ background: '#111620', border: `1px solid ${BORDER}`, color: form.qualification ? '#fff' : '#5a6478' }}
+        onFocus={(e) => (e.target.style.borderColor = TEAL)}
+        onBlur={(e) => (e.target.style.borderColor = BORDER)}
+      >
+        <option value="" disabled>Highest Qualification</option>
+        <option>Diploma</option>
+        <option>B.Tech / B.E.</option>
+        <option>BCA</option>
+        <option>B.Sc IT / B.Sc CS</option>
+        <option>MCA</option>
+        <option>MBA</option>
+        <option>Working Professional</option>
+        <option>Other</option>
+      </select>
+      <input
+        name="specialisation" value={form.specialisation} onChange={handleChange}
+        placeholder="Specialisation (e.g. Computer Science, Electronics, IT, Networking)"
         className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all"
         style={{ background: 'rgba(255,255,255,0.04)', border: `1px solid ${BORDER}`, color: '#fff' }}
         onFocus={(e) => (e.target.style.borderColor = TEAL)}
