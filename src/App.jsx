@@ -1,32 +1,33 @@
 import React from 'react';
-import Navbar from './components/Navbar';
-import HeroSection from './components/HeroSection';
-import StatsBar from './components/StatsBar';
-import CurriculumSection from './components/CurriculumSection';
-import PricingSection from './components/PricingSection';
-import RolesGrid from './components/RolesGrid';
-import CertSection from './components/CertSection';
-import AwarenessSection from './components/AwarenessSection';
-import AssistanceSection from './components/AssistanceSection';
-import ContactSection from './components/ContactSection';
-import Footer from './components/Footer';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+
+import ScrollToTop   from './components/ScrollToTop';
+import LandingPage   from './pages/LandingPage';
+import AcademyPage   from './pages/AcademyPage';
+import AwarenessPage from './pages/AwarenessPage';
+import AssistancePage from './pages/AssistancePage';
 
 export default function App() {
   return (
-    <>
-      <Navbar />
-      <main>
-        <HeroSection />
-        <StatsBar />
-        <CurriculumSection />
-        <PricingSection />
-        <RolesGrid />
-        <CertSection />
-        <AwarenessSection />
-        <AssistanceSection />
-        <ContactSection />
-      </main>
-      <Footer />
-    </>
+    <BrowserRouter>
+      {/* Reset scroll position on every route change */}
+      <ScrollToTop />
+
+      <Routes>
+        {/* ── Landing — three-path choice screen ── */}
+        <Route path="/"           element={<LandingPage />}    />
+
+        {/* ── Section pages ── */}
+        <Route path="/academy"    element={<AcademyPage />}    />
+        <Route path="/awareness"  element={<AwarenessPage />}  />
+        <Route path="/assistance" element={<AssistancePage />} />
+
+        {/* ── Legacy anchor redirects ── */}
+        <Route path="/training"   element={<Navigate to="/academy"    replace />} />
+
+        {/* ── 404 fallback → landing ── */}
+        <Route path="*"           element={<Navigate to="/"           replace />} />
+      </Routes>
+    </BrowserRouter>
   );
 }

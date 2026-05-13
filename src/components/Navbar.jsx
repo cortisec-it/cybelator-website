@@ -1,21 +1,34 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, LifeBuoy } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Menu, X } from 'lucide-react';
 
-const NAV = [
-  { label: 'PROGRAM', href: '#training' },
-  { label: 'PRICING', href: '#pricing' },
-  { label: 'CERTS', href: '#certifications' },
-  { label: 'AWARENESS', href: '#awareness' },
+// ── Section-page nav links ──────────────────────────────────────────
+const NAV_LINKS = [
+  { label: 'Academy',    path: '/academy'    },
+  { label: 'Awareness',  path: '/awareness'  },
+  { label: 'Assistance', path: '/assistance' },
+  { label: 'Contact',    path: null          }, // special: scroll or navigate
 ];
 
-const scrollTo = (href) => document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+// ── Right-side CTA per section page ────────────────────────────────
+const PAGE_CTA = {
+  '/academy':    { label: 'Apply Now →',    bg: '#00D4FF', color: '#0A0F1E', isExternal: false, hash: 'contact'    },
+  '/awareness':  { label: 'Join Telegram →', bg: '#2563EB', color: '#fff',   isExternal: true,  href: 'https://t.me/cybelator' },
+  '/assistance': { label: 'Get Help →',      bg: '#10B981', color: '#fff',   isExternal: false, hash: 'assistance' },
+};
 
-const DARK = '#0a0d12';
+const DARK   = '#0a0d12';
 const BORDER = '#1c2438';
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
+  const [open,    setOpen]    = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const location = useLocation();
+  const navigate  = useNavigate();
+
+  const isLanding = location.pathname === '/';
+  const cta = PAGE_CTA[location.pathname];
 
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 24);
@@ -23,7 +36,33 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', h);
   }, []);
 
-  const nav = (href) => { setOpen(false); scrollTo(href); };
+  // ── Landing page: no navbar (landing page owns its own logo) ──────
+  if (isLanding) return null;
+
+  // ── Scroll helper for in-page anchors ────────────────────────────
+  const scrollToHash = (hash) =>
+    document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth' });
+
+  // ── Contact click: scroll if on academy page, else navigate there ─
+  const handleContact = () => {
+    setOpen(false);
+    if (location.pathname === '/academy') {
+      scrollToHash('contact');
+    } else {
+      navigate('/academy');
+    }
+  };
+
+  // ── CTA click ────────────────────────────────────────────────────
+  const handleCta = () => {
+    setOpen(false);
+    if (!cta) return;
+    if (cta.isExternal) {
+      window.open(cta.href, '_blank', 'noopener,noreferrer');
+    } else {
+      scrollToHash(cta.hash);
+    }
+  };
 
   return (
     <header
@@ -36,99 +75,134 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
 
-        {/* Logo */}
-        <div className="flex flex-col items-start leading-none gap-0.5">
-          <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <span className="font-display font-bold text-white" style={{ fontSize: '1.25rem', letterSpacing: '0.04em' }}>
-              Cybelator
-            </span>
-          </button>
-          <a
-            href="https://cortisec.com"
-            target="_blank"
-            rel="noopener noreferrer"
+        {/* ── Logo ───────────────────────────────────────────────── */}
+        <Link to="/" className="flex flex-col items-start leading-none gap-0.5 no-underline">
+          <span
+            className="font-display font-bold text-white"
+            style={{ fontSize: '1.25rem', letterSpacing: '0.04em' }}
+          >
+            Cybelator
+          </span>
+          <span
             className="font-mono text-[10px] transition-colors"
-            style={{ color: '#5a6478', letterSpacing: '0.04em', textDecoration: 'none' }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = '#8a96a8')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = '#5a6478')}
+            style={{ color: '#5a6478', letterSpacing: '0.04em' }}
           >
             by CortiSec Technologies
-          </a>
-        </div>
+          </span>
+        </Link>
 
-        {/* Desktop links */}
+        {/* ── Desktop nav links ───────────────────────────────────── */}
         <nav className="hidden md:flex items-center gap-0.5">
-          {NAV.map((n) => (
-            <button
-              key={n.href}
-              onClick={() => nav(n.href)}
-              className="font-mono text-[11px] px-3 py-2 rounded-lg transition-colors"
-              style={{ color: '#5a6478', letterSpacing: '0.1em' }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = '#8a96a8')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = '#5a6478')}
-            >
-              {n.label}
-            </button>
-          ))}
+          {NAV_LINKS.map((n) => {
+            const isActive = location.pathname === n.path;
+
+            if (n.path === null) {
+              // Contact — scroll / navigate
+              return (
+                <button
+                  key="contact"
+                  onClick={handleContact}
+                  className="font-mono text-[11px] px-3 py-2 rounded-lg transition-colors"
+                  style={{ color: '#5a6478', letterSpacing: '0.1em' }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = '#8a96a8')}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = '#5a6478')}
+                >
+                  CONTACT
+                </button>
+              );
+            }
+
+            return (
+              <Link
+                key={n.path}
+                to={n.path}
+                className="font-mono text-[11px] px-3 py-2 rounded-lg transition-colors no-underline"
+                style={{
+                  color: isActive ? '#00D4FF' : '#5a6478',
+                  letterSpacing: '0.1em',
+                  borderBottom: isActive ? '2px solid #00D4FF' : '2px solid transparent',
+                  paddingBottom: '6px',
+                }}
+                onMouseEnter={(e) => { if (!isActive) e.currentTarget.style.color = '#8a96a8'; }}
+                onMouseLeave={(e) => { if (!isActive) e.currentTarget.style.color = '#5a6478'; }}
+              >
+                {n.label.toUpperCase()}
+              </Link>
+            );
+          })}
         </nav>
 
-        {/* Desktop CTAs */}
-        <div className="hidden md:flex items-center gap-2">
-          <button
-            onClick={() => nav('#assistance')}
-            className="flex items-center gap-1.5 font-mono text-[11px] px-3 py-2 rounded-lg border transition-all"
-            style={{ borderColor: 'rgba(248,113,113,0.3)', color: '#f87171', background: 'rgba(220,38,38,0.08)', letterSpacing: '0.08em' }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(220,38,38,0.15)'; }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(220,38,38,0.08)'; }}
-          >
-            <LifeBuoy className="w-3 h-3" /> GET HELP
-          </button>
-          <button
-            onClick={() => nav('#contact')}
-            className="font-mono text-[11px] px-4 py-2 rounded-lg transition-all"
-            style={{ background: '#0D9488', color: '#fff', letterSpacing: '0.08em' }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = '#0F766E')}
-            onMouseLeave={(e) => (e.currentTarget.style.background = '#0D9488')}
-          >
-            APPLY NOW
-          </button>
+        {/* ── Desktop CTA (per-page) ──────────────────────────────── */}
+        <div className="hidden md:flex items-center">
+          {cta && (
+            <button
+              onClick={handleCta}
+              className="font-semibold text-sm px-5 py-2 rounded-full transition-all"
+              style={{ background: cta.bg, color: cta.color }}
+              onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.85')}
+              onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
+            >
+              {cta.label}
+            </button>
+          )}
         </div>
 
-        {/* Mobile toggle */}
-        <button onClick={() => setOpen(!open)} className="md:hidden p-2 rounded-lg" style={{ color: '#5a6478' }}>
+        {/* ── Mobile toggle ────────────────────────────────────────── */}
+        <button
+          onClick={() => setOpen(!open)}
+          className="md:hidden p-2 rounded-lg"
+          style={{ color: '#5a6478' }}
+        >
           {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
       </div>
 
-      {/* Mobile drawer */}
+      {/* ── Mobile drawer ────────────────────────────────────────────── */}
       {open && (
-        <div className="md:hidden px-4 pt-2 pb-4 flex flex-col gap-1" style={{ background: DARK, borderTop: `1px solid ${BORDER}` }}>
-          {NAV.map((n) => (
-            <button
-              key={n.href}
-              onClick={() => nav(n.href)}
-              className="text-left font-mono text-[11px] py-3 px-3 rounded-lg"
-              style={{ color: '#8a96a8', letterSpacing: '0.12em' }}
-            >
-              {n.label}
-            </button>
-          ))}
-          <div className="flex gap-2 mt-2 pt-2" style={{ borderTop: `1px solid ${BORDER}` }}>
-            <button
-              onClick={() => nav('#assistance')}
-              className="flex-1 flex items-center justify-center gap-1.5 font-mono text-[11px] py-2.5 rounded-lg border"
-              style={{ borderColor: 'rgba(248,113,113,0.3)', color: '#f87171', background: 'rgba(220,38,38,0.08)' }}
-            >
-              <LifeBuoy className="w-3 h-3" /> GET HELP
-            </button>
-            <button
-              onClick={() => nav('#contact')}
-              className="flex-1 font-mono text-[11px] py-2.5 rounded-lg"
-              style={{ background: '#0D9488', color: '#fff' }}
-            >
-              APPLY NOW
-            </button>
-          </div>
+        <div
+          className="md:hidden px-4 pt-2 pb-4 flex flex-col gap-1"
+          style={{ background: DARK, borderTop: `1px solid ${BORDER}` }}
+        >
+          {NAV_LINKS.map((n) => {
+            const isActive = location.pathname === n.path;
+
+            if (n.path === null) {
+              return (
+                <button
+                  key="contact"
+                  onClick={handleContact}
+                  className="text-left font-mono text-[11px] py-3 px-3 rounded-lg"
+                  style={{ color: '#8a96a8', letterSpacing: '0.12em' }}
+                >
+                  CONTACT
+                </button>
+              );
+            }
+
+            return (
+              <Link
+                key={n.path}
+                to={n.path}
+                onClick={() => setOpen(false)}
+                className="text-left font-mono text-[11px] py-3 px-3 rounded-lg no-underline block"
+                style={{ color: isActive ? '#00D4FF' : '#8a96a8', letterSpacing: '0.12em' }}
+              >
+                {n.label.toUpperCase()}
+              </Link>
+            );
+          })}
+
+          {cta && (
+            <div className="mt-2 pt-2" style={{ borderTop: `1px solid ${BORDER}` }}>
+              <button
+                onClick={handleCta}
+                className="w-full font-semibold text-sm py-2.5 rounded-full"
+                style={{ background: cta.bg, color: cta.color }}
+              >
+                {cta.label}
+              </button>
+            </div>
+          )}
         </div>
       )}
     </header>
