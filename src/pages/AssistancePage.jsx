@@ -10,8 +10,8 @@ function AssistanceHero() {
     <section
       className="pt-24 pb-16 text-white"
       style={{
-        background: 'linear-gradient(180deg, #0a0d12 0%, #0e1520 100%)',
-        borderBottom: '1px solid #1c2438',
+        background: 'transparent',
+        borderBottom: '1px solid rgba(255,255,255,0.06)',
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -72,11 +72,11 @@ function AssistanceHero() {
 
 export default function AssistancePage() {
   return (
-    <>
+    <div style={{ background: 'radial-gradient(ellipse at top center, #0d1f35 0%, #060d18 60%, #000000 100%)', minHeight: '100vh' }}>
       <Navbar />
       <AssistanceHero />
       <AssistanceSection />
       <Footer />
-    </>
+    </div>
   );
 }

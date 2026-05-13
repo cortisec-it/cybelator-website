@@ -56,7 +56,7 @@ const DELAYS = [0.2, 0.35, 0.5];
 export default function LandingPage() {
   return (
     <div
-      className="min-h-screen flex flex-col items-center justify-center px-4 py-16"
+      className="md:h-screen md:overflow-hidden flex flex-col items-center justify-center px-6 py-4"
       style={{
         backgroundImage: [
           'radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px)',
@@ -74,10 +74,10 @@ export default function LandingPage() {
         className="text-center"
       >
         {/* Logo */}
-        <p className="font-display font-black tracking-tight text-white text-5xl md:text-6xl">
+        <p className="font-display font-black tracking-tight text-white text-3xl">
           Cybelator
         </p>
-        <p className="font-mono text-xs mt-2" style={{ color: '#5a6478', letterSpacing: '0.06em' }}>
+        <p className="font-mono text-xs text-slate-500 mt-1 mb-2" style={{ letterSpacing: '0.06em' }}>
           by{' '}
           <span style={{ color: 'rgba(6,182,212,0.8)', textShadow: '0 0 20px rgba(6,182,212,0.4)' }}>
             CortiSec Technologies
@@ -85,20 +85,20 @@ export default function LandingPage() {
         </p>
 
         {/* Tagline */}
-        <h1 className="font-display font-black tracking-tight leading-tight text-white text-5xl md:text-7xl mt-6 mb-4">
+        <h1 className="font-display font-black tracking-tight leading-tight text-white text-4xl md:text-5xl mt-3 mb-2">
           Learn.&nbsp; Stay Safe.&nbsp;{' '}
           <span className="text-green-400">Get Help.</span>
         </h1>
 
         {/* Subtext */}
-        <p className="text-slate-500 text-base max-w-lg mx-auto leading-relaxed text-center">
+        <p className="text-sm text-slate-400 max-w-md mx-auto leading-relaxed text-center mb-4">
           A CortiSec Technologies initiative — cybersecurity training, public awareness, and
           victim support in one platform.
         </p>
       </motion.div>
 
       {/* ── Three option cards ── */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl w-full mt-16 mb-8 px-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl w-full mt-6 mb-4 px-6">
         {CARDS.map(({ Icon, title, body, tags, cta, to, topAccent, hoverBorderColor, hoverBoxShadow, iconBg, iconColor, tagClass, btnClass }, i) => (
           <motion.div
             key={title}
@@ -109,13 +109,13 @@ export default function LandingPage() {
           >
             <Link
               to={to}
-              className="rounded-3xl p-7 flex flex-col justify-between transition-all duration-300 no-underline"
+              className="rounded-3xl p-5 flex flex-col justify-between transition-all duration-300 no-underline"
               style={{
                 background: 'rgba(255,255,255,0.03)',
                 backdropFilter: 'blur(12px)',
                 border: '1px solid rgba(255,255,255,0.08)',
                 borderTop: `2px solid ${topAccent}`,
-                height: '440px',
+                height: '360px',
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.border = `1px solid ${hoverBorderColor}`;
@@ -128,28 +128,28 @@ export default function LandingPage() {
                 e.currentTarget.style.boxShadow = 'none';
               }}
             >
-              {/* Icon with background pill */}
-              <div className={`w-12 h-12 rounded-xl ${iconBg} flex items-center justify-center mb-4`}>
-                <Icon className={`${iconColor} w-6 h-6`} />
+              {/* Icon */}
+              <div className={`w-10 h-10 rounded-xl ${iconBg} flex items-center justify-center mb-3`}>
+                <Icon className={`${iconColor} w-5 h-5`} />
               </div>
 
               {/* Title */}
-              <h2 className="text-xl font-bold text-white mb-3 mt-3">{title}</h2>
+              <h2 className="text-lg font-bold text-white mb-2">{title}</h2>
 
               {/* Body */}
-              <p className="text-slate-400 text-sm leading-relaxed mb-6 flex-1">{body}</p>
+              <p className="text-xs text-slate-400 leading-relaxed mb-3 flex-1">{body}</p>
 
               {/* Tags */}
-              <div className="flex flex-wrap gap-2 mb-6">
+              <div className="flex flex-wrap gap-1.5 mb-3">
                 {tags.map((tag) => (
-                  <span key={tag} className={`text-xs font-medium px-3 py-1 rounded-full ${tagClass}`}>
+                  <span key={tag} className={`text-xs font-medium px-2 py-0.5 rounded-full ${tagClass}`}>
                     {tag}
                   </span>
                 ))}
               </div>
 
               {/* CTA */}
-              <div className={`w-full py-3.5 rounded-xl text-base font-semibold text-center transition-all duration-200 mt-auto ${btnClass}`}>
+              <div className={`w-full py-2.5 rounded-xl text-sm font-semibold text-center transition-all duration-200 mt-auto ${btnClass}`}>
                 {cta}
               </div>
             </Link>
@@ -165,7 +165,7 @@ export default function LandingPage() {
       >
         <Link
           to="/awareness"
-          className="text-slate-600 text-sm text-center mt-8 hover:text-slate-400 transition block"
+          className="text-slate-600 text-xs text-center mt-3 hover:text-slate-400 transition block"
         >
           Not sure where to start? Cyber Awareness is for everyone →
         </Link>
@@ -176,7 +176,7 @@ export default function LandingPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8, duration: 0.5 }}
-        className="text-slate-700 text-xs text-center mt-12 mb-8"
+        className="text-slate-700 text-xs text-center mt-3 mb-2"
       >
         A{' '}
         <a

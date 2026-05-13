@@ -16,8 +16,11 @@ function ModuleCard({ mod, isOpen, onToggle }) {
   const color = phaseColors[mod.phase];
   return (
     <div
-      className="border rounded-2xl overflow-hidden transition-all duration-200"
-      style={{ borderColor: isOpen ? color + '45' : '#e2e8f0', background: isOpen ? '#fafffe' : '#fff' }}
+      className="rounded-2xl overflow-hidden transition-all duration-200"
+      style={{
+        background: isOpen ? 'rgba(255,255,255,0.05)' : 'rgba(255,255,255,0.03)',
+        border: `1px solid ${isOpen ? color + '45' : 'rgba(255,255,255,0.08)'}`,
+      }}
     >
       <button onClick={onToggle} className="w-full flex items-start gap-4 p-5 text-left">
         <div
@@ -28,7 +31,7 @@ function ModuleCard({ mod, isOpen, onToggle }) {
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="text-base font-bold text-slate-800">{mod.title}</span>
+            <span className="text-base font-bold text-white">{mod.title}</span>
             <span className="text-xs font-semibold px-2 py-0.5 rounded-full" style={{ background: color + '12', color }}>
               {mod.weeks}
             </span>
@@ -53,7 +56,7 @@ function ModuleCard({ mod, isOpen, onToggle }) {
                 <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Topics</p>
                 <ul className="space-y-1.5">
                   {mod.topics.map((t, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-slate-600">
+                    <li key={i} className="flex items-start gap-2 text-sm text-slate-400">
                       <CheckCircle2 className="w-4 h-4 mt-0.5 shrink-0" style={{ color }} />
                       {t}
                     </li>
@@ -67,7 +70,7 @@ function ModuleCard({ mod, isOpen, onToggle }) {
                 <FlaskConical className="w-4 h-4 mt-0.5 shrink-0" style={{ color }} />
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color }}>Lab Included</p>
-                  <p className="text-sm text-slate-600">{mod.lab}</p>
+                  <p className="text-sm text-slate-400">{mod.lab}</p>
                 </div>
               </div>
             </div>
@@ -87,7 +90,7 @@ export default function CurriculumSection() {
   const filtered = showAll ? allFiltered : allFiltered.slice(0, INITIAL_SHOW);
 
   return (
-    <section id="training" className="py-20 md:py-28 bg-white">
+    <section id="training" className="py-20 md:py-28 bg-[#060d18]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
@@ -100,11 +103,11 @@ export default function CurriculumSection() {
         >
           <span
             className="inline-flex items-center gap-1.5 font-mono text-[10px] px-4 py-1.5 rounded-full mb-4"
-            style={{ background: '#F0FDFA', color: '#0D9488', border: '1px solid #99f6e4', letterSpacing: '0.12em' }}
+            style={{ background: 'rgba(34,211,238,0.1)', color: '#22d3ee', border: '1px solid rgba(34,211,238,0.3)', letterSpacing: '0.12em' }}
           >
             CYBELATOR ACADEMY
           </span>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-slate-900 tracking-tight mb-4">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-white tracking-tight mb-4">
             20-Week Job-Ready Cybersecurity Program
           </h2>
           <p className="text-sm text-slate-400 text-center mt-2 mb-6">
@@ -131,7 +134,7 @@ export default function CurriculumSection() {
                 <div className="w-2 h-2 rounded-full" style={{ background: ph.color }} />
                 <span className="font-mono text-[10px] font-bold uppercase tracking-wide" style={{ color: ph.color }}>{ph.label}</span>
               </div>
-              <p className="text-sm font-semibold text-slate-800">{ph.name}</p>
+              <p className="text-sm font-semibold text-white">{ph.name}</p>
               <p className="text-xs text-slate-500 flex items-center gap-1 mt-1">
                 <Clock className="w-3 h-3" /> {ph.weeks}
               </p>
@@ -146,7 +149,7 @@ export default function CurriculumSection() {
             className="px-4 py-2 rounded-xl font-mono text-xs transition-all"
             style={activePhase === 0
               ? { background: '#0D9488', color: '#fff' }
-              : { background: '#f1f5f9', color: '#64748b' }}
+              : { background: 'rgba(255,255,255,0.05)', color: '#94a3b8', border: '1px solid rgba(255,255,255,0.08)' }}
           >
             ALL MODULES
           </button>
@@ -157,7 +160,7 @@ export default function CurriculumSection() {
               className="px-4 py-2 rounded-xl font-mono text-xs transition-all"
               style={activePhase === ph.id
                 ? { background: ph.color, color: '#fff' }
-                : { background: '#f1f5f9', color: '#64748b' }}
+                : { background: 'rgba(255,255,255,0.05)', color: '#94a3b8', border: '1px solid rgba(255,255,255,0.08)' }}
             >
               {ph.label.toUpperCase()}: {ph.name.toUpperCase()}
             </button>
@@ -190,7 +193,7 @@ export default function CurriculumSection() {
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center pt-2">
               <button
                 onClick={() => { setShowAll(!showAll); setOpenId(null); }}
-                className="inline-flex items-center gap-2 font-mono text-xs px-6 py-3 rounded-xl border transition-all hover:bg-slate-50"
+                className="inline-flex items-center gap-2 font-mono text-xs px-6 py-3 rounded-xl border transition-all hover:bg-white/5"
                 style={{ borderColor: '#0D9488', color: '#0D9488', letterSpacing: '0.06em' }}
               >
                 {showAll

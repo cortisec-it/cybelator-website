@@ -10,8 +10,8 @@ function AwarenessHero() {
     <section
       className="pt-24 pb-16 text-white"
       style={{
-        background: 'linear-gradient(180deg, #0a0d12 0%, #0e1520 100%)',
-        borderBottom: '1px solid #1c2438',
+        background: 'transparent',
+        borderBottom: '1px solid rgba(255,255,255,0.06)',
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -56,7 +56,7 @@ function AwarenessHero() {
           </h1>
 
           {/* Subtext */}
-          <p className="text-base max-w-xl leading-relaxed" style={{ color: '#8a96a8' }}>
+          <p className="text-base max-w-xl leading-relaxed text-slate-400">
             Daily scam alerts, threat warnings, and practical protection guides — completely
             free for everyone. No jargon. No login required.
           </p>
@@ -68,11 +68,11 @@ function AwarenessHero() {
 
 export default function AwarenessPage() {
   return (
-    <>
+    <div style={{ background: 'radial-gradient(ellipse at top center, #0d1f35 0%, #060d18 60%, #000000 100%)', minHeight: '100vh' }}>
       <Navbar />
       <AwarenessHero />
       <AwarenessSection />
       <Footer />
-    </>
+    </div>
   );
 }

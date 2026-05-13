@@ -133,7 +133,7 @@ function EnquiryForm() {
 
 export default function ContactSection() {
   return (
-    <section id="contact" className="py-20 md:py-28" style={{ background: '#0e1520' }}>
+    <section id="contact" className="py-20 md:py-28" style={{ background: '#0a1628' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}

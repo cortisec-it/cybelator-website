@@ -5,10 +5,12 @@ import { certifications, levelColors, vendors } from '../data/certifications';
 
 function CertCard({ cert }) {
   const [expanded, setExpanded] = useState(false);
-  const lc = levelColors[cert.levelColor] || { bg: '#f1f5f9', text: '#64748b' };
 
   return (
-    <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-md hover:border-slate-300 transition-all flex flex-col">
+    <div
+      className="rounded-2xl overflow-hidden transition-all flex flex-col border border-white/10 hover:border-white/20"
+      style={{ background: 'rgba(255,255,255,0.03)' }}
+    >
       <div className="p-5 flex flex-col gap-3 flex-1">
         <div className="flex items-start gap-3">
           <div
@@ -18,29 +20,36 @@ function CertCard({ cert }) {
             {cert.vendorCode}
           </div>
           <div className="flex-1 min-w-0">
-            <h3 className="text-sm font-bold text-slate-800 leading-snug">{cert.title}</h3>
+            <h3 className="text-sm font-bold text-white leading-snug">{cert.title}</h3>
             <p className="text-xs text-slate-400 mt-0.5">{cert.shortTitle} &nbsp;·&nbsp; {cert.examCode}</p>
           </div>
         </div>
 
         <div className="flex flex-wrap gap-1.5">
-          <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full" style={{ background: lc.bg, color: lc.text }}>
+          <span
+            className="text-xs font-semibold px-2.5 py-0.5 rounded-full"
+            style={{ background: 'rgba(255,255,255,0.06)', color: '#cbd5e1' }}
+          >
             {cert.level}
           </span>
-          <span className="text-xs px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-500 font-mono">{cert.track}</span>
+          <span
+            className="text-xs px-2.5 py-0.5 rounded-full font-mono text-slate-400"
+            style={{ background: 'rgba(255,255,255,0.06)' }}
+          >
+            {cert.track}
+          </span>
         </div>
 
         <p className="text-xs text-slate-500 leading-relaxed">{cert.desc}</p>
 
         <div className="grid grid-cols-2 gap-2">
-          <div className="bg-slate-50 rounded-xl p-3">
+          <div className="rounded-xl p-3" style={{ background: 'rgba(255,255,255,0.04)' }}>
             <p className="font-mono text-[9px] text-slate-400 uppercase tracking-wider mb-1">Training</p>
-            <p className="text-base font-bold text-slate-800">{cert.trainingFee}</p>
-
+            <p className="text-base font-bold text-white">{cert.trainingFee}</p>
           </div>
-          <div className="bg-slate-50 rounded-xl p-3">
+          <div className="rounded-xl p-3" style={{ background: 'rgba(255,255,255,0.04)' }}>
             <p className="font-mono text-[9px] text-slate-400 uppercase tracking-wider mb-1">Exam</p>
-            <p className="text-base font-bold text-slate-800">{cert.examFee}</p>
+            <p className="text-base font-bold text-white">{cert.examFee}</p>
             <p className="text-[10px] text-slate-400 mt-0.5">{cert.examBody}</p>
           </div>
         </div>
@@ -75,7 +84,7 @@ function CertCard({ cert }) {
         </AnimatePresence>
       </div>
 
-      <div className="px-5 py-3 border-t border-slate-100 flex items-center justify-between">
+      <div className="px-5 py-3 border-t border-white/10 flex items-center justify-between">
         <span className="font-mono text-[10px] text-slate-400">{cert.vendor}</span>
         <span className="text-xs text-slate-400 flex items-center gap-1">
           <Clock className="w-3 h-3" /> {cert.validity}
@@ -93,7 +102,7 @@ export default function CertSection() {
     : certifications.filter((c) => c.vendor === activeVendor);
 
   return (
-    <section id="certifications" className="py-20 md:py-28 bg-slate-50 border-y border-slate-100">
+    <section id="certifications" className="py-20 md:py-28 bg-[#060d18]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <motion.div
@@ -105,14 +114,14 @@ export default function CertSection() {
         >
           <span
             className="inline-flex items-center gap-1.5 font-mono text-[10px] px-4 py-1.5 rounded-full mb-4"
-            style={{ background: '#EEF2FF', color: '#6366F1', border: '1px solid #c7d2fe', letterSpacing: '0.12em' }}
+            style={{ background: 'rgba(99,102,241,0.1)', color: '#818CF8', border: '1px solid rgba(99,102,241,0.3)', letterSpacing: '0.12em' }}
           >
             CERTIFICATION CATALOGUE
           </span>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-slate-900 tracking-tight mb-4">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-white tracking-tight mb-4">
             9 Certifications Across 5 Vendor Platforms
           </h2>
-          <p className="text-slate-500 text-base max-w-xl mx-auto">
+          <p className="text-slate-400 text-base max-w-xl mx-auto">
             Training fees cover instruction, lab access, and study materials. Exam fees are paid separately to the vendor at booking.
           </p>
         </motion.div>
@@ -126,7 +135,7 @@ export default function CertSection() {
               className="px-4 py-2 rounded-xl font-mono text-xs transition-all"
               style={activeVendor === v
                 ? { background: '#6366F1', color: '#fff' }
-                : { background: '#fff', color: '#64748b', border: '1px solid #e2e8f0' }}
+                : { background: 'rgba(255,255,255,0.04)', color: '#94a3b8', border: '1px solid rgba(255,255,255,0.1)' }}
             >
               {v.toUpperCase()}
             </button>
@@ -152,9 +161,10 @@ export default function CertSection() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="mt-10 rounded-2xl p-5 bg-amber-50 border border-amber-100"
+          className="mt-10 rounded-2xl p-5"
+          style={{ background: 'rgba(245,158,11,0.06)', border: '1px solid rgba(245,158,11,0.2)' }}
         >
-          <p className="text-sm text-amber-800">
+          <p className="text-sm text-amber-400">
             <strong>Pricing note:</strong> Training fees are CortiSec's program fees covering instruction, lab environment, and study materials.
             Exam fees are approximate INR conversions of vendor USD pricing and are paid directly to the exam body at booking.
           </p>

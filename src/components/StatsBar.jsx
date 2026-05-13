@@ -40,7 +40,7 @@ function Counter({ target, suffix }) {
 
 export default function StatsBar() {
   return (
-    <section id="stats" className="bg-white border-y border-slate-100">
+    <section id="stats" className="border-y border-slate-800/50" style={{ background: '#0d1f35' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10">
           {STATS.map((s, i) => (
@@ -52,11 +52,11 @@ export default function StatsBar() {
               transition={{ duration: 0.4, delay: i * 0.08 }}
               className="text-center"
             >
-              <div className="text-4xl md:text-5xl font-display font-bold mb-1" style={{ color: '#0D9488', letterSpacing: '-0.02em' }}>
+              <div className="text-4xl md:text-5xl font-display font-bold mb-1 text-cyan-400" style={{ letterSpacing: '-0.02em' }}>
                 <Counter target={s.value} suffix={s.suffix} />
               </div>
-              <div className="text-sm font-semibold text-slate-800 mb-0.5">{s.label}</div>
-              <div className="text-xs text-slate-400">{s.sub}</div>
+              <div className="text-sm font-semibold text-slate-400 mb-0.5">{s.label}</div>
+              <div className="text-xs text-slate-500">{s.sub}</div>
             </motion.div>
           ))}
         </div>

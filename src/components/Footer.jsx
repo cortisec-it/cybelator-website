@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Shield } from 'lucide-react';
 
-const DARK   = '#0a0d12';
+const DARK   = '#030810';
 const BORDER = '#1c2438';
 
 const PLATFORM_LINKS = [
@@ -49,7 +49,7 @@ export default function Footer() {
               by Cortisec Technologies Pvt. Ltd. ↗
             </a>
             <p className="text-xs max-w-xs leading-relaxed" style={{ color: '#5a6478' }}>
-              Northeast India's cybersecurity platform — training, awareness, and victim assistance.
+              India's cybersecurity training, awareness, and victim assistance platform.
             </p>
             <p className="font-mono text-[9px]" style={{ color: '#5a6478', letterSpacing: '0.06em' }}>
               contact@cybelator.com
@@ -107,7 +107,7 @@ export default function Footer() {
           style={{ borderColor: BORDER }}
         >
           <p className="font-mono text-[9px] tracking-widest shrink-0" style={{ color: '#5a6478' }}>
-            VENDOR PARTNERS
+            CERTIFICATION PLATFORMS
           </p>
           {PARTNERS.map((p) => (
             <span key={p} className="font-mono text-[10px] font-medium" style={{ color: '#8a96a8' }}>

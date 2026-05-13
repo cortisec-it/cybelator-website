@@ -16,8 +16,8 @@ function AcademyHero() {
     <section
       className="pt-24 pb-16 text-white"
       style={{
-        background: 'linear-gradient(180deg, #0a0d12 0%, #0e1520 100%)',
-        borderBottom: '1px solid #1c2438',
+        background: 'transparent',
+        borderBottom: '1px solid rgba(255,255,255,0.06)',
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -39,12 +39,12 @@ function AcademyHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
           className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-xl"
-          style={{ background: '#faeeda', border: '0.5px solid #ef9f27' }}
+          style={{ background: 'rgba(245,158,11,0.1)', border: '1px solid rgba(245,158,11,0.3)' }}
         >
-          <Star className="w-3.5 h-3.5 shrink-0" style={{ color: '#ba7517' }} />
-          <p className="text-sm" style={{ color: '#633806' }}>
+          <Star className="w-3.5 h-3.5 shrink-0 text-amber-400" />
+          <p className="text-sm text-amber-400">
             <strong>Founding Batch Open</strong> — 20 seats only · Batch 1 starts{' '}
-            <span style={{ color: '#ba7517', fontWeight: 700 }}>15 June</span> · Guwahati
+            <span style={{ color: '#fbbf24', fontWeight: 700 }}>15 June</span> · Guwahati
           </p>
         </motion.div>
 
@@ -75,7 +75,7 @@ function AcademyHero() {
           </h1>
 
           {/* Subtext */}
-          <p className="text-base max-w-xl leading-relaxed" style={{ color: '#8a96a8' }}>
+          <p className="text-base max-w-xl leading-relaxed text-slate-400">
             For freshers and career switchers — zero cybersecurity experience required.
             Hands-on training on live enterprise tools, real operational workflows, and
             industry-grade lab environments.
@@ -88,7 +88,7 @@ function AcademyHero() {
 
 export default function AcademyPage() {
   return (
-    <>
+    <div style={{ background: 'radial-gradient(ellipse at top center, #0d1f35 0%, #060d18 60%, #000000 100%)', minHeight: '100vh' }}>
       <Navbar />
       <AcademyHero />
       <StatsBar />
@@ -98,6 +98,6 @@ export default function AcademyPage() {
       <CertSection />
       <ContactSection />
       <Footer />
-    </>
+    </div>
   );
 }
