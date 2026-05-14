@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, Send, CheckCircle2, GraduationCap, LifeBuoy, ExternalLink, MessageCircle, ArrowUp } from 'lucide-react';
+import { Send, CheckCircle2, GraduationCap } from 'lucide-react';
 
-const DARK = '#0a0d12';
 const CARD = '#111620';
 const BORDER = '#1c2438';
 const TEAL = '#0D9488';
@@ -180,17 +179,16 @@ export default function ContactSection() {
             Get in Touch
           </h2>
           <p className="text-base max-w-xl mx-auto" style={{ color: '#8a96a8' }}>
-            Two paths — choose what applies to you.
+            Fill in your details and our team will contact you within 24 hours to discuss the next batch.
           </p>
         </motion.div>
 
-        {/* Two-path split */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10">
+        {/* Single form — centered */}
+        <div className="max-w-2xl mx-auto mb-10">
 
-          {/* Path A — Learn */}
           <motion.div
-            initial={{ opacity: 0, x: -16 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
             className="rounded-2xl p-6 flex flex-col"
@@ -208,104 +206,6 @@ export default function ContactSection() {
             <EnquiryForm />
           </motion.div>
 
-          {/* Path B — Help */}
-          <motion.div
-            initial={{ opacity: 0, x: 16 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="rounded-2xl p-6 flex flex-col"
-            style={{ background: CARD, border: `1px solid ${BORDER}` }}
-          >
-            <div className="flex items-center gap-3 mb-1">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: 'rgba(248,113,113,0.12)' }}>
-                <LifeBuoy className="w-4 h-4" style={{ color: '#f87171' }} />
-              </div>
-              <h3 className="font-display text-lg font-bold text-white">I need help with a cybercrime</h3>
-            </div>
-            <p className="text-sm mb-8 pl-11" style={{ color: '#8a96a8' }}>
-              Talk to a Cortisec volunteer directly
-            </p>
-
-            <div className="space-y-4 flex-1">
-              {/* Option 1 — reporting guide */}
-              <button
-                onClick={() => document.querySelector('#assistance')?.scrollIntoView({ behavior: 'smooth' })}
-                className="w-full flex items-center gap-4 p-5 rounded-xl border text-left transition-all group"
-                style={{ background: 'rgba(255,255,255,0.03)', borderColor: BORDER }}
-                onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.borderColor = '#2d3a52'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.03)'; e.currentTarget.style.borderColor = BORDER; }}
-              >
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: 'rgba(99,102,241,0.12)' }}>
-                  <ArrowUp className="w-5 h-5" style={{ color: '#818CF8' }} />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-white">Use the reporting guide ↑</p>
-                  <p className="text-xs mt-0.5" style={{ color: '#5a6478' }}>Step-by-step action checklist — scroll to Cyber Assistance above</p>
-                </div>
-              </button>
-
-              {/* Option 2 — WhatsApp */}
-              <a
-                href="https://wa.me/917289054028?text=Hi%2C%20I%20need%20help%20understanding%20a%20cybercrime%20that%20happened%20to%20me."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full flex items-center gap-4 p-5 rounded-xl border text-left transition-all group no-underline"
-                style={{ background: 'rgba(37,211,102,0.06)', borderColor: 'rgba(37,211,102,0.2)' }}
-                onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(37,211,102,0.1)'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(37,211,102,0.06)'; }}
-              >
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: 'rgba(37,211,102,0.15)' }}>
-                  <MessageCircle className="w-5 h-5" style={{ color: '#25d366' }} />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold" style={{ color: '#25d366' }}>WhatsApp a volunteer →</p>
-                  <p className="text-xs mt-0.5" style={{ color: '#5a6478' }}>+91 72890 54028 · Speak directly to a CortiSec team member</p>
-                </div>
-              </a>
-               
-              {/* Option 3 — Email */}
-              <a
-                href="mailto:contact@cybelator.com"
-                className="w-full flex items-center gap-4 p-5 rounded-xl border text-left transition-all group no-underline"
-                style={{ background: 'rgba(255,255,255,0.03)', borderColor: BORDER }}
-                onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.borderColor = '#2d3a52'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.03)'; e.currentTarget.style.borderColor = BORDER; }}
-              >
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: 'rgba(99,102,241,0.12)' }}>
-                  <Mail className="w-5 h-5" style={{ color: '#818CF8' }} />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-white">Email us →</p>
-                  <p className="text-xs mt-0.5" style={{ color: '#5a6478' }}>contact@cybelator.com · We respond within 24 hours</p>
-                </div>
-              </a>
-      
-            </div>
-
-            {/* Contact info strip */}
-            {/* <div className="mt-8 pt-6 space-y-3" style={{ borderTop: `1px solid ${BORDER}` }}>
-              <div className="flex items-center gap-2.5">
-                <Mail className="w-3.5 h-3.5 shrink-0" style={{ color: '#5a6478' }} />
-                <span className="text-xs" style={{ color: '#8a96a8' }}>contact@cybelator.com</span>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <Phone className="w-3.5 h-3.5 shrink-0" style={{ color: '#5a6478' }} />
-                <a href="tel:+917289054028" className="text-xs" style={{ color: '#8a96a8', textDecoration: 'none' }}>+91 72890 54028</a>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <MapPin className="w-3.5 h-3.5 shrink-0" style={{ color: '#5a6478' }} />
-                <span className="text-xs" style={{ color: '#8a96a8' }}>Guwahati Training Centre · Noida Operations</span>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <ExternalLink className="w-3.5 h-3.5 shrink-0" style={{ color: '#5a6478' }} />
-                <a href="https://cortisec.com" target="_blank" rel="noopener noreferrer" className="text-xs transition-colors" style={{ color: '#8a96a8', textDecoration: 'none' }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = '#fff')}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = '#8a96a8')}
-                >cortisec.com ↗</a>
-              </div>
-            </div> */}
-          </motion.div>
         </div>
 
         {/* Company details strip */}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { AlertOctagon, ArrowUp, MessageCircle, Mail } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import AssistanceSection from '../components/AssistanceSection';
 import Footer from '../components/Footer';
@@ -70,12 +71,91 @@ function AssistanceHero() {
   );
 }
 
+function AssistanceContactSection() {
+  return (
+    <section className="py-16" style={{ background: '#0a1628' }}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-white font-bold text-2xl text-center mb-6">Need Immediate Help?</h2>
+        <div
+          className="max-w-lg mx-auto rounded-2xl p-8"
+          style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}
+        >
+          {/* Card header */}
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: 'rgba(239,68,68,0.2)' }}>
+              <AlertOctagon className="w-5 h-5 text-red-400" />
+            </div>
+            <div>
+              <h3 className="text-white font-bold text-lg leading-snug">I need help with a cybercrime</h3>
+              <p className="text-slate-400 text-sm mt-1">Talk to a CortiSec volunteer directly</p>
+            </div>
+          </div>
+
+          {/* Row 1 — Reporting guide */}
+          <button
+            onClick={() => document.querySelector('#assistance')?.scrollIntoView({ behavior: 'smooth' })}
+            className="w-full flex items-center gap-4 p-4 rounded-xl border text-left cursor-pointer transition-all mb-3"
+            style={{ background: 'rgba(255,255,255,0.03)', borderColor: 'rgba(255,255,255,0.06)' }}
+            onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.06)')}
+            onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.03)')}
+          >
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 bg-slate-700">
+              <ArrowUp className="w-5 h-5 text-slate-300" />
+            </div>
+            <div>
+              <p className="text-white font-semibold text-sm">Use the reporting guide ↑</p>
+              <p className="text-slate-500 text-xs mt-0.5">Step-by-step action checklist — scroll to Cyber Assistance above</p>
+            </div>
+          </button>
+
+          {/* Row 2 — WhatsApp */}
+          <a
+            href="https://wa.me/917289054028?text=I%20need%20help%20with%20a%20cybercrime"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full flex items-center gap-4 p-4 rounded-xl border text-left no-underline transition-all mb-3 block"
+            style={{ background: 'rgba(16,185,129,0.08)', borderColor: 'rgba(16,185,129,0.25)' }}
+            onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(16,185,129,0.13)')}
+            onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(16,185,129,0.08)')}
+          >
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: 'rgba(16,185,129,0.2)' }}>
+              <MessageCircle className="w-5 h-5 text-green-400" />
+            </div>
+            <div>
+              <p className="text-green-400 font-semibold text-sm">WhatsApp a volunteer →</p>
+              <p className="text-slate-400 text-xs mt-0.5">+91 72890 54028 · Speak directly to a CortiSec team member</p>
+            </div>
+          </a>
+
+          {/* Row 3 — Email */}
+          <a
+            href="mailto:contact@cybelator.com?subject=Cybercrime%20Assistance%20Request"
+            className="w-full flex items-center gap-4 p-4 rounded-xl border text-left no-underline transition-all block"
+            style={{ background: 'rgba(255,255,255,0.03)', borderColor: 'rgba(255,255,255,0.06)' }}
+            onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.06)')}
+            onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.03)')}
+          >
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: 'rgba(99,102,241,0.2)' }}>
+              <Mail className="w-5 h-5 text-indigo-400" />
+            </div>
+            <div>
+              <p className="text-white font-semibold text-sm">Email us →</p>
+              <p className="text-slate-500 text-xs mt-0.5">contact@cybelator.com · We respond within 24 hours</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function AssistancePage() {
   return (
     <div style={{ background: 'radial-gradient(ellipse at top center, #0d1f35 0%, #060d18 60%, #000000 100%)', minHeight: '100vh' }}>
       <Navbar />
       <AssistanceHero />
       <AssistanceSection />
+      <AssistanceContactSection />
       <Footer />
     </div>
   );
