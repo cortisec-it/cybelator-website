@@ -7,7 +7,7 @@ const NAV_LINKS = [
   { label: 'Academy',    path: '/academy'    },
   { label: 'Awareness',  path: '/awareness'  },
   { label: 'Assistance', path: '/assistance' },
-  { label: 'Contact',    path: null          }, // special: scroll or navigate
+//{ label: 'Contact',    path: null          }, // special: scroll or navigate
 ];
 
 // ── Right-side CTA per section page ────────────────────────────────

@@ -127,7 +127,7 @@ function EnquiryForm() {
         onBlur={(e) => (e.target.style.borderColor = BORDER)}
       >
         <option value="">Interested in... (select program)</option>
-        <option>Starter Track — 20-Week Full Program (₹35,000)</option>
+        <option>Starter Track — 20-Week Full Program (₹35,000) . Founding Batch</option>
         <option>Career Track — 20-Week Full Program with Placement (₹45,000)</option>
         <option>Explorer Track — 6-Week Short Course (₹12,000)</option>
         <option>Individual Certification — CCNA</option>
