@@ -109,7 +109,7 @@ function AssistanceContactSection() {
           </button>
 
           {/* Row 2 — WhatsApp */}
-          <a
+          {/*<a
             href="https://wa.me/917289054028?text=I%20need%20help%20with%20a%20cybercrime"
             target="_blank"
             rel="noopener noreferrer"
@@ -125,7 +125,7 @@ function AssistanceContactSection() {
               <p className="text-green-400 font-semibold text-sm">WhatsApp a volunteer →</p>
               <p className="text-slate-400 text-xs mt-0.5">+91 72890 54028 · Speak directly to a CortiSec team member</p>
             </div>
-          </a>
+          </a>*/}
 
           {/* Row 3 — Email */}
           <a
