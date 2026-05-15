@@ -15,5 +15,16 @@ export async function runMigrations() {
       INDEX idx_created_at (created_at)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
   `);
+
+  // Add columns introduced after initial schema (safe to run repeatedly)
+  const alterations = [
+    "ALTER TABLE contact_us_submissions ADD COLUMN IF NOT EXISTS qualification  VARCHAR(100) NULL AFTER city",
+    "ALTER TABLE contact_us_submissions ADD COLUMN IF NOT EXISTS status         VARCHAR(100) NULL AFTER qualification",
+    "ALTER TABLE contact_us_submissions ADD COLUMN IF NOT EXISTS specialisation VARCHAR(255) NULL AFTER status",
+  ];
+  for (const sql of alterations) {
+    await pool.query(sql).catch(() => {}); // silently skip if already present
+  }
+
   console.log('Migrations complete.');
 }

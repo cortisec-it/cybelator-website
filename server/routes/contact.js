@@ -16,6 +16,7 @@ router.post('/', async (req, res) => {
   const contact_number = sanitizeText(req.body.phone || req.body.contact_number);
   const city           = sanitizeText(req.body.city);
   const qualification  = sanitizeText(req.body.qualification);
+  const status         = sanitizeText(req.body.status);
   const specialisation = sanitizeText(req.body.specialisation);
   const program        = sanitizeText(req.body.program);
 
@@ -28,8 +29,8 @@ router.post('/', async (req, res) => {
 
   try {
     await pool.query(
-      'INSERT INTO contact_us_submissions (full_name, email, contact_number, city, qualification, specialisation, program) VALUES (?, ?, ?, ?, ?, ?, ?)',
-      [full_name, email, contact_number, city || null, qualification || null, specialisation || null, program || null]
+      'INSERT INTO contact_us_submissions (full_name, email, contact_number, city, qualification, status, specialisation, program) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+      [full_name, email, contact_number, city || null, qualification || null, status || null, specialisation || null, program || null]
     );
 
     sendAlertEmail({
@@ -42,6 +43,7 @@ router.post('/', async (req, res) => {
           <tr><td style="padding:8px;font-weight:bold;color:#555;">Phone</td><td style="padding:8px;">${contact_number}</td></tr>
           <tr><td style="padding:8px;font-weight:bold;color:#555;">City</td><td style="padding:8px;">${city || '—'}</td></tr>
           <tr><td style="padding:8px;font-weight:bold;color:#555;">Qualification</td><td style="padding:8px;">${qualification || '—'}</td></tr>
+          <tr><td style="padding:8px;font-weight:bold;color:#555;">Status / Occupation</td><td style="padding:8px;">${status || '—'}</td></tr>
           <tr><td style="padding:8px;font-weight:bold;color:#555;">Specialisation</td><td style="padding:8px;">${specialisation || '—'}</td></tr>
           <tr><td style="padding:8px;font-weight:bold;color:#555;">Program</td><td style="padding:8px;">${program || '—'}</td></tr>
           <tr><td style="padding:8px;font-weight:bold;color:#555;">Time</td><td style="padding:8px;">${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} IST</td></tr>

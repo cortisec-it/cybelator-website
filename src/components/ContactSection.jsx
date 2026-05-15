@@ -10,7 +10,7 @@ function EnquiryForm() {
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [form, setForm] = useState({ name: '', phone: '', email: '', city: '', qualification: '', specialisation: '', program: '' });
+  const [form, setForm] = useState({ name: '', phone: '', email: '', city: '', qualification: '', status: '', specialisation: '', program: '' });
 
   const handleChange = (e) => setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
@@ -108,7 +108,24 @@ function EnquiryForm() {
         <option>B.Sc IT / B.Sc CS</option>
         <option>MCA</option>
         <option>MBA</option>
+        <option>Other</option>
+      </select>
+      <select
+        name="status" value={form.status} onChange={handleChange}
+        required
+        className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all"
+        style={{ background: '#111620', border: `1px solid ${BORDER}`, color: form.status ? '#fff' : '#5a6478' }}
+        onFocus={(e) => (e.target.style.borderColor = TEAL)}
+        onBlur={(e) => (e.target.style.borderColor = BORDER)}
+      >
+        <option value="" disabled>Current Status / Occupation</option>
+        <option>Student</option>
+        <option>Fresher</option>
         <option>Working Professional</option>
+        <option>IT Professional</option>
+        <option>Network Engineer</option>
+        <option>Career Switcher</option>
+        <option>Business Owner</option>
         <option>Other</option>
       </select>
       <input
@@ -126,7 +143,7 @@ function EnquiryForm() {
         onFocus={(e) => (e.target.style.borderColor = TEAL)}
         onBlur={(e) => (e.target.style.borderColor = BORDER)}
       >
-        <option value="">Interested in... (select program)</option>
+        <option value="">Interested In... (Select Program)</option>
         <option>Starter Track — 20-Week Full Program (₹35,000) . Founding Batch</option>
         <option>Career Track — 20-Week Full Program with Placement (₹45,000)</option>
         <option>Explorer Track — 6-Week Short Course (₹12,000)</option>
