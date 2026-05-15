@@ -43,7 +43,7 @@ export default function PricingSection() {
             Transparent, Affordable Fees
           </h2>
           <p className="text-slate-400 text-base max-w-xl mx-auto">
-            No hidden costs. Training, lab access, and study materials are all included. Exam fees paid separately to the vendor.
+            No hidden costs. Training, hands-on sessions with real devices and lab environments, and study materials are all included. All prices are inclusive of 18% GST.
           </p>
         </motion.div>
 
@@ -81,6 +81,7 @@ export default function PricingSection() {
                 >
                   {plan.price}
                 </div>
+                <p className="text-xs text-slate-500 mt-1">GST included</p>
               </div>
 
               <ul className="space-y-3 flex-1 mb-8">
